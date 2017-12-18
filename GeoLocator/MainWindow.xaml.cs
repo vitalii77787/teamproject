@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 
 namespace GeoLocator
 {
+    //Knyaz Oleg comments 17.43
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
