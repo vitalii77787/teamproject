@@ -1,0 +1,150 @@
+﻿<Window x:Class="GeoLocator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gmaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+        xmlns:local="clr-namespace:GeoLocator"
+         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="14"
+         TextOptions.TextFormattingMode="Display"
+         TextOptions.TextRenderingMode="Auto"
+         Background="{DynamicResource MaterialDesignPaper}"
+         FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="LeftSide" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="5*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="0">
+                <TextBox Margin="10" Width="175" Height="25" >
+                    <Control.Template>
+                        <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                <ScrollViewer x:Name="PART_ContentHost" Focusable="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                                </Trigger>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter Property="BorderBrush" Value="Green"/>
+                                    <Setter Property="BorderThickness" Value="2"/>
+                                    <Setter Property="Background" Value="#FFF3F1B9"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Control.Template>
+                </TextBox>
+                <TextBox Margin="10" Width="175" Height="25" >
+                    <Control.Template>
+                        <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                <ScrollViewer x:Name="PART_ContentHost" Focusable="True" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"/>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                                </Trigger>
+                                <Trigger Property="IsFocused" Value="True">
+                                    <Setter Property="BorderBrush" Value="Green"/>
+                                    <Setter Property="BorderThickness" Value="2"/>
+                                    <Setter Property="Background" Value="#FFF3F1B9"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Control.Template>
+                </TextBox>
+            </StackPanel>
+            <gmaps:GMapControl x:Name="mapView" Grid.Column="0" Grid.Row="1" Loaded="mapView_Loaded" />
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical" Grid.Row="0">
+                <Label Margin="5" FontSize="18" HorizontalContentAlignment="Center" Background="Beige">LOGIN</Label>
+                <ComboBox  VerticalAlignment="Top" Margin="10" Background="Azure" ></ComboBox>
+                <PasswordBox Margin="10,0,10,10"></PasswordBox>
+                <Button  Margin="10,0,10,0" Width="150" Height="25">ACCEPT
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard Name="Start">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Width"
+                                                             To="175" Duration="0:0:0.4" RepeatBehavior="2x" AutoReverse="True"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="Height"
+                                                             To="35" Duration="0:0:0.4" RepeatBehavior="2x" AutoReverse="True"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <EventTrigger.Actions>
+                                <RemoveStoryboard BeginStoryboardName="Start"
+                            />
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Row="1">
+                <ComboBox  VerticalAlignment="Top" Margin="10" Background="Azure" ></ComboBox>
+                <Button  Margin="10,40,10,10" Width="150" Height="25">FIND
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard Name="Start1">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Width"
+                                                             To="175" Duration="0:0:0.4" RepeatBehavior="2x" AutoReverse="True"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="Height"
+                                                             To="35" Duration="0:0:0.4" RepeatBehavior="2x" AutoReverse="True"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <EventTrigger.Actions>
+                                <RemoveStoryboard BeginStoryboardName="Start1"
+                            />
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+                <Button  Margin="10,10,10,10" Width="150" Height="25" Click="OpenConstruct">ADD
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard Name="Start2">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Width"
+                                                             To="175" Duration="0:0:0.4" RepeatBehavior="2x" AutoReverse="True"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="Height"
+                                                             To="35" Duration="0:0:0.4" RepeatBehavior="2x" AutoReverse="True"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <EventTrigger.Actions>
+                                <RemoveStoryboard BeginStoryboardName="Start2"
+                            />
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
