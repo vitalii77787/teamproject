@@ -27,11 +27,25 @@ namespace GeoLocator
             DataContext = windowcontext;
         }
 
+        //Unlock main window onclosing this window
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window is MainWindow)
+                {
+                    (window as MainWindow).IsEnabled = true;
+                }
+            }
+            base.OnClosing(e);
+        }
+
         private void Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(windowcontext.ToString());
             // Must be interface realization
             //bll.AddNewPlace(new Place() { Name =windowcontext.Name, Type = windowcontext.Type, Description = windowcontext.Description, City = windowcontext.City,Street = windowcontext.Street, StreetNumber = windowcontext.StreetNumber});
+
             Close();
         }
     }

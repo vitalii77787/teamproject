@@ -26,6 +26,7 @@ namespace GeoLocator
         public MainWindow()
         {
             InitializeComponent();
+         
         }
         private void mapView_Loaded(object sender, RoutedEventArgs e)
         {
