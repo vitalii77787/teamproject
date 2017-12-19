@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using GeoLocator.ContextObjects;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,9 +21,11 @@ namespace GeoLocator
     /// </summary>
     public partial class NewMarker : Window
     {
+        MarkerContext markercontext = new MarkerContext();
         public NewMarker()
         {
             InitializeComponent();
+            DataContext = markercontext;
         }
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
@@ -46,5 +49,13 @@ namespace GeoLocator
             }
 
         }
+
+        private void BtnOkClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(markercontext.ToString());
+            Close();
+        }
+
+    
     }
 }

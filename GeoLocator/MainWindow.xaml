@@ -82,17 +82,23 @@
                                 <BeginStoryboard Name="Start">
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetProperty="Width"
-                                                             To="175" Duration="0:0:0.4" RepeatBehavior="2x" AutoReverse="True"></DoubleAnimation>
+                                                             To="175" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
                                         <DoubleAnimation Storyboard.TargetProperty="Height"
-                                                             To="35" Duration="0:0:0.4" RepeatBehavior="2x" AutoReverse="True"></DoubleAnimation>
+                                                             To="35" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger.Actions>
                         </EventTrigger>
                         <EventTrigger RoutedEvent="Button.MouseLeave">
                             <EventTrigger.Actions>
-                                <RemoveStoryboard BeginStoryboardName="Start"
-                            />
+                                <BeginStoryboard >
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Width"
+                                                             To="150" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="Height"
+                                                             To="25" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
                             </EventTrigger.Actions>
                         </EventTrigger>
                     </Button.Triggers>
@@ -107,17 +113,23 @@
                                 <BeginStoryboard Name="Start1">
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetProperty="Width"
-                                                             To="175" Duration="0:0:0.4" RepeatBehavior="2x" AutoReverse="True"></DoubleAnimation>
+                                                             To="175" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
                                         <DoubleAnimation Storyboard.TargetProperty="Height"
-                                                             To="35" Duration="0:0:0.4" RepeatBehavior="2x" AutoReverse="True"></DoubleAnimation>
+                                                             To="35" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger.Actions>
                         </EventTrigger>
                         <EventTrigger RoutedEvent="Button.MouseLeave">
                             <EventTrigger.Actions>
-                                <RemoveStoryboard BeginStoryboardName="Start1"
-                            />
+                                <BeginStoryboard >
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Width"
+                                                             To="150" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="Height"
+                                                             To="25" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
                             </EventTrigger.Actions>
                         </EventTrigger>
                     </Button.Triggers>
@@ -129,17 +141,23 @@
                                 <BeginStoryboard Name="Start2">
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetProperty="Width"
-                                                             To="175" Duration="0:0:0.4" RepeatBehavior="2x" AutoReverse="True"></DoubleAnimation>
+                                                             To="175" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
                                         <DoubleAnimation Storyboard.TargetProperty="Height"
-                                                             To="35" Duration="0:0:0.4" RepeatBehavior="2x" AutoReverse="True"></DoubleAnimation>
+                                                             To="35" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger.Actions>
                         </EventTrigger>
                         <EventTrigger RoutedEvent="Button.MouseLeave">
                             <EventTrigger.Actions>
-                                <RemoveStoryboard BeginStoryboardName="Start2"
-                            />
+                                <BeginStoryboard >
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Width"
+                                                             To="150" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="Height"
+                                                             To="25" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
                             </EventTrigger.Actions>
                         </EventTrigger>
                     </Button.Triggers>
@@ -151,17 +169,23 @@
                                 <BeginStoryboard Name="start3">
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetProperty="Width"
-                                                             To="175" Duration="0:0:0.4" RepeatBehavior="2x" AutoReverse="True"></DoubleAnimation>
+                                                             To="175" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
                                         <DoubleAnimation Storyboard.TargetProperty="Height"
-                                                             To="35" Duration="0:0:0.4" RepeatBehavior="2x" AutoReverse="True"></DoubleAnimation>
+                                                             To="35" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger.Actions>
                         </EventTrigger>
                         <EventTrigger RoutedEvent="Button.MouseLeave">
                             <EventTrigger.Actions>
-                                <RemoveStoryboard BeginStoryboardName="start3"
-                            />
+                                <BeginStoryboard >
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Width"
+                                                             To="150" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="Height"
+                                                             To="25" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
                             </EventTrigger.Actions>
                         </EventTrigger>
                     </Button.Triggers>
