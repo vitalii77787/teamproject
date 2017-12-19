@@ -65,5 +65,12 @@ namespace GeoLocator
             np.Show();
             this.IsEnabled = false;
         }
+
+        private void OpenNewMarker(object sender, RoutedEventArgs e)
+        {
+            NewMarker nm = new NewMarker();
+            nm.Show();
+            this.IsEnabled = false;
+        }
     }
 }

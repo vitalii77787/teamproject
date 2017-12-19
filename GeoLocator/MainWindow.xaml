@@ -144,6 +144,28 @@
                         </EventTrigger>
                     </Button.Triggers>
                 </Button>
+                <Button  Margin="10,10,10,10" Width="150" Height="25" Click="OpenNewMarker">NewMarker
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard Name="start3">
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Width"
+                                                             To="175" Duration="0:0:0.4" RepeatBehavior="2x" AutoReverse="True"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="Height"
+                                                             To="35" Duration="0:0:0.4" RepeatBehavior="2x" AutoReverse="True"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <EventTrigger.Actions>
+                                <RemoveStoryboard BeginStoryboardName="start3"
+                            />
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Button.Triggers>
+                </Button>
             </StackPanel>
         </Grid>
     </Grid>

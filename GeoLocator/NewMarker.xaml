@@ -1,0 +1,39 @@
+﻿<Window x:Class="GeoLocator.NewMarker"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GeoLocator"
+        mc:Ignorable="d"
+        Title="NewMarker" Height="280" Width="300" WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
+    <Grid>
+        <StackPanel Background="#FFFEFFF0">
+            <Label Height="35" Background="Beige" FontSize="18" FontFamily="Times New Roman" FontWeight="Bold" HorizontalContentAlignment="Center" Content="{Binding ElementName=MarkerName, Path=Text}"></Label>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Width="120" HorizontalAlignment="Left">
+                <Image x:Name="MyImage" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100"  Margin="10,10,10,5"></Image>
+                <Button Width="75"  Margin="20,0,5,5" Click="SelectImage" HorizontalAlignment="Left">Select</Button>
+            </StackPanel>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal"  Margin="2">
+                        <Label Margin="2" Width="55" Height="25" HorizontalContentAlignment="Center" FontFamily="Times New Roman" FontSize="14" Background="Beige">Name</Label>
+                        <TextBox x:Name="MarkerName" Margin="2" Width="100"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  Margin="2">
+                        <Label Margin="2" Width="55" Height="25" HorizontalContentAlignment="Center" FontFamily="Times New Roman" FontSize="14" Background="Beige">Type</Label>
+                        <TextBox Margin="2" Width="100"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"  Margin="2">
+                        <Label Margin="2" Width="55" Height="25" HorizontalContentAlignment="Center" FontFamily="Times New Roman" FontSize="14" Background="Beige">Lang</Label>
+                        <TextBox Margin="2" Width="100"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="2">
+                        <Label Margin="2" Width="55" Height="25" HorizontalContentAlignment="Center" FontFamily="Times New Roman" FontSize="14" Background="Beige">Long</Label>
+                        <TextBox Margin="2" Width="100"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <Button Width="75" Margin="10">OK</Button>
+        </StackPanel>
+    </Grid>
+</Window>

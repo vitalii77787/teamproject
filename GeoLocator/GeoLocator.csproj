@@ -82,12 +82,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NewMarker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="NewPlace.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NewMarker.xaml.cs">
+      <DependentUpon>NewMarker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NewPlace.xaml.cs">
       <DependentUpon>NewPlace.xaml</DependentUpon>
     </Compile>
