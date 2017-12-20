@@ -1,9 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.4
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLocator", "GeoLocator\GeoLocator.csproj", "{B60CB257-DB17-475F-87F5-D0195CA615C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalForWcfLib", "DalForWcfLib\DalForWcfLib.csproj", "{5DDFBECC-9008-4ECD-A1DF-9F72E1C6D480}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BllForWcfLib", "BllForWcfLib\BllForWcfLib.csproj", "{D1AB392E-A2B3-4AD0-A9D2-2D20D945833A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfGoogleMaps", "WcfGoogleMaps\WcfGoogleMaps.csproj", "{CF9CADE4-448D-4068-A2BC-8C94E61114EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +21,23 @@ Global
 		{B60CB257-DB17-475F-87F5-D0195CA615C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B60CB257-DB17-475F-87F5-D0195CA615C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B60CB257-DB17-475F-87F5-D0195CA615C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DDFBECC-9008-4ECD-A1DF-9F72E1C6D480}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DDFBECC-9008-4ECD-A1DF-9F72E1C6D480}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DDFBECC-9008-4ECD-A1DF-9F72E1C6D480}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DDFBECC-9008-4ECD-A1DF-9F72E1C6D480}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1AB392E-A2B3-4AD0-A9D2-2D20D945833A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1AB392E-A2B3-4AD0-A9D2-2D20D945833A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1AB392E-A2B3-4AD0-A9D2-2D20D945833A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1AB392E-A2B3-4AD0-A9D2-2D20D945833A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF9CADE4-448D-4068-A2BC-8C94E61114EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF9CADE4-448D-4068-A2BC-8C94E61114EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF9CADE4-448D-4068-A2BC-8C94E61114EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF9CADE4-448D-4068-A2BC-8C94E61114EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BDD968F2-2C00-4D89-9B09-524AC3D72094}
 	EndGlobalSection
 EndGlobal
