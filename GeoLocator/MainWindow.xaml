@@ -104,7 +104,7 @@
                     <Button.Triggers>
                         <EventTrigger RoutedEvent="Button.MouseEnter">
                             <EventTrigger.Actions>
-                                <BeginStoryboard Name="Start">
+                                <BeginStoryboard >
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetProperty="Width"
                                                              To="175" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
@@ -138,7 +138,7 @@
                     <Button.Triggers>
                         <EventTrigger RoutedEvent="Button.MouseEnter">
                             <EventTrigger.Actions>
-                                <BeginStoryboard Name="Start1">
+                                <BeginStoryboard >
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetProperty="Width"
                                                              To="175" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
@@ -166,7 +166,7 @@
                     <Button.Triggers>
                         <EventTrigger RoutedEvent="Button.MouseEnter">
                             <EventTrigger.Actions>
-                                <BeginStoryboard Name="Start2">
+                                <BeginStoryboard >
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetProperty="Width"
                                                              To="175" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
@@ -178,7 +178,7 @@
                         </EventTrigger>
                         <EventTrigger RoutedEvent="Button.MouseLeave">
                             <EventTrigger.Actions>
-                                <BeginStoryboard >
+                                <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetProperty="Width"
                                                              To="150" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
@@ -194,7 +194,7 @@
                     <Button.Triggers>
                         <EventTrigger RoutedEvent="Button.MouseEnter">
                             <EventTrigger.Actions>
-                                <BeginStoryboard Name="start3">
+                                <BeginStoryboard >
                                     <Storyboard>
                                         <DoubleAnimation Storyboard.TargetProperty="Width"
                                                              To="175" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>

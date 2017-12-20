@@ -4,48 +4,72 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GeoLocator"
-        xmlns:localConverter="clr-namespace:GeoLocator.ContextObjects"
         mc:Ignorable="d"
         Title="NewMarker" Height="280" Width="300" WindowStartupLocation="CenterOwner" ShowInTaskbar="False">
     <Window.Resources>
-        <!--<localConverter:MarkerContext x:Key="markerConverter" />-->
+        <Style x:Key="NoChromeButton" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="Chrome" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Foreground" Value="#ADADAD"/>
+                                <Setter Property="Opacity" TargetName="Chrome" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <StackPanel Background="#FFFEFFF0">
             <Label Height="35" Background="Beige" FontSize="18" FontFamily="Times New Roman" FontWeight="Bold" HorizontalContentAlignment="Center" Content="{Binding ElementName=MarkerName, Path=Text}"></Label>
             <StackPanel Orientation="Horizontal">
-                <StackPanel Width="120" HorizontalAlignment="Left">
-                    <Border BorderThickness="2" >
-                        <Border.BorderBrush>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="Black" Offset="0"/>
-                                <GradientStop Color="#FF858282" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Border.BorderBrush>
-                        <Image x:Name="MyImage" Height="100" VerticalAlignment="Top" HorizontalAlignment="Left" Width="116"  Margin="2,2,0,2"  />
-                    </Border>
-                    <Button Width="75"  Margin="20,5,5,5" Click="SelectImage" HorizontalAlignment="Left">Select</Button>
+                <StackPanel Width="120" HorizontalAlignment="Left" >
+                    <Button Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type StackPanel}}, Path=ActualWidth}" Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type StackPanel}}, Path=ActualHeight}" Style="{DynamicResource NoChromeButton}" Click="SelectImage" Background="Indigo">
+                        <Border BorderThickness="2" BorderBrush="Black" CornerRadius="10" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Grid>
+                                <Border Name="mask" Background="White" CornerRadius="7"/>
+                                <StackPanel>
+                                    <StackPanel.OpacityMask>
+                                        <VisualBrush Visual="{Binding ElementName=mask}"/>
+                                    </StackPanel.OpacityMask>
+                                    <Image x:Name="MyImage" Stretch="None" ></Image>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </Button>
                 </StackPanel>
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal"  Margin="2">
                         <Label Margin="2" Width="55" Height="25" HorizontalContentAlignment="Center" FontFamily="Times New Roman" FontSize="14" Background="Beige">Name</Label>
-                        <TextBox x:Name="MarkerName" Margin="2" Width="100" Text="{Binding Name}"></TextBox>
+                        <TextBox x:Name="MarkerName" Margin="2" Width="100"></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"  Margin="2">
                         <Label Margin="2" Width="55" Height="25" HorizontalContentAlignment="Center" FontFamily="Times New Roman" FontSize="14" Background="Beige">Type</Label>
-                        <TextBox Margin="2" Width="100" Text="{Binding Type}"></TextBox>
+                        <TextBox Margin="2" Width="100"></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"  Margin="2">
                         <Label Margin="2" Width="55" Height="25" HorizontalContentAlignment="Center" FontFamily="Times New Roman" FontSize="14" Background="Beige">Lang</Label>
-                        <TextBox Margin="2" Width="100" Text="{Binding MyPointX}"></TextBox>
+                        <TextBox Margin="2" Width="100"></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="2">
                         <Label Margin="2" Width="55" Height="25" HorizontalContentAlignment="Center" FontFamily="Times New Roman" FontSize="14" Background="Beige">Long</Label>
-                        <TextBox Margin="2" Width="100" Text="{Binding MyPointY}"></TextBox>
+                        <TextBox Margin="2" Width="100"></TextBox>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
-            <Button Width="75" Margin="10" Click="BtnOkClick">OK</Button>
+            <Button Width="75" Margin="10">OK</Button>
         </StackPanel>
     </Grid>
 </Window>
