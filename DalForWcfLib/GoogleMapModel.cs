@@ -16,6 +16,7 @@ namespace DalForWcfLib
         public GoogleMapModel()
             : base("name=GoogleMapModel")
         {
+            Database.SetInitializer<GoogleMapModel>(new DropCreateTicketsDB<GoogleMapModel>());
         }
 
         // Add a DbSet for each entity type that you want to include in your model. For more information 
