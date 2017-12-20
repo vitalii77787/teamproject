@@ -90,6 +90,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BllForWcfLib\BllForWcfLib.csproj">
+      <Project>{d1ab392e-a2b3-4ad0-a9d2-2d20d945833a}</Project>
+      <Name>BllForWcfLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DalForWcfLib\DalForWcfLib.csproj">
+      <Project>{5ddfbecc-9008-4ecd-a1df-9f72e1c6d480}</Project>
+      <Name>DalForWcfLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

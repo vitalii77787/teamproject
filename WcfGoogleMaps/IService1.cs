@@ -14,10 +14,32 @@ namespace WcfGoogleMaps
     {
 
         [OperationContract]
-        string GetData(int value);
+        bool IsSuchAddress(string city, string street, string number);
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        void AddNewUserPlace(string name, string city, string street, string number, string markerType, double lat, double lng, byte[] picture, string userName,
+            string description, string[] contacts);
+
+        [OperationContract]
+        MarkerWcf[] GetMarkersOfType(string markerType, string city);
+
+        [OperationContract]
+        MarkerWcf[] GetMarkersOfUser(string userName);
+
+        [OperationContract]
+        void AddNewUser(string userName, byte[] password, string city, string street, string number, string loginStatus);
+
+        [OperationContract]
+        bool IsSuchUserNameInDB(string userName);
+
+        [OperationContract]
+        bool IsPasswordsEquals(string userName, byte[] password);
+
+        [OperationContract]
+        string[] GetAllPlaceTypes();
+
+        [OperationContract]
+        string[] GetAllCities();
 
         // TODO: Add your service operations here
     }
@@ -25,23 +47,95 @@ namespace WcfGoogleMaps
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
     [DataContract]
-    public class CompositeType
+    public class MarkerWcf
     {
-        bool boolValue = true;
-        string stringValue = "Hello ";
+        string name = string.Empty;
+        string description = string.Empty;
+        string city = string.Empty;
+        string street = string.Empty;
+        string number = string.Empty;
+        string markerType = string.Empty;
+        double lat = 0;
+        double lng = 0;
+        byte[] picture;
+        string userName = string.Empty;
+        string[] contacts;
 
         [DataMember]
-        public bool BoolValue
+        public string Name
         {
-            get { return boolValue; }
-            set { boolValue = value; }
+            get { return name; }
+            set { name = value; }
         }
 
         [DataMember]
-        public string StringValue
+        public string Description
         {
-            get { return stringValue; }
-            set { stringValue = value; }
+            get { return description; }
+            set { description = value; }
+        }
+
+        [DataMember]
+        public string City
+        {
+            get { return city; }
+            set { city = value; }
+        }
+
+        [DataMember]
+        public string Street
+        {
+            get { return street; }
+            set { street = value; }
+        }
+
+        [DataMember]
+        public string Number
+        {
+            get { return number; }
+            set { number = value; }
+        }
+
+        [DataMember]
+        public string MarkerType
+        {
+            get { return markerType; }
+            set { markerType = value; }
+        }
+
+        [DataMember]
+        public double Lat
+        {
+            get { return lat; }
+            set { lat = value; }
+        }
+
+        [DataMember]
+        public double Lng
+        {
+            get { return lng; }
+            set { lng = value; }
+        }
+
+        [DataMember]
+        public byte[] Picture
+        {
+            get { return picture; }
+            set { picture = value; }
+        }
+
+        [DataMember]
+        public string UserName
+        {
+            get { return userName; }
+            set { userName = value; }
+        }
+
+        [DataMember]
+        public string[] Contacts
+        {
+            get { return contacts; }
+            set { contacts = value; }
         }
     }
 }
