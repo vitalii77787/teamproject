@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -71,8 +72,23 @@ namespace GeoLocator
 
         }
 
+        public Byte[] ImageToByte(BitmapImage imageSource)
+        {
+            Stream stream = imageSource.StreamSource;
+            Byte[] buffer = null;
+            if (stream != null && stream.Length > 0)
+            {
+                using (BinaryReader br = new BinaryReader(stream))
+                {
+                    buffer = br.ReadBytes((Int32)stream.Length);
+                }
+            }
+            return buffer;
+        }
+
         private void BtnOkClick(object sender, RoutedEventArgs e)
         {
+            var bytearr = ImageToByte(markercontext.MyImage);
             MessageBox.Show(markercontext.ToString());
             Close();
         }

@@ -18,7 +18,6 @@ namespace GeoLocator.ContextObjects
         private string streetnumber;
         #endregion
 
-
         public string Name
         {
             get { return name; }

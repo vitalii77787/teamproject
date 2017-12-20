@@ -36,7 +36,10 @@
             <Label Height="35" Background="Beige" FontSize="18" FontFamily="Times New Roman" FontWeight="Bold" HorizontalContentAlignment="Center" Content="{Binding ElementName=MarkerName, Path=Text}"></Label>
             <StackPanel Orientation="Horizontal">
                 <StackPanel Width="120" HorizontalAlignment="Left" >
-                    <Button Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type StackPanel}}, Path=ActualWidth}" Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type StackPanel}}, Path=ActualHeight}" Style="{DynamicResource NoChromeButton}" Click="SelectImage" Background="Indigo">
+                    <Button Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type StackPanel}}, Path=ActualWidth}" Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type StackPanel}}, Path=ActualHeight}" Style="{DynamicResource NoChromeButton}" Click="SelectImage" >
+                        <Button.Background>
+                            <ImageBrush ImageSource="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Download-Icon.png/600px-Download-Icon.png"/>
+                        </Button.Background>
                         <Border BorderThickness="2" BorderBrush="Black" CornerRadius="10" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <Grid>
                                 <Border Name="mask" Background="White" CornerRadius="7"/>
@@ -44,7 +47,7 @@
                                     <StackPanel.OpacityMask>
                                         <VisualBrush Visual="{Binding ElementName=mask}"/>
                                     </StackPanel.OpacityMask>
-                                    <Image x:Name="MyImage" Stretch="None" ></Image>
+                                    <Image x:Name="MyImage" Stretch="None" Source="{Binding MyImage}" ></Image>
                                 </StackPanel>
                             </Grid>
                         </Border>
@@ -53,23 +56,23 @@
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Horizontal"  Margin="2">
                         <Label Margin="2" Width="55" Height="25" HorizontalContentAlignment="Center" FontFamily="Times New Roman" FontSize="14" Background="Beige">Name</Label>
-                        <TextBox x:Name="MarkerName" Margin="2" Width="100"></TextBox>
+                        <TextBox x:Name="MarkerName" Margin="2" Width="100" Text="{Binding Name}"></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"  Margin="2">
                         <Label Margin="2" Width="55" Height="25" HorizontalContentAlignment="Center" FontFamily="Times New Roman" FontSize="14" Background="Beige">Type</Label>
-                        <TextBox Margin="2" Width="100"></TextBox>
+                        <TextBox Margin="2" Width="100" Text="{Binding Type}"></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"  Margin="2">
                         <Label Margin="2" Width="55" Height="25" HorizontalContentAlignment="Center" FontFamily="Times New Roman" FontSize="14" Background="Beige">Lang</Label>
-                        <TextBox Margin="2" Width="100"></TextBox>
+                        <TextBox Margin="2" Width="100" Text="{Binding MyPointX}"></TextBox>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Margin="2">
                         <Label Margin="2" Width="55" Height="25" HorizontalContentAlignment="Center" FontFamily="Times New Roman" FontSize="14" Background="Beige">Long</Label>
-                        <TextBox Margin="2" Width="100"></TextBox>
+                        <TextBox Margin="2" Width="100" Text="{Binding MyPointY}"></TextBox>
                     </StackPanel>
                 </StackPanel>
             </StackPanel>
-            <Button Width="75" Margin="10">OK</Button>
+            <Button Width="75" Margin="10" Click="BtnOkClick">OK</Button>
         </StackPanel>
     </Grid>
 </Window>

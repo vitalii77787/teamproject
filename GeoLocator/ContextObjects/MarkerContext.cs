@@ -1,22 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Media.Imaging;
 
 namespace GeoLocator.ContextObjects
 {
-    public class MarkerContext : IValueConverter, INotifyPropertyChanged
+    public class MarkerContext : INotifyPropertyChanged
     {
         #region private fields
         private string name;
         private string type;
-        private byte[] myimage;
         private Point point;
+        private BitmapImage myimage;
         #endregion
 
         public string Name
@@ -37,7 +35,7 @@ namespace GeoLocator.ContextObjects
             }
         }
 
-        public byte[] MyImage
+        public BitmapImage MyImage
         {
             get { return myimage; }
             set
@@ -62,16 +60,6 @@ namespace GeoLocator.ContextObjects
             {
                 point.Y = value; OnPropertyChanged("MyPointY");
             }
-        }
-
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
         }
 
 
