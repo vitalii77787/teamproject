@@ -7,6 +7,7 @@ using System.ServiceModel.Web;
 using System.Text;
 using BllForWcfLib;
 using DalForWcfLib;
+using System.Configuration;
 
 namespace WcfGoogleMaps
 {
@@ -15,6 +16,25 @@ namespace WcfGoogleMaps
     public class Service1 : IService1
     {
         BLL bll = new BLL();
+
+        public Service1()
+        {
+            string machineName = Environment.MachineName;
+            string connectionStrSerge = "data source=DESKTOP-6LSJMMI;initial catalog=GoogleMapDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+            string connectionStrVitalii = "data source=DESKTOP-6LSJMMI;initial catalog=GoogleMapDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+            string providerName = "System.Data.SqlClient";
+            var cfg = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration(@"/");
+            if (machineName == "DESKTOP-6LSJMMI")
+            {
+                cfg.ConnectionStrings.ConnectionStrings.Add(new ConnectionStringSettings("GoogleMapModel", connectionStrSerge, providerName));
+            }
+            else
+            {
+                cfg.ConnectionStrings.ConnectionStrings.Add(new ConnectionStringSettings("GoogleMapModel", connectionStrVitalii, providerName));
+            }
+            
+            cfg.Save();
+        }
         public void AddNewUser(string userName, byte[] password, string city, string street, string number, string loginStatus)
         {
             bll.AddNewUser(userName, password, city, street, number, loginStatus);

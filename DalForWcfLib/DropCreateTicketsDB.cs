@@ -44,8 +44,8 @@ namespace DalForWcfLib
 
 
             var directoryPath = System.IO.Directory.GetCurrentDirectory();
-            byte[] supermarketImage = File.ReadAllBytes(@"C:\Users\Serge\Documents\Visual Studio 2017\Projects\WcfGoogleMaps\DalForWcf\Images\supermarket_icon.jpg");
-            byte[] schoolImage = File.ReadAllBytes(@"C:\Users\Serge\Documents\Visual Studio 2017\Projects\WcfGoogleMaps\DalForWcf\Images\school_icon.jpg");
+            byte[] supermarketImage = File.ReadAllBytes(@"Resources\supermarket_icon.jpg");
+            byte[] schoolImage = File.ReadAllBytes(@"Resources\school_icon.jpg");
             Address silpoAddress = new Address() { City = cityRivne, Street = "Київська", Number = "69" };
             Address fozziAddress = new Address() { City = cityRivne, Street = "Курчатова", Number = "9" };
             Address velmartAddress = new Address() { City = cityRivne, Street = "Макарова", Number = "22" };
