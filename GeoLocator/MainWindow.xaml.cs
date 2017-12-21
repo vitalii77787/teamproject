@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using IBllForUi;
 
 namespace GeoLocator
 {
@@ -26,8 +27,12 @@ namespace GeoLocator
         public MainWindow()
         {
             InitializeComponent();
-         
+            BllForUi bll = new BllForUi();
+            MarkerTypes_combo.ItemsSource = bll.GetAllPlaceTypes();
         }
+
+        //IBllForUi.IBll bll;
+
         private void mapView_Loaded(object sender, RoutedEventArgs e)
         {
             GMaps.Instance.Mode = GMap.NET.AccessMode.ServerAndCache;

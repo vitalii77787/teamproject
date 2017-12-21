@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoLocator", "GeoLocator\GeoLocator.csproj", "{B60CB257-DB17-475F-87F5-D0195CA615C7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CF9CADE4-448D-4068-A2BC-8C94E61114EB} = {CF9CADE4-448D-4068-A2BC-8C94E61114EB}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalForWcfLib", "DalForWcfLib\DalForWcfLib.csproj", "{5DDFBECC-9008-4ECD-A1DF-9F72E1C6D480}"
 EndProject

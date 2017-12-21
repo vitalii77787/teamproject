@@ -155,7 +155,7 @@
                 <StackPanel.Background>
                     <SolidColorBrush Color="WhiteSmoke" Opacity="0.6"></SolidColorBrush></StackPanel.Background>
                 
-                <ComboBox  VerticalAlignment="Top" Margin="10" Background="Azure" ></ComboBox>
+                <ComboBox Name="MarkerTypes_combo"  VerticalAlignment="Top" Margin="10" Background="Azure" ></ComboBox>
                 <Button Opacity="1"  Margin="10,40,10,10" Width="150" Height="25">FIND
                     <Button.Triggers>
                         <EventTrigger RoutedEvent="Button.MouseEnter">
