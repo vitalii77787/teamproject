@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 
 namespace IBllForUi
 {
-    class BiiForUi : IBll
+    public class BllForUi : IBll
     {
         DalUi dalUi = new DalUi();
         public void AddNewPlace(ClassLib.Marker marker)
