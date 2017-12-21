@@ -13,6 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfGoogleMaps", "WcfGoogleM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLib", "ClassLib\ClassLib.csproj", "{20FAB270-B180-464C-BD46-DA277A099687}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDalForUi", "IDalForUi\IDalForUi.csproj", "{C0601957-E569-41CD-8A8B-EE9F02B51626}"
+	ProjectSection(ProjectDependencies) = postProject
+		{CF9CADE4-448D-4068-A2BC-8C94E61114EB} = {CF9CADE4-448D-4068-A2BC-8C94E61114EB}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +44,10 @@ Global
 		{20FAB270-B180-464C-BD46-DA277A099687}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20FAB270-B180-464C-BD46-DA277A099687}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20FAB270-B180-464C-BD46-DA277A099687}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0601957-E569-41CD-8A8B-EE9F02B51626}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0601957-E569-41CD-8A8B-EE9F02B51626}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0601957-E569-41CD-8A8B-EE9F02B51626}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0601957-E569-41CD-8A8B-EE9F02B51626}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
