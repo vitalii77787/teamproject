@@ -12,11 +12,10 @@ namespace GeoLocator.ContextObjects
     {
         #region private fields
         private string name;
-        private string type;
-        private Point point;
         private BitmapImage myimage;
         #endregion
 
+        
         public string Name
         {
             get { return name; }
@@ -26,14 +25,7 @@ namespace GeoLocator.ContextObjects
             }
         }
 
-        public string Type
-        {
-            get { return type; }
-            set
-            {
-                type = value; OnPropertyChanged("Type");
-            }
-        }
+       
 
         public BitmapImage MyImage
         {
@@ -41,24 +33,6 @@ namespace GeoLocator.ContextObjects
             set
             {
                 myimage = value; OnPropertyChanged("MyImage");
-            }
-        }
-
-        public double MyPointX
-        {
-            get { return point.X; }
-            set
-            {
-                point.X = value; OnPropertyChanged("MyPointX");
-            }
-        }
-
-        public double MyPointY
-        {
-            get { return point.Y; }
-            set
-            {
-                point.Y = value; OnPropertyChanged("MyPointY");
             }
         }
 
@@ -71,7 +45,7 @@ namespace GeoLocator.ContextObjects
 
         public override string ToString()
         {
-            return "Name: " + Name + "\n" + "Type: " + Type + "\n" + "Langitude: " + MyPointX + "\n" + "Longitude: " + MyPointY;
+            return "Name: " + Name + "\n";
         }
     }
 }

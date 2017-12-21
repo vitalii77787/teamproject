@@ -37,7 +37,7 @@
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="1.5*"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="0.5*"></RowDefinition>
         </Grid.RowDefinitions>
@@ -58,8 +58,8 @@
             </TextBox>
             <StackPanel Grid.Column="1">
                 <Button Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type StackPanel}}, Path=ActualWidth}" Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type StackPanel}}, Path=ActualHeight}" Style="{DynamicResource NoChromeButton}" Click="SelectImage">
-                    <Button.Background>
-                        <ImageBrush ImageSource="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Download-Icon.png/600px-Download-Icon.png"/>
+                    <Button.Background >
+                        <ImageBrush  ImageSource="http://icons.iconarchive.com/icons/umut-pulat/tulliana-2/128/background-icon.png"></ImageBrush>
                     </Button.Background>
                     <Border BorderThickness="2" BorderBrush="Black" CornerRadius="10" Padding="0" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <Grid>
@@ -68,7 +68,7 @@
                                 <StackPanel.OpacityMask>
                                     <VisualBrush Visual="{Binding ElementName=mask}"/>
                                 </StackPanel.OpacityMask>
-                                <Image x:Name="MyImage" Stretch="None" Source="{Binding MyImage}" ></Image>
+                                <Image x:Name="MyImage" Stretch="None" Source="{Binding MyImage}"  ></Image>
                             </StackPanel>
                         </Grid>
                     </Border>
@@ -94,8 +94,9 @@
         <TextBox MinWidth="120" Margin="5"
 	materialDesign:HintAssist.Hint="MarkerName"
 	Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" HorizontalContentAlignment="Center" />
-        <!--<StackPanel Grid.Row="4">
-            <materialDesign:DialogHost Grid.Row="4"
+        <ComboBox x:Name="Type" Grid.Row="3" Height="50" Visibility="Collapsed"></ComboBox>
+        <StackPanel Grid.Row="4">
+            <materialDesign:DialogHost Grid.Row="4" Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type StackPanel}}, Path=ActualWidth}" Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type StackPanel}}, Path=ActualHeight}"
 	HorizontalAlignment="Center"
 	VerticalAlignment="Center"
 	DialogClosing="Sample1_DialogHost_OnDialogClosing">
@@ -141,13 +142,13 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <ListBox  x:Name="FruitListBox">
+                        <ListBox  x:Name="FruitListBox" Height="50" >
                         </ListBox>
                         <materialDesign:ColorZone
 				Grid.Row="1"
 				Effect="{DynamicResource MaterialDesignShadowDepth5}"
 				Mode="PrimaryMid">
-                            <TextBlock Margin="16">Contacts</TextBlock>
+                            <TextBlock Margin="5" Height="35" FontSize="16">Contacts</TextBlock>
                         </materialDesign:ColorZone>
                         <Button
 				Grid.Row="0"
@@ -165,7 +166,7 @@
                     </Grid>
                 </Border>
             </materialDesign:DialogHost>
-        </StackPanel>-->
+        </StackPanel>
         <Button Grid.Row="5" Width="75">OK</Button>
     </Grid>
 </Window>
