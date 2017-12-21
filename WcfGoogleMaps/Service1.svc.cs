@@ -21,7 +21,7 @@ namespace WcfGoogleMaps
         {
             string machineName = Environment.MachineName;
             string connectionStrSerge = "data source=DESKTOP-6LSJMMI;initial catalog=GoogleMapDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
-            string connectionStrVitalii = "data source=DESKTOP-6LSJMMI;initial catalog=GoogleMapDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+            string connectionStrVitalii = "data source=STEALTH-PC;initial catalog=GoogleMapDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
             string providerName = "System.Data.SqlClient";
             var cfg = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration(@"/");
             if (machineName == "DESKTOP-6LSJMMI")
