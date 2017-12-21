@@ -21,21 +21,21 @@ namespace WcfGoogleMaps
         {
             string machineName = Environment.MachineName;
             string connectionStrSerge = "data source=DESKTOP-6LSJMMI;initial catalog=GoogleMapDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
-            string connectionStrVitaliiHome = "data source=DESKTOP-6LSJMMI;initial catalog=GoogleMapDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
-            string connectionStrVitaliiStep = "data source=DESKTOP-6LSJMMI;initial catalog=GoogleMapDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+            string connectionStrVitaliiHome = "data source=STEALTH-PC;initial catalog=GoogleMapDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
+            string connectionStrVitaliiStep = "data source=A24COMP9;initial catalog=GoogleMapDB;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
             string providerName = "System.Data.SqlClient";
             var cfg = System.Web.Configuration.WebConfigurationManager.OpenWebConfiguration(@"/");
             if (machineName == "DESKTOP-6LSJMMI")
             {
                 cfg.ConnectionStrings.ConnectionStrings.Add(new ConnectionStringSettings("GoogleMapModel", connectionStrSerge, providerName));
             }
-            else if (machineName == "DESKTOP-")
+            else if (machineName == "STEALTH-PC")
             {
-                cfg.ConnectionStrings.ConnectionStrings.Add(new ConnectionStringSettings("GoogleMapModel", connectionStrVitaliiStep, providerName));
+                cfg.ConnectionStrings.ConnectionStrings.Add(new ConnectionStringSettings("GoogleMapModel", connectionStrVitaliiHome, providerName));
             }
             else
             {
-                cfg.ConnectionStrings.ConnectionStrings.Add(new ConnectionStringSettings("GoogleMapModel", connectionStrVitaliiHome, providerName));
+                cfg.ConnectionStrings.ConnectionStrings.Add(new ConnectionStringSettings("GoogleMapModel", connectionStrVitaliiStep, providerName));
             }
             
             cfg.Save();
