@@ -12,7 +12,8 @@ namespace DalForWcfLib
 
         public string[] GetAllPlaceTypes()
         {
-            return ctx.MarkerTypes.Select(item => item.Name).ToArray();
+            string[] b = ctx.MarkerTypes.Select(item => item.Name).ToArray();
+            return b;
         }
 
         public void AddNewUserPlace(string name, Address address, MarkerType markerType, string description, double lat, double lng, byte[] picture, Login login,
