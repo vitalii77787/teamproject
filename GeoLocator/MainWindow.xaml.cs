@@ -85,6 +85,7 @@ namespace GeoLocator
            if(LoginName != string.Empty)
             {
                 nm.Type.Visibility = Visibility.Visible;
+                nm.Type.ItemsSource = bll.GetAllPlaceTypes();
             }
             nm.Show();
             this.IsEnabled = false;
