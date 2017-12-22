@@ -34,6 +34,10 @@ namespace GeoLocator
         }
 
         IBllForUi.IBll bll;
+        public string LoginName { get; set; }
+        public string UserCity { get; set; }
+        public string UserStreetName { get; set; }
+        public string UserStreetNumber { get; set; }
 
         private void mapView_Loaded(object sender, RoutedEventArgs e)
         {
@@ -118,6 +122,34 @@ namespace GeoLocator
 
         private void Login_btn_Click(object sender, RoutedEventArgs e)
         {
+            if ((sender as Button).Content.ToString() == "Login")
+            {
+                LoginWindow loginWindow = new LoginWindow();
+                loginWindow.ShowDialog();
+                if (loginWindow.IsSuccsesfullLogin)
+                {
+                    (sender as Button).Content = "Logout, " + LoginName;
+                    if (loginWindow.LoginStatusName == "user")
+                    {
+                        LoginName = loginWindow.LoginName;
+                        UserCity = loginWindow.City;
+                        UserStreetName = loginWindow.Street;
+                        UserStreetNumber = loginWindow.Number;
+                    }
+                    else
+                    {
+
+                    }
+                }
+            }
+            else
+            {
+                (sender as Button).Content = "Login";
+                LoginName = string.Empty;
+                UserCity = string.Empty;
+                UserStreetName = string.Empty;
+                UserStreetNumber = string.Empty;
+            }
             
         }
 

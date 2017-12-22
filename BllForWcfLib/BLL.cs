@@ -90,7 +90,7 @@ namespace BllForWcfLib
         public bool IsPasswordsEquals(string userName, byte[] password)
         {
             byte[] databasePassword = dal.GetUserPassword(userName);
-            if (databasePassword.Equals(password))
+            if (databasePassword.SequenceEqual(password))
             {
                 return true;
             }
