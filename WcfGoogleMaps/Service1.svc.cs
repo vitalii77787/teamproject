@@ -61,6 +61,16 @@ namespace WcfGoogleMaps
             return bll.GetAllPlaceTypes();
         }
 
+        public string[] GetCityStreetAndNumberOfUser(string userName)
+        {
+            return bll.GetCityStreetAndNumberOfUser(userName);
+        }
+
+        public string GetLoginStatusOfUser(string userName)
+        {
+            return bll.GetLoginStatusOfUser(userName);
+        }
+
         public MarkerWcf[] GetMarkersOfType(string markerType, string city)
         {
             Marker[] markers = bll.GetMarkersOfType(markerType, city);

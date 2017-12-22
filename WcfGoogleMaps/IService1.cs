@@ -41,6 +41,12 @@ namespace WcfGoogleMaps
         [OperationContract]
         string[] GetAllCities();
 
+        [OperationContract]
+        string GetLoginStatusOfUser(string userName);
+
+        [OperationContract]
+        string[] GetCityStreetAndNumberOfUser(string userName);
+
         // TODO: Add your service operations here
     }
 

@@ -102,5 +102,25 @@ namespace DalForWcfLib
         {
             return ctx.LoginStatuses.Where(item => item.Name == loginStatus).FirstOrDefault();
         }
+
+        public string GetLoginStatusOfUser(string userName)
+        {
+            return ctx.Logins.Where(item => item.Name == userName).Select(item => item.LoginStatus.Name).FirstOrDefault();
+        }
+
+
+        /// <summary>
+        /// Get info about user's address - string[] with 3 elements: string[0] - city, string[1] - street, string[2] - street number
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        public string[] GetCityStreetAndNumberOfUser(string userName)
+        {
+            string[] cityStreetAndNumberOfUser = new string[3];
+            cityStreetAndNumberOfUser[0] = ctx.Logins.Where(item => item.Name == userName).Select(item => item.Address.City.Name).FirstOrDefault();
+            cityStreetAndNumberOfUser[1] = ctx.Logins.Where(item => item.Name == userName).Select(item => item.Address.City.Name).FirstOrDefault();
+            cityStreetAndNumberOfUser[2] = ctx.Logins.Where(item => item.Name == userName).Select(item => item.Address.City.Name).FirstOrDefault();
+            return cityStreetAndNumberOfUser;
+        }
     }
 }
