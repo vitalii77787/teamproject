@@ -13,7 +13,6 @@
          TextOptions.TextRenderingMode="Auto"
          Background="{DynamicResource MaterialDesignPaper}"
          FontFamily="{DynamicResource MaterialDesignFont}">
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -91,16 +90,8 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="2*"></RowDefinition>
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Vertical" Grid.Row="0" HorizontalAlignment="Right"
-                        >
-                <StackPanel.Background>
-                    <SolidColorBrush Color="WhiteSmoke" Opacity="0.6"></SolidColorBrush>
-                </StackPanel.Background>
-
-                <Label Margin="5" FontSize="18" HorizontalContentAlignment="Center" Background="Beige">LOGIN</Label>
-                <ComboBox  VerticalAlignment="Top" Margin="10" Background="Azure" ></ComboBox>
-                <PasswordBox Margin="10,0,10,10"></PasswordBox>
-                <Button  Margin="10,0,10,0" Width="150" Height="25">ACCEPT
+            <StackPanel Orientation="Vertical" Grid.Row="0" HorizontalAlignment="Right"  >
+                <Button Margin="10" Width="150" Height="25">
                     <Button.Triggers>
                         <EventTrigger RoutedEvent="Button.MouseEnter">
                             <EventTrigger.Actions>
@@ -127,7 +118,38 @@
                             </EventTrigger.Actions>
                         </EventTrigger>
                     </Button.Triggers>
-                </Button>
+                    Login</Button>
+                <Button  Margin="10,20,10,10" Width="150" Height="25">
+                    <Button.Triggers>
+                        <EventTrigger RoutedEvent="Button.MouseEnter">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard >
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Width"
+                                                             To="175" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="Height"
+                                                             To="35" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="Button.MouseLeave">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard >
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="Width"
+                                                             To="150" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
+                                        <DoubleAnimation Storyboard.TargetProperty="Height"
+                                                             To="25" Duration="0:0:0.4" RepeatBehavior="1x" AutoReverse="False"></DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </Button.Triggers>
+                    Registration</Button>
+                <StackPanel.Background>
+                    <SolidColorBrush Color="WhiteSmoke" Opacity="0.6"></SolidColorBrush>
+                </StackPanel.Background>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Row="1" MaxWidth="200" HorizontalAlignment="Right" >
                 <StackPanel.Background>

@@ -1,4 +1,5 @@
 ﻿using GeoLocator.ContextObjects;
+using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -70,6 +71,18 @@ namespace GeoLocator
                 MyImage.Source=CreateResizedImage(new BitmapImage(new Uri(of.FileName)), (int)btn.Width, (int)btn.Height, 0);
             }
 
+        }
+        private void Sample1_DialogHost_OnDialogClosing(object sender, DialogClosingEventArgs eventArgs)
+        {
+            Console.WriteLine("SAMPLE 1: Closing dialog with parameter: " + (eventArgs.Parameter ?? ""));
+
+            //you can cancel the dialog close:
+            //eventArgs.Cancel();
+
+            if (!Equals(eventArgs.Parameter, true)) return;
+
+            if (!string.IsNullOrWhiteSpace(FruitTextBox.Text))
+                FruitListBox.Items.Add(FruitTextBox.Text.Trim());
         }
 
         public Byte[] ImageToByte(BitmapImage imageSource)
