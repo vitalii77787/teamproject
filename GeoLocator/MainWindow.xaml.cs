@@ -118,12 +118,13 @@ namespace GeoLocator
 
         private void Login_btn_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void Register_btn_Click(object sender, RoutedEventArgs e)
         {
-
+            RegisterNewUser registerNewUser = new RegisterNewUser();
+            registerNewUser.ShowDialog();
         }
 
         private void FindPlace_btn_Click(object sender, RoutedEventArgs e)

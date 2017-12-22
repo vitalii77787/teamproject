@@ -52,6 +52,7 @@ namespace DalForWcfLib
         public void AddNewUser(string userName, byte[] password, Address address, LoginStatus loginStatus)
         {
             ctx.Logins.Add(new Login() { Name = userName, Password = password, Address = address, LoginStatus = loginStatus });
+            ctx.SaveChanges();
         }
 
         public IQueryable<Login> GetQeeryableUserNameInDB(string userName)

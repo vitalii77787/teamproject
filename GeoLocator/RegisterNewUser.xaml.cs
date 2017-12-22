@@ -25,6 +25,7 @@ namespace GeoLocator
         {
             InitializeComponent();
             bll = new BllForUi();
+            City_combo.ItemsSource = bll.GetAllCities();
         }
 
         IBll bll;

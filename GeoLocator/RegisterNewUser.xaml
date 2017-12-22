@@ -94,7 +94,6 @@
 		        Kind="City" />
             <ComboBox Name="City_combo" Grid.Row="0" Grid.Column="1" Margin="5"
                           materialDesign:HintAssist.Hint="City"
-                      SelectionChanged="Place_combo_SelectionChanged"
                           Style="{StaticResource MaterialDesignFloatingHintComboBox}">
             </ComboBox>
         </Grid>
