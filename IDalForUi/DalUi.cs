@@ -97,5 +97,20 @@ namespace IDalForUi
         {
             return client.GetAllPlaceTypes();
         }
+
+        public string GetLoginStatusOfUser(string userName)
+        {
+            return client.GetLoginStatusOfUser(userName);
+        }
+
+        /// <summary>
+        /// Get info about user's address - string[] with 3 elements: string[0] - city, string[1] - street, string[2] - street number
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        public string[] GetCityStreetAndNumberOfUser(string userName)
+        {
+            return client.GetCityStreetAndNumberOfUser(userName);
+        }
     }
 }

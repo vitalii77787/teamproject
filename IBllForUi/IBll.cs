@@ -18,5 +18,8 @@ namespace IBllForUi
         bool IsSuchUserNameInDB(string userName);
         bool IsValidPassword(string userName, string password);
         string[] GetAllCities();
+        string GetLoginStatusOfUser(string userName);
+        string[] GetCityStreetAndNumberOfUser(string userName);
+
     }
 }

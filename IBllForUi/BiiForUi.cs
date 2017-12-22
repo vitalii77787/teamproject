@@ -58,5 +58,20 @@ namespace IBllForUi
             byte[] md5password = md5.ComputeHash(passwordByte);
             return dalUi.IsPasswordsEquals(userName, md5password);
         }
+
+        public string GetLoginStatusOfUser(string userName)
+        {
+            return dalUi.GetLoginStatusOfUser(userName);
+        }
+
+        /// <summary>
+        /// Get info about user's address - string[] with 3 elements: string[0] - city, string[1] - street, string[2] - street number
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <returns></returns>
+        public string[] GetCityStreetAndNumberOfUser(string userName)
+        {
+            return dalUi.GetCityStreetAndNumberOfUser(userName);
+        }
     }
 }

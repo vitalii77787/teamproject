@@ -275,6 +275,18 @@ namespace IDalForUi.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllCities", ReplyAction="http://tempuri.org/IService1/GetAllCitiesResponse")]
         System.Threading.Tasks.Task<string[]> GetAllCitiesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetLoginStatusOfUser", ReplyAction="http://tempuri.org/IService1/GetLoginStatusOfUserResponse")]
+        string GetLoginStatusOfUser(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetLoginStatusOfUser", ReplyAction="http://tempuri.org/IService1/GetLoginStatusOfUserResponse")]
+        System.Threading.Tasks.Task<string> GetLoginStatusOfUserAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCityStreetAndNumberOfUser", ReplyAction="http://tempuri.org/IService1/GetCityStreetAndNumberOfUserResponse")]
+        string[] GetCityStreetAndNumberOfUser(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCityStreetAndNumberOfUser", ReplyAction="http://tempuri.org/IService1/GetCityStreetAndNumberOfUserResponse")]
+        System.Threading.Tasks.Task<string[]> GetCityStreetAndNumberOfUserAsync(string userName);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -374,6 +386,22 @@ namespace IDalForUi.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string[]> GetAllCitiesAsync() {
             return base.Channel.GetAllCitiesAsync();
+        }
+        
+        public string GetLoginStatusOfUser(string userName) {
+            return base.Channel.GetLoginStatusOfUser(userName);
+        }
+        
+        public System.Threading.Tasks.Task<string> GetLoginStatusOfUserAsync(string userName) {
+            return base.Channel.GetLoginStatusOfUserAsync(userName);
+        }
+        
+        public string[] GetCityStreetAndNumberOfUser(string userName) {
+            return base.Channel.GetCityStreetAndNumberOfUser(userName);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> GetCityStreetAndNumberOfUserAsync(string userName) {
+            return base.Channel.GetCityStreetAndNumberOfUserAsync(userName);
         }
     }
 }

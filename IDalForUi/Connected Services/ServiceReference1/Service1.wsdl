@@ -62,6 +62,18 @@
   <wsdl:message name="IService1_GetAllCities_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllCitiesResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetLoginStatusOfUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoginStatusOfUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetLoginStatusOfUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoginStatusOfUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCityStreetAndNumberOfUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityStreetAndNumberOfUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCityStreetAndNumberOfUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityStreetAndNumberOfUserResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="IsSuchAddress">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/IsSuchAddress" message="tns:IService1_IsSuchAddress_InputMessage" />
@@ -98,6 +110,14 @@
     <wsdl:operation name="GetAllCities">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllCities" message="tns:IService1_GetAllCities_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllCitiesResponse" message="tns:IService1_GetAllCities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLoginStatusOfUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetLoginStatusOfUser" message="tns:IService1_GetLoginStatusOfUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetLoginStatusOfUserResponse" message="tns:IService1_GetLoginStatusOfUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityStreetAndNumberOfUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCityStreetAndNumberOfUser" message="tns:IService1_GetCityStreetAndNumberOfUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCityStreetAndNumberOfUserResponse" message="tns:IService1_GetCityStreetAndNumberOfUser_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -176,6 +196,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllCities">
       <soap:operation soapAction="http://tempuri.org/IService1/GetAllCities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoginStatusOfUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetLoginStatusOfUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityStreetAndNumberOfUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCityStreetAndNumberOfUser" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
