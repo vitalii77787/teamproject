@@ -82,7 +82,10 @@ namespace GeoLocator
         private void OpenNewMarker(object sender, RoutedEventArgs e)
         {
             NewMarker nm = new NewMarker();
-           
+           if(LoginName != string.Empty)
+            {
+                nm.Type.Visibility = Visibility.Visible;
+            }
             nm.Show();
             this.IsEnabled = false;
         }
