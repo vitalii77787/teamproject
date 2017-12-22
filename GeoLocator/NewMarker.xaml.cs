@@ -106,6 +106,13 @@ namespace GeoLocator
             Close();
         }
 
-    
+        private void ClearListBox(object sender, RoutedEventArgs e)
+        {
+            if (FruitListBox.SelectedItem != null)
+            {
+                var item = FruitListBox.SelectedItem;
+                FruitListBox.Items.Remove(item);
+            }
+        }
     }
 }
