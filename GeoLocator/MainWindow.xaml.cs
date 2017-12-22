@@ -115,5 +115,20 @@ namespace GeoLocator
             markerG.ZIndex = int.MaxValue;
             mapView.Markers.Add(markerG);       ///////////////////////
         }
+
+        private void Login_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Register_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void FindPlace_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
