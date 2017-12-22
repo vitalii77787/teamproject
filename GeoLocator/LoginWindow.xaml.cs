@@ -30,6 +30,9 @@ namespace GeoLocator
         public bool IsSuccsesfullLogin { get; set; }
         public string LoginStatusName { get; set; }
         public string LoginName { get; set; }
+        public string City { get; set; }
+        public string Street { get; set; }
+        public string Number { get; set; }
 
         private void LoginWindow_btn_OK_Click(object sender, RoutedEventArgs e)
         {
@@ -42,7 +45,14 @@ namespace GeoLocator
                     //login = bll.GetLoginWithName(Login_field.Text);
                     IsSuccsesfullLogin = true;
                     LoginName = Login_field.Text;
-                    LoginStatusName = bll.Get(LoginName);
+                    LoginStatusName = bll.GetLoginStatusOfUser(LoginName);
+                    if (LoginStatusName == "user")
+                    {
+                        string[] userAddress = bll.GetCityStreetAndNumberOfUser(LoginName);
+                        City = userAddress[0];
+                        Street = userAddress[1];
+                        Number = userAddress[2];
+                    }
                     this.Close();
                 }
                 else
