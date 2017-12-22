@@ -74,6 +74,12 @@
   <wsdl:message name="IService1_GetCityStreetAndNumberOfUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCityStreetAndNumberOfUserResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetDefaultPicture_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDefaultPicture" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDefaultPicture_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDefaultPictureResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="IsSuchAddress">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/IsSuchAddress" message="tns:IService1_IsSuchAddress_InputMessage" />
@@ -118,6 +124,10 @@
     <wsdl:operation name="GetCityStreetAndNumberOfUser">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCityStreetAndNumberOfUser" message="tns:IService1_GetCityStreetAndNumberOfUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCityStreetAndNumberOfUserResponse" message="tns:IService1_GetCityStreetAndNumberOfUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultPicture">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDefaultPicture" message="tns:IService1_GetDefaultPicture_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDefaultPictureResponse" message="tns:IService1_GetDefaultPicture_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -214,6 +224,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetCityStreetAndNumberOfUser">
       <soap:operation soapAction="http://tempuri.org/IService1/GetCityStreetAndNumberOfUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultPicture">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDefaultPicture" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

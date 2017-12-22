@@ -287,6 +287,12 @@ namespace IDalForUi.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCityStreetAndNumberOfUser", ReplyAction="http://tempuri.org/IService1/GetCityStreetAndNumberOfUserResponse")]
         System.Threading.Tasks.Task<string[]> GetCityStreetAndNumberOfUserAsync(string userName);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDefaultPicture", ReplyAction="http://tempuri.org/IService1/GetDefaultPictureResponse")]
+        byte[] GetDefaultPicture();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDefaultPicture", ReplyAction="http://tempuri.org/IService1/GetDefaultPictureResponse")]
+        System.Threading.Tasks.Task<byte[]> GetDefaultPictureAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -402,6 +408,14 @@ namespace IDalForUi.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string[]> GetCityStreetAndNumberOfUserAsync(string userName) {
             return base.Channel.GetCityStreetAndNumberOfUserAsync(userName);
+        }
+        
+        public byte[] GetDefaultPicture() {
+            return base.Channel.GetDefaultPicture();
+        }
+        
+        public System.Threading.Tasks.Task<byte[]> GetDefaultPictureAsync() {
+            return base.Channel.GetDefaultPictureAsync();
         }
     }
 }

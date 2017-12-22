@@ -66,6 +66,11 @@ namespace WcfGoogleMaps
             return bll.GetCityStreetAndNumberOfUser(userName);
         }
 
+        public byte[] GetDefaultPicture()
+        {
+            return bll.GetDefaultPicture();
+        }
+
         public string GetLoginStatusOfUser(string userName)
         {
             return bll.GetLoginStatusOfUser(userName);
@@ -136,5 +141,7 @@ namespace WcfGoogleMaps
         {
             return bll.IsSuchUserNameInDB(userName);
         }
+
+
     }
 }

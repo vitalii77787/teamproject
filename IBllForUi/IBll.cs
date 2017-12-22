@@ -20,6 +20,8 @@ namespace IBllForUi
         string[] GetAllCities();
         string GetLoginStatusOfUser(string userName);
         string[] GetCityStreetAndNumberOfUser(string userName);
+        byte[] GetDefaultPicture();
+        
 
     }
 }

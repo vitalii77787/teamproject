@@ -47,6 +47,9 @@ namespace WcfGoogleMaps
         [OperationContract]
         string[] GetCityStreetAndNumberOfUser(string userName);
 
+        [OperationContract]
+        byte[] GetDefaultPicture();
+
         // TODO: Add your service operations here
     }
 

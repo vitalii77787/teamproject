@@ -122,5 +122,10 @@ namespace DalForWcfLib
             cityStreetAndNumberOfUser[2] = ctx.Logins.Where(item => item.Name == userName).Select(item => item.Address.City.Name).FirstOrDefault();
             return cityStreetAndNumberOfUser;
         }
+
+        public byte[] GetDefaultPicture()
+        {
+            return ctx.Markers.Where(item => item.Type.Name == "other").Select(item => item.Picture).FirstOrDefault();
+        }
     }
 }

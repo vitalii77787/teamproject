@@ -112,5 +112,10 @@ namespace IDalForUi
         {
             return client.GetCityStreetAndNumberOfUser(userName);
         }
+
+        public byte[] GetDefaultPicture()
+        {
+            return client.GetDefaultPicture();
+        }
     }
 }

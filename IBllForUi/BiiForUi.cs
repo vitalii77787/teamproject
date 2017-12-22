@@ -73,5 +73,10 @@ namespace IBllForUi
         {
             return dalUi.GetCityStreetAndNumberOfUser(userName);
         }
+
+        public byte[] GetDefaultPicture()
+        {
+            return dalUi.GetDefaultPicture();
+        }
     }
 }

@@ -120,5 +120,10 @@ namespace BllForWcfLib
         {
             return dal.GetCityStreetAndNumberOfUser(userName);
         }
+
+        public byte[] GetDefaultPicture()
+        {
+            return dal.GetDefaultPicture();
+        }
     }
 }
