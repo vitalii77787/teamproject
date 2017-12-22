@@ -82,6 +82,7 @@ namespace GeoLocator
         private void OpenNewMarker(object sender, RoutedEventArgs e)
         {
             NewMarker nm = new NewMarker();
+           
             nm.Show();
             this.IsEnabled = false;
         }
@@ -105,8 +106,10 @@ namespace GeoLocator
 
         private void AddNewMarkerToMap(Marker marker)
         {
+            ToolTip toolTip = new ToolTip { Content = marker.Description };
             GMap.NET.WindowsPresentation.GMapMarker markerG = new GMap.NET.WindowsPresentation.GMapMarker(new GMap.NET.PointLatLng(marker.Lat, marker.Lng));
             Image image = new Image();
+            image.ToolTip = toolTip;
             BitmapImage biImg = new BitmapImage();
             MemoryStream ms = new MemoryStream(marker.Picture);
             biImg.BeginInit();
