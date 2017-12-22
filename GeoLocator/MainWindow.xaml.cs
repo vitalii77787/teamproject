@@ -112,8 +112,8 @@ namespace GeoLocator
             biImg.EndInit();
             ImageSource imgSrc = biImg as ImageSource;
             image.Source = biImg;
-            image.Width = 40;
-            image.Height = 40;
+            image.Width = 20;
+            image.Height = 20;
             markerG.Shape = image;
             markerG.Offset = new Point(-16, -32);
             markerG.ZIndex = int.MaxValue;
@@ -128,7 +128,7 @@ namespace GeoLocator
                 loginWindow.ShowDialog();
                 if (loginWindow.IsSuccsesfullLogin)
                 {
-                    (sender as Button).Content = "Logout, " + LoginName;
+                    (sender as Button).Content = "Logout";
                     if (loginWindow.LoginStatusName == "user")
                     {
                         LoginName = loginWindow.LoginName;

@@ -34,20 +34,23 @@ namespace DalForWcfLib
 
             MarkerType supermarketType = new MarkerType() { Name = "supermarket" };
             MarkerType schoolType = new MarkerType() { Name = "school" };
+            MarkerType otherType = new MarkerType() { Name = "other" };
             ctx.MarkerTypes.Add(new MarkerType() { Name = "user" });
             ctx.MarkerTypes.Add(supermarketType);
             ctx.MarkerTypes.Add(new MarkerType() { Name = "bank" });
             ctx.MarkerTypes.Add(schoolType);
             ctx.MarkerTypes.Add(new MarkerType() { Name = "library" });
             ctx.MarkerTypes.Add(new MarkerType() { Name = "cinema" });
+            ctx.MarkerTypes.Add(otherType);
             ctx.SaveChanges();
 
 
             var directoryPath = System.IO.Directory.GetCurrentDirectory();
             //byte[] supermarketImage = File.ReadAllBytes(@"Resources\supermarket_icon.jpg");
             //byte[] schoolImage = File.ReadAllBytes(@"Resources\school_icon.jpg");
-            byte[] supermarketImage = File.ReadAllBytes(@"C:\Users\Serge\Documents\car.jpg");
-            byte[] schoolImage = File.ReadAllBytes(@"C:\Users\Serge\Documents\car.jpg");
+            byte[] otherImage = File.ReadAllBytes(@"C:\Users\Serge\Source\Repos\team\teamproject\DalForWcfLib\Resources\Pointer.jpg");
+            byte[] supermarketImage = File.ReadAllBytes(@"C:\Users\Serge\Source\Repos\team\teamproject\DalForWcfLib\Resources\supermarket_icon.jpg");
+            byte[] schoolImage = File.ReadAllBytes(@"C:\Users\Serge\Source\Repos\team\teamproject\DalForWcfLib\Resources\school_icon.jpg");
             Address silpoAddress = new Address() { City = cityRivne, Street = "Київська", Number = "69" };
             Address fozziAddress = new Address() { City = cityRivne, Street = "Курчатова", Number = "9" };
             Address velmartAddress = new Address() { City = cityRivne, Street = "Макарова", Number = "22" };
@@ -110,10 +113,25 @@ namespace DalForWcfLib
             };
             ctx.Markers.Add(cumMarker);
 
+            Marker otherMarker = new Marker
+            {
+                Type = otherType,
+                Lat = 50.618634,
+                Lng = 26.252800,
+                Name = "CUM",
+                Address = cumAddress,
+                Picture = otherImage,
+
+                Description = "supermarket",
+                Login = adminLogin
+            };
+            ctx.Markers.Add(otherMarker);
+
             ctx.Contacts.Add(new Contact() { Name = "0362 20 52 04", Marker = silpoMarker });
             ctx.Contacts.Add(new Contact() { Name = "0362 20 52 04", Marker = fozziMarker });
             ctx.Contacts.Add(new Contact() { Name = "0362 20 52 04", Marker = velmartMarker });
             ctx.Contacts.Add(new Contact() { Name = "0362 20 52 04", Marker = cumMarker });
+            ctx.Contacts.Add(new Contact() { Name = "0362 20 52 04", Marker = otherMarker });
             ctx.SaveChanges();
 
             Address school12Address = new Address() { City = cityRivne, Street = "Академіка Грушевського", Number = "81А" };
