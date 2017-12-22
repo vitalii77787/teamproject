@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using IBllForUi;
 using ClassLib;
 using System.IO;
+using System.Windows.Threading;
 
 namespace GeoLocator
 {
@@ -38,6 +39,7 @@ namespace GeoLocator
         public string UserCity { get; set; }
         public string UserStreetName { get; set; }
         public string UserStreetNumber { get; set; }
+        //Image defaultMarkerImage = null;
 
         private void mapView_Loaded(object sender, RoutedEventArgs e)
         {
@@ -120,6 +122,78 @@ namespace GeoLocator
             mapView.Markers.Add(markerG);       ///////////////////////
         }
 
+        private void AddNewMarkerToMap(string city, string street, string number)
+        {
+            PointLatLng pointLatLng = GetCoordinates(city, street, number);
+            GMap.NET.WindowsPresentation.GMapMarker markerG = new GMap.NET.WindowsPresentation.GMapMarker(pointLatLng);
+            Image image = new Image();
+            BitmapImage biImg = new BitmapImage();
+            MemoryStream ms = new MemoryStream(bll.GetDefaultPicture());
+            biImg.BeginInit();
+            biImg.StreamSource = ms;
+            biImg.EndInit();
+            ImageSource imgSrc = biImg as ImageSource;
+            image.Source = biImg;
+            image.Width = 20;
+            image.Height = 20;
+            markerG.Shape = image;
+            markerG.Offset = new Point(-16, -32);
+            markerG.ZIndex = int.MaxValue;
+            mapView.Markers.Add(markerG);       ///////////////////////
+        }
+
+        private GMap.NET.PointLatLng GetCoordinates(string city, string street, string number)
+        {
+            GMap.NET.PointLatLng coords = new PointLatLng();
+            string address = city +", " + street + " " + number;
+            string url = string.Format(
+             "http://maps.googleapis.com/maps/api/geocode/xml?address={0}&sensor=true_or_false&language=ru",
+                 Uri.EscapeDataString(address));
+
+            //Выполняем запрос к универсальному коду ресурса (URI).
+            System.Net.HttpWebRequest request =
+                (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);
+
+            //Получаем ответ от интернет-ресурса.
+            System.Net.WebResponse response =
+                request.GetResponse();
+
+            //Экземпляр класса System.IO.Stream 
+            //для чтения данных из интернет-ресурса.
+            System.IO.Stream dataStream =
+                response.GetResponseStream();
+
+            //Инициализируем новый экземпляр класса 
+            //System.IO.StreamReader для указанного потока.
+            System.IO.StreamReader sreader =
+                new System.IO.StreamReader(dataStream);
+
+            //Считывает поток от текущего положения до конца.            
+            string responsereader = sreader.ReadToEnd();
+
+            //Закрываем поток ответа.
+            response.Close();
+
+            System.Xml.XmlDocument xmldoc =
+                new System.Xml.XmlDocument();
+
+            xmldoc.LoadXml(responsereader);
+            if (xmldoc.GetElementsByTagName("status")[0].ChildNodes[0].InnerText == "OK")
+            {
+                System.Xml.XmlNodeList nodes =
+                    xmldoc.SelectNodes("//location");
+                //Получаем широту и долготу.
+                foreach (System.Xml.XmlNode node in nodes)
+                {
+                    coords.Lat =
+                       System.Xml.XmlConvert.ToDouble(node.SelectSingleNode("lat").InnerText.ToString());
+                    coords.Lng =
+                       System.Xml.XmlConvert.ToDouble(node.SelectSingleNode("lng").InnerText.ToString());
+                }
+            }
+            return coords;
+        }
+
         private void Login_btn_Click(object sender, RoutedEventArgs e)
         {
             if ((sender as Button).Content.ToString() == "Login")
@@ -161,6 +235,27 @@ namespace GeoLocator
 
         private void FindPlace_btn_Click(object sender, RoutedEventArgs e)
         {
+            //if (defaultMarkerImage == null)
+            //{
+            //    defaultMarkerImage = new Image();
+            //    BitmapImage biImg = new BitmapImage();
+            //    MemoryStream ms = new MemoryStream(bll.GetDefaultPicture());
+            //    biImg.BeginInit();
+            //    biImg.StreamSource = ms;
+            //    biImg.EndInit();
+            //    ImageSource imgSrc = biImg as ImageSource;
+            //    defaultMarkerImage.Source = imgSrc;
+            //}
+            if (StreetToFind_field.Text.Length > 0 && NumberToFind_field.Text.Length > 0)
+            {
+                //AddNewMarkerToMap("Рівне", StreetToFind_field.Text, NumberToFind_field.Text);
+
+                this.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => {
+                    AddNewMarkerToMap("Рівне", StreetToFind_field.Text, NumberToFind_field.Text);
+                }));
+                
+            }
+
 
         }
     }

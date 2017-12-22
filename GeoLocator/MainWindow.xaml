@@ -32,10 +32,10 @@
                     <SolidColorBrush Color="WhiteSmoke" Opacity="0.6"></SolidColorBrush>
                 </StackPanel.Background>
 
-                <TextBox MinWidth="150" Margin="10"
+                <TextBox Name="StreetToFind_field" MinWidth="150" Margin="10"
 	materialDesign:HintAssist.Hint="Street"
 	Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" />
-                <TextBox MinWidth="150" Margin="10"
+                <TextBox Name="NumberToFind_field" MinWidth="150" Margin="10"
 	materialDesign:HintAssist.Hint="Number"
 	Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" />
                 <Button Name="FindPlace_btn" Content="FIND" Margin="10"
