@@ -150,6 +150,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClassLib\ClassLib.csproj">
+      <Project>{20fab270-b180-464c-bd46-da277a099687}</Project>
+      <Name>ClassLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IBllForUi\IBllForUi.csproj">
       <Project>{8263a67f-4e1b-4a6d-a3c2-e24fcaa1f1df}</Project>
       <Name>IBllForUi</Name>

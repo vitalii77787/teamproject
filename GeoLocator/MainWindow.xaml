@@ -133,8 +133,11 @@
                 <StackPanel.Background>
                     <SolidColorBrush Color="WhiteSmoke" Opacity="0.6"></SolidColorBrush></StackPanel.Background>
                 
-                <ComboBox Name="MarkerTypes_combo"  VerticalAlignment="Top" Margin="10" Background="Azure" ></ComboBox>
-                <Button Opacity="1"  Margin="10,40,10,10" Width="150" Height="25">FIND
+                <ComboBox Name="MarkerTypes_combo"  VerticalAlignment="Top" Margin="10" Background="Azure"
+                          materialDesign:HintAssist.Hint="Choose Marker Type" 
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
+                <Button Name="ShowMarkers_btn" Opacity="1"  Margin="10,40,10,10"
+                        Width="150" Height="25" Click="ShowMarkers_btn_Click">FIND
                     <Button.Triggers>
                         <EventTrigger RoutedEvent="Button.MouseEnter">
                             <EventTrigger.Actions>

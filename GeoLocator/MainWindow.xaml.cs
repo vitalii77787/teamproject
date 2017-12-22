@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using IBllForUi;
+using ClassLib;
+using System.IO;
 
 namespace GeoLocator
 {
@@ -27,11 +29,11 @@ namespace GeoLocator
         public MainWindow()
         {
             InitializeComponent();
-            BllForUi bll = new BllForUi();
+            bll = new BllForUi();
             MarkerTypes_combo.ItemsSource = bll.GetAllPlaceTypes();
         }
 
-        //IBllForUi.IBll bll;
+        IBllForUi.IBll bll;
 
         private void mapView_Loaded(object sender, RoutedEventArgs e)
         {
@@ -76,6 +78,42 @@ namespace GeoLocator
             NewMarker nm = new NewMarker();
             nm.Show();
             this.IsEnabled = false;
+        }
+
+        private void ShowMarkers_btn_Click(object sender, RoutedEventArgs e)
+        {
+          
+            if (MarkerTypes_combo.Text.Length != 0)
+            {
+                if (mapView.Markers.Count() > 0)
+                {
+                    mapView.Markers.Clear();
+                }
+                List<Marker> markers = bll.GetMarkersOfType(MarkerTypes_combo.Text, "Rivne");
+                foreach (var item in markers)
+                {
+                    AddNewMarkerToMap(item);
+                }
+            }
+        }
+
+        private void AddNewMarkerToMap(Marker marker)
+        {
+            GMap.NET.WindowsPresentation.GMapMarker markerG = new GMap.NET.WindowsPresentation.GMapMarker(new GMap.NET.PointLatLng(marker.Lat, marker.Lng));
+            Image image = new Image();
+            BitmapImage biImg = new BitmapImage();
+            MemoryStream ms = new MemoryStream(marker.Picture);
+            biImg.BeginInit();
+            biImg.StreamSource = ms;
+            biImg.EndInit();
+            ImageSource imgSrc = biImg as ImageSource;
+            image.Source = biImg;
+            image.Width = 40;
+            image.Height = 40;
+            markerG.Shape = image;
+            markerG.Offset = new Point(-16, -32);
+            markerG.ZIndex = int.MaxValue;
+            mapView.Markers.Add(markerG);       ///////////////////////
         }
     }
 }
