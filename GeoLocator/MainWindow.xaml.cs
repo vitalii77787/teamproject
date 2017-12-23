@@ -82,18 +82,23 @@ namespace GeoLocator
         private void OpenNewMarker(object sender, RoutedEventArgs e)
         {
             NewMarker nm = new NewMarker();
-           if(LoginName != string.Empty)
+            if (LoginName != string.Empty)
             {
                 nm.Type.Visibility = Visibility.Visible;
                 nm.Type.ItemsSource = bll.GetAllPlaceTypes();
             }
-            nm.Show();
-            this.IsEnabled = false;
+            bool? res = nm.ShowDialog();
+            if (res.HasValue && res.Value)
+            {
+                
+            }
+            //nm.ShowDialog();
+            //this.IsEnabled = false;
         }
 
         private void ShowMarkers_btn_Click(object sender, RoutedEventArgs e)
         {
-          
+
             if (MarkerTypes_combo.Text.Length != 0)
             {
                 if (mapView.Markers.Count() > 0)
@@ -152,7 +157,7 @@ namespace GeoLocator
         private GMap.NET.PointLatLng GetCoordinates(string city, string street, string number)
         {
             GMap.NET.PointLatLng coords = new PointLatLng();
-            string address = city +", " + street + " " + number;
+            string address = city + ", " + street + " " + number;
             string url = string.Format(
              "http://maps.googleapis.com/maps/api/geocode/xml?address={0}&sensor=true_or_false&language=ru",
                  Uri.EscapeDataString(address));
@@ -231,7 +236,7 @@ namespace GeoLocator
                 UserStreetName = string.Empty;
                 UserStreetNumber = string.Empty;
             }
-            
+
         }
 
         private void Register_btn_Click(object sender, RoutedEventArgs e)
@@ -257,10 +262,11 @@ namespace GeoLocator
             {
                 //AddNewMarkerToMap("Рівне", StreetToFind_field.Text, NumberToFind_field.Text);
 
-                this.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => {
+                this.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() =>
+                {
                     AddNewMarkerToMap("Рівне", StreetToFind_field.Text, NumberToFind_field.Text);
                 }));
-                
+
             }
 
 

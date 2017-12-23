@@ -101,6 +101,7 @@ namespace GeoLocator
 
         private void BtnOkClick(object sender, RoutedEventArgs e)
         {
+            DialogResult = DialogResult;
             var bytearr = ImageToByte(markercontext.MyImage);
             MessageBox.Show(markercontext.ToString());
             Close();

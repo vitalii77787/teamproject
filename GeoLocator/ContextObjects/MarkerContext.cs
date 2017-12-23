@@ -13,9 +13,14 @@ namespace GeoLocator.ContextObjects
         #region private fields
         private string name;
         private BitmapImage myimage;
+        private string type;
+        private string description;
+        private string city;
+        private string street;
+        private string streetnumber;
+        private string[] contacts;
         #endregion
 
-        
         public string Name
         {
             get { return name; }
@@ -24,8 +29,6 @@ namespace GeoLocator.ContextObjects
                 name = value; OnPropertyChanged("Name");
             }
         }
-
-       
 
         public BitmapImage MyImage
         {
@@ -36,6 +39,59 @@ namespace GeoLocator.ContextObjects
             }
         }
 
+        public string City
+        {
+            get { return city; }
+            set
+            {
+                city = value; OnPropertyChanged("City");
+            }
+        }
+
+        public string Street
+        {
+            get { return street; }
+            set
+            {
+                street = value; OnPropertyChanged("Street");
+            }
+        }
+
+        public string StreetNumber
+        {
+            get { return streetnumber; }
+            set
+            {
+                streetnumber = value; OnPropertyChanged("Streetnumber");
+            }
+        }
+
+        public string Description
+        {
+            get { return description; }
+            set
+            {
+                description = value; OnPropertyChanged("Description");
+            }
+        }
+
+        public string Type
+        {
+            get { return type; }
+            set
+            {
+                type = value; OnPropertyChanged("Type");
+            }
+        }
+
+        public string[] Contacts
+        {
+            get { return contacts; }
+            set
+            {
+                contacts = value; OnPropertyChanged("Contacts");
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string name)
