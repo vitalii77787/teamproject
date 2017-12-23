@@ -24,7 +24,7 @@ namespace GeoLocator
     public partial class NewMarker : Window
     {
         MarkerContext markercontext = new MarkerContext();
-        private bool iscorrect;
+        private bool iscorrect=true;
         public bool IsLoginUser { get; set; }
         public NewMarker()
         {
@@ -71,6 +71,7 @@ namespace GeoLocator
             {
                 //MyImage.Source = new BitmapImage(new Uri(of.FileName));
                 MyImage.Source=CreateResizedImage(new BitmapImage(new Uri(of.FileName)), (int)btn.Width, (int)btn.Height, 0);
+                markercontext.MyImageSource = of.FileName;
             }
 
         }
@@ -105,11 +106,11 @@ namespace GeoLocator
         {
             if(IsLoginUser==true)
             {
-                iscorrect = (markercontext.Name != null && markercontext.Street != null && markercontext.City != null && markercontext.StreetNumber != null && markercontext.MyImage != null && markercontext.Description != null && Type!=null);
+                iscorrect = (markercontext.Name != null && markercontext.Street != null && markercontext.City != null && markercontext.StreetNumber != null && markercontext.MyImageSource != null && markercontext.Description != null && Type!=null);
             }
             else
             {
-                iscorrect = (markercontext.Name != null && markercontext.Street != null && markercontext.City != null && markercontext.StreetNumber != null && markercontext.MyImage != null && markercontext.Description != null);
+              //  iscorrect = (markercontext.Name != null && markercontext.Street != null && markercontext.City != null && markercontext.StreetNumber != null && markercontext.MyImage != null && markercontext.Description != null);
 
             }
 

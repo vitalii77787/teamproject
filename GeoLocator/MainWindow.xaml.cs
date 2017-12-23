@@ -31,6 +31,7 @@ namespace GeoLocator
         public MainWindow()
         {
             InitializeComponent();
+            LoginName = string.Empty;
             bll = new BllForUi();
             MarkerTypes_combo.ItemsSource = bll.GetAllPlaceTypes();
         }
@@ -92,7 +93,7 @@ namespace GeoLocator
             bool? res = nm.ShowDialog();
             if (res.HasValue && res.Value)
             {
-                AddNewMarkerToMap((nm.DataContext as MarkerContext).City, (nm.DataContext as MarkerContext).Street, (nm.DataContext as MarkerContext).StreetNumber, (nm.DataContext as MarkerContext).MyImage);
+                AddNewMarkerToMap((nm.DataContext as MarkerContext).City, (nm.DataContext as MarkerContext).Street, (nm.DataContext as MarkerContext).StreetNumber, (nm.DataContext as MarkerContext).MyImageSource, (nm.DataContext as MarkerContext).Description);
             }
             else
             {
@@ -160,17 +161,19 @@ namespace GeoLocator
             mapView.Markers.Add(markerG);       ///////////////////////
         }
 
-        private void AddNewMarkerToMap(string city, string street, string number, BitmapImage markerimage)
+        private void AddNewMarkerToMap(string city, string street, string number, string markerimage, string description)
         {
+            ToolTip toolTip = new ToolTip { Content = description };
             PointLatLng pointLatLng = GetCoordinates(city, street, number);
             GMap.NET.WindowsPresentation.GMapMarker markerG = new GMap.NET.WindowsPresentation.GMapMarker(pointLatLng);
             Image image =new Image();
-            image.Source = markerimage ;
+            image.ToolTip = toolTip;
+            image.Source = new BitmapImage(new Uri(markerimage)); ;
             image.Width = 20;
             image.Height = 20;
             markerG.Shape = image;
             markerG.Offset = new Point(-16, -32);
-            markerG.ZIndex = int.MaxValue;
+            //markerG.ZIndex = int.MaxValue;
             mapView.Markers.Add(markerG);       ///////////////////////
         }
 

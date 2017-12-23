@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace GeoLocator.ContextObjects
@@ -12,7 +13,7 @@ namespace GeoLocator.ContextObjects
     {
         #region private fields
         private string name;
-        private BitmapImage myimage;
+        private string myimage;
         private string type;
         private string description;
         private string city;
@@ -30,12 +31,12 @@ namespace GeoLocator.ContextObjects
             }
         }
 
-        public BitmapImage MyImage
+        public string MyImageSource
         {
             get { return myimage; }
             set
             {
-                myimage = value; OnPropertyChanged("MyImage");
+                myimage = value; OnPropertyChanged("MyImageSource");
             }
         }
 
