@@ -17,6 +17,7 @@ using IBllForUi;
 using ClassLib;
 using System.IO;
 using System.Windows.Threading;
+using GeoLocator.ContextObjects;
 
 namespace GeoLocator
 {
@@ -86,11 +87,16 @@ namespace GeoLocator
             {
                 nm.Type.Visibility = Visibility.Visible;
                 nm.Type.ItemsSource = bll.GetAllPlaceTypes();
+                nm.IsLoginUser = true;
             }
             bool? res = nm.ShowDialog();
             if (res.HasValue && res.Value)
             {
-                
+                AddNewMarkerToMap((nm.DataContext as MarkerContext).City, (nm.DataContext as MarkerContext).Street, (nm.DataContext as MarkerContext).StreetNumber, (nm.DataContext as MarkerContext).MyImage);
+            }
+            else
+            {
+
             }
             //nm.ShowDialog();
             //this.IsEnabled = false;
@@ -146,6 +152,20 @@ namespace GeoLocator
             biImg.EndInit();
             ImageSource imgSrc = biImg as ImageSource;
             image.Source = biImg;
+            image.Width = 20;
+            image.Height = 20;
+            markerG.Shape = image;
+            markerG.Offset = new Point(-16, -32);
+            markerG.ZIndex = int.MaxValue;
+            mapView.Markers.Add(markerG);       ///////////////////////
+        }
+
+        private void AddNewMarkerToMap(string city, string street, string number, BitmapImage markerimage)
+        {
+            PointLatLng pointLatLng = GetCoordinates(city, street, number);
+            GMap.NET.WindowsPresentation.GMapMarker markerG = new GMap.NET.WindowsPresentation.GMapMarker(pointLatLng);
+            Image image =new Image();
+            image.Source = markerimage ;
             image.Width = 20;
             image.Height = 20;
             markerG.Shape = image;

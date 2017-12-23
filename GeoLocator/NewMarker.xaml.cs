@@ -24,6 +24,8 @@ namespace GeoLocator
     public partial class NewMarker : Window
     {
         MarkerContext markercontext = new MarkerContext();
+        private bool iscorrect;
+        public bool IsLoginUser { get; set; }
         public NewMarker()
         {
             InitializeComponent();
@@ -101,10 +103,29 @@ namespace GeoLocator
 
         private void BtnOkClick(object sender, RoutedEventArgs e)
         {
-            DialogResult = DialogResult;
-            var bytearr = ImageToByte(markercontext.MyImage);
-            MessageBox.Show(markercontext.ToString());
-            Close();
+            if(IsLoginUser==true)
+            {
+                iscorrect = (markercontext.Name != null && markercontext.Street != null && markercontext.City != null && markercontext.StreetNumber != null && markercontext.MyImage != null && markercontext.Description != null && Type!=null);
+            }
+            else
+            {
+                iscorrect = (markercontext.Name != null && markercontext.Street != null && markercontext.City != null && markercontext.StreetNumber != null && markercontext.MyImage != null && markercontext.Description != null);
+
+            }
+
+            if (iscorrect)
+            {
+                DialogResult = true;
+               // var bytearr = ImageToByte(markercontext.MyImage);
+               // MessageBox.Show(markercontext.ToString());
+                Close();
+            }
+            else
+            {
+                DialogResult = false;
+                MessageBox.Show("Incorrect value!");
+                Close();
+            }
         }
 
         private void ClearListBox(object sender, RoutedEventArgs e)
