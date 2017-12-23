@@ -97,7 +97,7 @@ namespace GeoLocator
             }
             else
             {
-
+                
             }
             //nm.ShowDialog();
             //this.IsEnabled = false;
@@ -163,7 +163,11 @@ namespace GeoLocator
 
         private void AddNewMarkerToMap(string city, string street, string number, string markerimage, string description,string[] contacts)
         {
-            ToolTip toolTip = new ToolTip { Content = description+"\n"+contacts};
+            ToolTip toolTip = new ToolTip { Content = description};
+            foreach (var item in contacts)
+            {
+                toolTip.Content += "\n" + item;
+            }
             PointLatLng pointLatLng = GetCoordinates(city, street, number);
             GMap.NET.WindowsPresentation.GMapMarker markerG = new GMap.NET.WindowsPresentation.GMapMarker(pointLatLng);
             Image image =new Image();

@@ -113,7 +113,7 @@ namespace GeoLocator
             }
             else
             {
-              //  iscorrect = (markercontext.Name != null && markercontext.Street != null && markercontext.City != null && markercontext.StreetNumber != null && markercontext.MyImage != null && markercontext.Description != null);
+                iscorrect = (markercontext.Name != null && markercontext.Street != null && markercontext.City != null && markercontext.StreetNumber != null && markercontext.MyImageSource != null && markercontext.Description != null);
 
             }
 
