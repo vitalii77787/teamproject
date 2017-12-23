@@ -85,7 +85,10 @@ namespace GeoLocator
             if (!Equals(eventArgs.Parameter, true)) return;
 
             if (!string.IsNullOrWhiteSpace(FruitTextBox.Text))
-                FruitListBox.Items.Add(FruitTextBox.Text.Trim());
+            //FruitListBox.Items.Add(FruitTextBox.Text.Trim());
+            {
+                markercontext.Contacts.Add(FruitTextBox.Text.Trim());
+            }
         }
 
         public Byte[] ImageToByte(BitmapImage imageSource)
@@ -134,7 +137,7 @@ namespace GeoLocator
             if (FruitListBox.SelectedItem != null)
             {
                 var item = FruitListBox.SelectedItem;
-                FruitListBox.Items.Remove(item);
+                markercontext.Contacts.Remove((string)item);
             }
         }
     }

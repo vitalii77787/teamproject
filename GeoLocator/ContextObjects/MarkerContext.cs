@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.Windows;
@@ -19,9 +20,16 @@ namespace GeoLocator.ContextObjects
         private string city;
         private string street;
         private string streetnumber;
-        private string[] contacts;
         #endregion
 
+
+        public MarkerContext()
+        {
+            Contacts = new ObservableCollection<string>();
+        }
+
+
+       
         public string Name
         {
             get { return name; }
@@ -85,13 +93,12 @@ namespace GeoLocator.ContextObjects
             }
         }
 
-        public string[] Contacts
+       
+
+        public ObservableCollection<string> Contacts
         {
-            get { return contacts; }
-            set
-            {
-                contacts = value; OnPropertyChanged("Contacts");
-            }
+            get;
+            set;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

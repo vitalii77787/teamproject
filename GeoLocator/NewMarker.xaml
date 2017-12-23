@@ -142,7 +142,7 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <ListBox  x:Name="FruitListBox" Height="50" ItemsSource="{Binding Contacts}">
+                        <ListBox  x:Name="FruitListBox" ItemsSource="{Binding Contacts}" Height="50">
                         </ListBox>
                         <materialDesign:ColorZone
 				Grid.Row="1"
