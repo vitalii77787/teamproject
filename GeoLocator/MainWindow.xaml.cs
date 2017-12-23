@@ -93,6 +93,11 @@ namespace GeoLocator
             bool? res = nm.ShowDialog();
             if (res.HasValue && res.Value)
             {
+                if (LoginName != string.Empty)
+                {
+                    //Maybe new Task?
+                    AddUserPlace(nm.DataContext as MarkerContext);
+                }
                 AddNewMarkerToMap((nm.DataContext as MarkerContext).City, (nm.DataContext as MarkerContext).Street, (nm.DataContext as MarkerContext).StreetNumber, (nm.DataContext as MarkerContext).MyImageSource, (nm.DataContext as MarkerContext).Description, (nm.DataContext as MarkerContext).Contacts.ToArray());
             }
             else
@@ -101,6 +106,30 @@ namespace GeoLocator
             }
             //nm.ShowDialog();
             //this.IsEnabled = false;
+        }
+
+        private void AddUserPlace(MarkerContext context)
+        {
+            PointLatLng pointLatLng = GetCoordinates(context.City, context.Street, context.StreetNumber);
+            Image image = new Image();
+            image.Source = new BitmapImage(new Uri(context.MyImageSource));
+            var byteimage = ImageToByte(image.Source as BitmapImage);
+            Marker newmarker = new Marker() { Name = context.Name, City = context.City, Street = context.Street, Number = context.StreetNumber, Contacts = context.Contacts.ToArray(), Description = context.Description, Lat = pointLatLng.Lat, Lng = pointLatLng.Lng, MarkerType = context.Type, Picture = byteimage, UserName = LoginName };
+            bll.AddNewPlace(newmarker);
+        }
+
+        public Byte[] ImageToByte(BitmapImage imageSource)
+        {
+            Stream stream = imageSource.StreamSource;
+            Byte[] buffer = null;
+            if (stream != null && stream.Length > 0)
+            {
+                using (BinaryReader br = new BinaryReader(stream))
+                {
+                    buffer = br.ReadBytes((Int32)stream.Length);
+                }
+            }
+            return buffer;
         }
 
         private void ShowMarkers_btn_Click(object sender, RoutedEventArgs e)
@@ -172,7 +201,7 @@ namespace GeoLocator
             GMap.NET.WindowsPresentation.GMapMarker markerG = new GMap.NET.WindowsPresentation.GMapMarker(pointLatLng);
             Image image =new Image();
             image.ToolTip = toolTip;
-            image.Source = new BitmapImage(new Uri(markerimage)); ;
+            image.Source = new BitmapImage(new Uri(markerimage)); 
             image.Width = 20;
             image.Height = 20;
             markerG.Shape = image;
