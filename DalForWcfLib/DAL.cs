@@ -118,8 +118,8 @@ namespace DalForWcfLib
         {
             string[] cityStreetAndNumberOfUser = new string[3];
             cityStreetAndNumberOfUser[0] = ctx.Logins.Where(item => item.Name == userName).Select(item => item.Address.City.Name).FirstOrDefault();
-            cityStreetAndNumberOfUser[1] = ctx.Logins.Where(item => item.Name == userName).Select(item => item.Address.City.Name).FirstOrDefault();
-            cityStreetAndNumberOfUser[2] = ctx.Logins.Where(item => item.Name == userName).Select(item => item.Address.City.Name).FirstOrDefault();
+            cityStreetAndNumberOfUser[1] = ctx.Logins.Where(item => item.Name == userName).Select(item => item.Address.Street).FirstOrDefault();
+            cityStreetAndNumberOfUser[2] = ctx.Logins.Where(item => item.Name == userName).Select(item => item.Address.Number).FirstOrDefault();
             return cityStreetAndNumberOfUser;
         }
 

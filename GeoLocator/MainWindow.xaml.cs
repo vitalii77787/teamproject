@@ -17,6 +17,8 @@ using IBllForUi;
 using ClassLib;
 using System.IO;
 using System.Windows.Threading;
+using GMap.NET.WindowsPresentation;
+using GMap.NET.MapProviders;
 
 namespace GeoLocator
 {
@@ -39,6 +41,7 @@ namespace GeoLocator
         public string UserCity { get; set; }
         public string UserStreetName { get; set; }
         public string UserStreetNumber { get; set; }
+        List<PointLatLng> points = new List<PointLatLng>();
         //Image defaultMarkerImage = null;
 
         private void mapView_Loaded(object sender, RoutedEventArgs e)
@@ -137,7 +140,8 @@ namespace GeoLocator
             image.Width = 20;
             image.Height = 20;
             markerG.Shape = image;
-            markerG.Offset = new Point(-16, -32);
+            //markerG.Offset = new Point(-16, -32);
+            markerG.Offset = new Point(-5, -5);
             markerG.ZIndex = int.MaxValue;
             mapView.Markers.Add(markerG);       ///////////////////////
         }
@@ -209,6 +213,7 @@ namespace GeoLocator
                         UserCity = loginWindow.City;
                         UserStreetName = loginWindow.Street;
                         UserStreetNumber = loginWindow.Number;
+                        points.Add(GetCoordinates(UserCity, UserStreetName, UserStreetNumber));
                     }
                     else
                     {
@@ -246,17 +251,79 @@ namespace GeoLocator
             //    ImageSource imgSrc = biImg as ImageSource;
             //    defaultMarkerImage.Source = imgSrc;
             //}
+            //GDirections ss;
+            //var xx = GMapProviders.GoogleMap.GetDirections(out ss, GetCoordinates("Рівне", "Соборна", "22"), GetCoordinates("Рівне", "Київська", "12"), false, false, false, false, false);
+            //GMapRoute r = new GMapRoute(ss.Route);
+            //var a = GMap.NET.MapProviders.GoogleChinaMapProvider.Instance.GetRoute(GetCoordinates("Рівне", "Соборна", "22"), //start
+            //    GetCoordinates("Рівне", "Київська", "12"), //end
+            //    false, //avoid highways 
+            //    true, 0);
+            mapView.Markers.Clear();
             if (StreetToFind_field.Text.Length > 0 && NumberToFind_field.Text.Length > 0)
             {
                 //AddNewMarkerToMap("Рівне", StreetToFind_field.Text, NumberToFind_field.Text);
-
+                points.Add(GetCoordinates("Рівне", StreetToFind_field.Text, NumberToFind_field.Text));
                 this.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => {
                     AddNewMarkerToMap("Рівне", StreetToFind_field.Text, NumberToFind_field.Text);
                 }));
                 
             }
+            if (LoginName.Length > 0)
+            {
+                
+                ShowRoute();
+            }
+            
+        }
 
 
+        private void ShowRoute()
+        {
+            
+            PointLatLng userStart = GetCoordinates(UserCity, UserStreetName, UserStreetNumber);
+            PointLatLng endPoint = GetCoordinates("Рівне", StreetToFind_field.Text, NumberToFind_field.Text);
+            //PointLatLng userStart = GetCoordinates(UserCity, "Чебишева", "16");
+            //PointLatLng endPoint = GetCoordinates("Рівне", "Соборна", "20");
+
+            //GMap.NET.WindowsPresentation.GMapMarker markerG = new GMap.NET.WindowsPresentation.GMapMarker(routePoints[0]);
+
+            //markerG.Map = new GMap.NET.WindowsPresentation.GMapControl();
+            //markerG.Map.CreateRoutePath(listPoints);
+            //gMapControl1.Markers.Add(markerG);
+
+
+            //gMapControl1.CreateRoutePath(listPoints, true);
+            //GMap.NET.WindowsPresentation.GMapRoute mRoute = new GMap.NET.WindowsPresentation.GMapRoute(routePoints);
+            //mRoute.RegenerateShape(gMapControl1);
+            //((System.Windows.Shapes.Path)mRoute.Shape).Stroke = new SolidColorBrush(Colors.Red);
+            //((System.Windows.Shapes.Path)mRoute.Shape).StrokeThickness = 20;
+            //gMapControl1.Markers.Add(mRoute);
+
+            //GMapRoute gmRoute = new GMapRoute(route.Points);
+            //MapRoute mapRoute = GMap.NET.MapProviders.GoogleMapProvider.Instance.GetRoute()
+            //MapRoute route2 = GMap.NET.
+
+            GDirections ss;
+            var xx = GMapProviders.GoogleMap.GetDirections(out ss, userStart, endPoint, false, false, true, false, false);
+            
+            GMapRoute r = new GMapRoute(ss.Route);
+            r.RegenerateShape(mapView);
+            ((System.Windows.Shapes.Path)r.Shape).Stroke = new SolidColorBrush(Colors.Red);
+            ((System.Windows.Shapes.Path)r.Shape).StrokeThickness = 5;
+            //r.Map.BorderThickness = new Thickness(;
+            mapView.Markers.Add(r);
+            //mapView.Markers[0].Shape = 
+            //MapRoute route2 = GMap.NET.MapProviders.GoogleMapProvider.Instance.GetRoute("Рівне, Чебишева 16", //start
+            //    "Рівне, Соборна 20", //end
+            //    false, //avoid highways 
+            //    true, 0);
+
+            //GMapRoute gmRoute2 = new GMapRoute(route2.Points);
+
+            //mapView.Markers.Add(gmRoute2);
+            //gMapControl1.Markers.Add(new GMap.NET.WindowsPresentation.GMapMarker());
+
+            //gMapControl1.UpdateLayout();
         }
     }
 }
