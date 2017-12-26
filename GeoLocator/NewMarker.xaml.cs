@@ -24,6 +24,8 @@ namespace GeoLocator
     public partial class NewMarker : Window
     {
         MarkerContext markercontext = new MarkerContext();
+        private bool iscorrect=true;
+        public bool IsLoginUser { get; set; }
         public NewMarker()
         {
             InitializeComponent();
@@ -69,6 +71,7 @@ namespace GeoLocator
             {
                 //MyImage.Source = new BitmapImage(new Uri(of.FileName));
                 MyImage.Source=CreateResizedImage(new BitmapImage(new Uri(of.FileName)), (int)btn.Width, (int)btn.Height, 0);
+                markercontext.MyImageSource = of.FileName;
             }
 
         }
@@ -82,7 +85,10 @@ namespace GeoLocator
             if (!Equals(eventArgs.Parameter, true)) return;
 
             if (!string.IsNullOrWhiteSpace(FruitTextBox.Text))
-                FruitListBox.Items.Add(FruitTextBox.Text.Trim());
+            //FruitListBox.Items.Add(FruitTextBox.Text.Trim());
+            {
+                markercontext.Contacts.Add(FruitTextBox.Text.Trim());
+            }
         }
 
         public Byte[] ImageToByte(BitmapImage imageSource)
@@ -101,11 +107,38 @@ namespace GeoLocator
 
         private void BtnOkClick(object sender, RoutedEventArgs e)
         {
-            var bytearr = ImageToByte(markercontext.MyImage);
-            MessageBox.Show(markercontext.ToString());
-            Close();
+            if(IsLoginUser==true)
+            {
+                iscorrect = (markercontext.Name != null && markercontext.Street != null && markercontext.City != null && markercontext.StreetNumber != null && markercontext.MyImageSource != null && markercontext.Description != null && Type!=null);
+            }
+            else
+            {
+                iscorrect = (markercontext.Name != null && markercontext.Street != null && markercontext.City != null && markercontext.StreetNumber != null && markercontext.MyImageSource != null && markercontext.Description != null);
+
+            }
+
+            if (iscorrect)
+            {
+                DialogResult = true;
+               // var bytearr = ImageToByte(markercontext.MyImage);
+               // MessageBox.Show(markercontext.ToString());
+                Close();
+            }
+            else
+            {
+                DialogResult = false;
+                MessageBox.Show("Incorrect value!");
+                Close();
+            }
         }
 
-    
+        private void ClearListBox(object sender, RoutedEventArgs e)
+        {
+            if (FruitListBox.SelectedItem != null)
+            {
+                var item = FruitListBox.SelectedItem;
+                markercontext.Contacts.Remove((string)item);
+            }
+        }
     }
 }

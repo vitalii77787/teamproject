@@ -46,7 +46,7 @@
                 <ColumnDefinition Width="2*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="0"
+            <TextBox Grid.Column="0" Text="{Binding Description}"
 	Height="80"
 	MaxWidth="250"
 	VerticalAlignment="Stretch"
@@ -68,7 +68,7 @@
                                 <StackPanel.OpacityMask>
                                     <VisualBrush Visual="{Binding ElementName=mask}"/>
                                 </StackPanel.OpacityMask>
-                                <Image x:Name="MyImage" Stretch="None" Source="{Binding MyImage}"  ></Image>
+                                <Image x:Name="MyImage" Stretch="None" Source="{Binding MyImageSource}"  ></Image>
                             </StackPanel>
                         </Grid>
                     </Border>
@@ -81,20 +81,20 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <TextBox MinWidth="120" Margin="5" Grid.Column="0"
+            <TextBox MinWidth="120" Margin="5" Grid.Column="0" Text="{Binding City}"
 	materialDesign:HintAssist.Hint="City"
 	Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" />
-            <TextBox MinWidth="120" Margin="5" Grid.Column="1"
+            <TextBox MinWidth="120" Margin="5" Grid.Column="1" Text="{Binding Street}"
 	materialDesign:HintAssist.Hint="Street"
 	Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" />
-            <TextBox MinWidth="100" Margin="5"
+            <TextBox MinWidth="100" Margin="5" Text="{Binding StreetNumber}"
 	materialDesign:HintAssist.Hint="Number" Grid.Column="2"
 	Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" />
         </Grid>
-        <TextBox MinWidth="120" Margin="5"
+        <TextBox MinWidth="120" Margin="5" Text="{Binding Name}"
 	materialDesign:HintAssist.Hint="MarkerName"
 	Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" HorizontalContentAlignment="Center" />
-        <ComboBox x:Name="Type" Grid.Row="3" Height="50" Visibility="Collapsed"></ComboBox>
+        <ComboBox x:Name="Type" Grid.Row="3" Height="50" Visibility="Collapsed" SelectedItem="{Binding Type}"></ComboBox>
         <StackPanel Grid.Row="4">
             <materialDesign:DialogHost Grid.Row="4" Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type StackPanel}}, Path=ActualWidth}" Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type StackPanel}}, Path=ActualHeight}"
 	HorizontalAlignment="Center"
@@ -142,7 +142,7 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <ListBox  x:Name="FruitListBox" Height="50" >
+                        <ListBox  x:Name="FruitListBox" ItemsSource="{Binding Contacts}" Height="50">
                         </ListBox>
                         <materialDesign:ColorZone
 				Grid.Row="1"
@@ -152,7 +152,7 @@
                         </materialDesign:ColorZone>
                         <Button
 				Grid.Row="0"
-				Margin="0,0,28,-20"
+				Margin="0,0,88,-20"
 				HorizontalAlignment="Right"
 				VerticalAlignment="Bottom"
 				Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
@@ -163,10 +163,24 @@
                                 </Canvas>
                             </Viewbox>
                         </Button>
+                        <Button
+				Grid.Row="0"
+				Margin="0,0,28,-20"
+				HorizontalAlignment="Right"
+				VerticalAlignment="Bottom"
+				Click="ClearListBox"
+				Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
+                            <Viewbox Width="22" Height="22">
+                                <Canvas Width="24" Height="24">
+                                    <Path Data="M19,11V13H5V11" Fill="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Button}, Path=Foreground}" />
+                                </Canvas>
+                            </Viewbox>
+                        </Button>
+
                     </Grid>
                 </Border>
             </materialDesign:DialogHost>
         </StackPanel>
-        <Button Grid.Row="5" Width="75">OK</Button>
+        <Button Grid.Row="5" Width="75" Click="BtnOkClick" >OK</Button>
     </Grid>
 </Window>

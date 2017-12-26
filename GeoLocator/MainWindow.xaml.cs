@@ -19,6 +19,7 @@ using System.IO;
 using System.Windows.Threading;
 using GMap.NET.WindowsPresentation;
 using GMap.NET.MapProviders;
+using GeoLocator.ContextObjects;
 
 namespace GeoLocator
 {
@@ -32,8 +33,9 @@ namespace GeoLocator
         public MainWindow()
         {
             InitializeComponent();
-            bll = new BllForUi();
-            MarkerTypes_combo.ItemsSource = bll.GetAllPlaceTypes();
+            LoginName = string.Empty;
+            //bll = new BllForUi();
+            //MarkerTypes_combo.ItemsSource = bll.GetAllPlaceTypes();
         }
 
         IBllForUi.IBll bll;
@@ -85,13 +87,57 @@ namespace GeoLocator
         private void OpenNewMarker(object sender, RoutedEventArgs e)
         {
             NewMarker nm = new NewMarker();
-            nm.Show();
-            this.IsEnabled = false;
+            if (LoginName != string.Empty)
+            {
+                nm.Type.Visibility = Visibility.Visible;
+                nm.Type.ItemsSource = bll.GetAllPlaceTypes();
+                nm.IsLoginUser = true;
+            }
+            bool? res = nm.ShowDialog();
+            if (res.HasValue && res.Value)
+            {
+                if (LoginName != string.Empty)
+                {
+                    //Maybe new Task?
+                    AddUserPlace(nm.DataContext as MarkerContext);
+                }
+                AddNewMarkerToMap((nm.DataContext as MarkerContext).City, (nm.DataContext as MarkerContext).Street, (nm.DataContext as MarkerContext).StreetNumber, (nm.DataContext as MarkerContext).MyImageSource, (nm.DataContext as MarkerContext).Description, (nm.DataContext as MarkerContext).Contacts.ToArray());
+            }
+            else
+            {
+                
+            }
+            //nm.ShowDialog();
+            //this.IsEnabled = false;
+        }
+
+        private void AddUserPlace(MarkerContext context)
+        {
+            PointLatLng pointLatLng = GetCoordinates(context.City, context.Street, context.StreetNumber);
+            Image image = new Image();
+            image.Source = new BitmapImage(new Uri(context.MyImageSource));
+            var byteimage = ImageToByte(image.Source as BitmapImage);
+            Marker newmarker = new Marker() { Name = context.Name, City = context.City, Street = context.Street, Number = context.StreetNumber, Contacts = context.Contacts.ToArray(), Description = context.Description, Lat = pointLatLng.Lat, Lng = pointLatLng.Lng, MarkerType = context.Type, Picture = byteimage, UserName = LoginName };
+            bll.AddNewPlace(newmarker);
+        }
+
+        public Byte[] ImageToByte(BitmapImage imageSource)
+        {
+            Stream stream = imageSource.StreamSource;
+            Byte[] buffer = null;
+            if (stream != null && stream.Length > 0)
+            {
+                using (BinaryReader br = new BinaryReader(stream))
+                {
+                    buffer = br.ReadBytes((Int32)stream.Length);
+                }
+            }
+            return buffer;
         }
 
         private void ShowMarkers_btn_Click(object sender, RoutedEventArgs e)
         {
-          
+
             if (MarkerTypes_combo.Text.Length != 0)
             {
                 if (mapView.Markers.Count() > 0)
@@ -108,8 +154,10 @@ namespace GeoLocator
 
         private void AddNewMarkerToMap(Marker marker)
         {
+            ToolTip toolTip = new ToolTip { Content = marker.Description };
             GMap.NET.WindowsPresentation.GMapMarker markerG = new GMap.NET.WindowsPresentation.GMapMarker(new GMap.NET.PointLatLng(marker.Lat, marker.Lng));
             Image image = new Image();
+            image.ToolTip = toolTip;
             BitmapImage biImg = new BitmapImage();
             MemoryStream ms = new MemoryStream(marker.Picture);
             biImg.BeginInit();
@@ -146,10 +194,30 @@ namespace GeoLocator
             mapView.Markers.Add(markerG);       ///////////////////////
         }
 
+        private void AddNewMarkerToMap(string city, string street, string number, string markerimage, string description,string[] contacts)
+        {
+            ToolTip toolTip = new ToolTip { Content = description};
+            foreach (var item in contacts)
+            {
+                toolTip.Content += "\n" + item;
+            }
+            PointLatLng pointLatLng = GetCoordinates(city, street, number);
+            GMap.NET.WindowsPresentation.GMapMarker markerG = new GMap.NET.WindowsPresentation.GMapMarker(pointLatLng);
+            Image image =new Image();
+            image.ToolTip = toolTip;
+            image.Source = new BitmapImage(new Uri(markerimage)); 
+            image.Width = 20;
+            image.Height = 20;
+            markerG.Shape = image;
+            markerG.Offset = new Point(-16, -32);
+            //markerG.ZIndex = int.MaxValue;
+            mapView.Markers.Add(markerG);       ///////////////////////
+        }
+
         private GMap.NET.PointLatLng GetCoordinates(string city, string street, string number)
         {
             GMap.NET.PointLatLng coords = new PointLatLng();
-            string address = city +", " + street + " " + number;
+            string address = city + ", " + street + " " + number;
             string url = string.Format(
              "http://maps.googleapis.com/maps/api/geocode/xml?address={0}&sensor=true_or_false&language=ru",
                  Uri.EscapeDataString(address));
@@ -229,7 +297,7 @@ namespace GeoLocator
                 UserStreetName = string.Empty;
                 UserStreetNumber = string.Empty;
             }
-            
+
         }
 
         private void Register_btn_Click(object sender, RoutedEventArgs e)
@@ -262,16 +330,11 @@ namespace GeoLocator
             if (StreetToFind_field.Text.Length > 0 && NumberToFind_field.Text.Length > 0)
             {
                 //AddNewMarkerToMap("Рівне", StreetToFind_field.Text, NumberToFind_field.Text);
-                points.Add(GetCoordinates("Рівне", StreetToFind_field.Text, NumberToFind_field.Text));
+
                 this.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => {
                     AddNewMarkerToMap("Рівне", StreetToFind_field.Text, NumberToFind_field.Text);
                 }));
                 
-            }
-            if (LoginName.Length > 0)
-            {
-                
-                ShowRoute();
             }
             
         }
