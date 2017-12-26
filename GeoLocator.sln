@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDalForUi", "IDalForUi\IDal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IBllForUi", "IBllForUi\IBllForUi.csproj", "{8263A67F-4E1B-4A6D-A3C2-E24FCAA1F1DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerDtoLib", "ServerDtoLib\ServerDtoLib.csproj", "{281B7064-BEEA-4D29-9FAF-8D559E31F7C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,14 @@ Global
 		{8263A67F-4E1B-4A6D-A3C2-E24FCAA1F1DF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8263A67F-4E1B-4A6D-A3C2-E24FCAA1F1DF}.Release|x64.ActiveCfg = Release|x64
 		{8263A67F-4E1B-4A6D-A3C2-E24FCAA1F1DF}.Release|x64.Build.0 = Release|x64
+		{281B7064-BEEA-4D29-9FAF-8D559E31F7C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{281B7064-BEEA-4D29-9FAF-8D559E31F7C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{281B7064-BEEA-4D29-9FAF-8D559E31F7C4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{281B7064-BEEA-4D29-9FAF-8D559E31F7C4}.Debug|x64.Build.0 = Debug|Any CPU
+		{281B7064-BEEA-4D29-9FAF-8D559E31F7C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{281B7064-BEEA-4D29-9FAF-8D559E31F7C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{281B7064-BEEA-4D29-9FAF-8D559E31F7C4}.Release|x64.ActiveCfg = Release|Any CPU
+		{281B7064-BEEA-4D29-9FAF-8D559E31F7C4}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
