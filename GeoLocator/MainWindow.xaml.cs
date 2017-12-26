@@ -34,8 +34,8 @@ namespace GeoLocator
         {
             InitializeComponent();
             LoginName = string.Empty;
-            //bll = new BllForUi();
-            //MarkerTypes_combo.ItemsSource = bll.GetAllPlaceTypes();
+            bll = new BllForUi();
+            MarkerTypes_combo.ItemsSource = bll.GetAllPlaceTypes();
         }
 
         IBllForUi.IBll bll;
@@ -179,7 +179,8 @@ namespace GeoLocator
             GMap.NET.WindowsPresentation.GMapMarker markerG = new GMap.NET.WindowsPresentation.GMapMarker(pointLatLng);
             Image image = new Image();
             BitmapImage biImg = new BitmapImage();
-            MemoryStream ms = new MemoryStream(bll.GetDefaultPicture());
+            byte[] imageByte = bll.GetDefaultPicture();
+            MemoryStream ms = new MemoryStream(imageByte);
             biImg.BeginInit();
             biImg.StreamSource = ms;
             biImg.EndInit();
@@ -336,7 +337,10 @@ namespace GeoLocator
                 }));
                 
             }
-            
+            if (LoginName.Length > 0)
+            {
+                ShowRoute();
+            }
         }
 
 
