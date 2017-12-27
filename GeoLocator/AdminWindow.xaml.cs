@@ -20,6 +20,8 @@ namespace GeoLocator
     /// </summary>
     public partial class AdminWindow : Window
     {
+        //IBllForUi.IBll bll;
+
         public AdminWindow()
         {
             InitializeComponent();
