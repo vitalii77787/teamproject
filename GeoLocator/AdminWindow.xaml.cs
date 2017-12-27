@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using IBllForUi;
 
 namespace GeoLocator
 {
@@ -22,6 +23,10 @@ namespace GeoLocator
         public AdminWindow()
         {
             InitializeComponent();
+            bll = new BllForUi();
+            markersDataGrid.ItemsSource = bll.GetMarkersOfTypeAsDataTable("supermarket", "Rivne").DefaultView;
         }
+
+        IBllForUi.IBll bll;
     }
 }

@@ -286,7 +286,9 @@ namespace GeoLocator
                     }
                     else
                     {
-
+                        LoginName = loginWindow.LoginName;
+                        AdminWindow adminWindow = new AdminWindow();
+                        adminWindow.ShowDialog();
                     }
                 }
             }

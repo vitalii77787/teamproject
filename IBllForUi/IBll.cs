@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace IBllForUi
         string GetLoginStatusOfUser(string userName);
         string[] GetCityStreetAndNumberOfUser(string userName);
         byte[] GetDefaultPicture();
-        
+        DataTable GetMarkersOfTypeAsDataTable(string type, string city);
 
     }
 }

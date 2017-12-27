@@ -9,7 +9,7 @@
     <Grid>
         <TabControl>
             <TabItem Header="Markers">
-                <DataGrid>
+                <DataGrid Name="markersDataGrid">
                     <DataGrid.ColumnHeaderStyle>
                         <Style TargetType="{x:Type DataGridColumnHeader}">
                             <Setter Property="FontSize" Value="10"></Setter>
