@@ -8,6 +8,7 @@ using System.Text;
 using BllForWcfLib;
 using DalForWcfLib;
 using System.Configuration;
+using ServerDtoLib;
 
 namespace WcfGoogleMaps
 {
@@ -79,26 +80,45 @@ namespace WcfGoogleMaps
         public MarkerWcf[] GetMarkersOfType(string markerType, string city)
         {
             Marker[] markers = bll.GetMarkersOfType(markerType, city);
+            MarkerDto[] markersDto = bll.GetMarkersDtoOfType(markerType, city);
 
             List<MarkerWcf> markersWcf = new List<MarkerWcf>();
-            foreach (var item in markers)
+            foreach (var item in markersDto)
             {
                 MarkerWcf marker = new MarkerWcf()
                 {
                     Name = item.Name,
-                    City = item.Address.City.Name,
-                    Contacts = item.Contacts.Select(c => c.Name).ToArray(),
-                    Street = item.Address.Street,
-                    Number = item.Address.Number,
+                    City = item.City,
+                    Contacts = item.Contacts,
+                    Street = item.Street,
+                    Number = item.Number,
                     Description = item.Description,
                     Lat = item.Lat,
                     Lng = item.Lng,
-                    MarkerType = item.Type.Name,
+                    MarkerType = item.MarkerType,
                     Picture = item.Picture,
-                    UserName = item.Login.Name
+                    UserName = item.UserName
                 };
                 markersWcf.Add(marker);
             }
+            //foreach (var item in markers)
+            //{
+            //    MarkerWcf marker = new MarkerWcf()
+            //    {
+            //        Name = item.Name,
+            //        City = item.Address.City.Name,
+            //        Contacts = item.Contacts.Select(c => c.Name).ToArray(),
+            //        Street = item.Address.Street,
+            //        Number = item.Address.Number,
+            //        Description = item.Description,
+            //        Lat = item.Lat,
+            //        Lng = item.Lng,
+            //        MarkerType = item.Type.Name,
+            //        Picture = item.Picture,
+            //        UserName = item.Login.Name
+            //    };
+            //    markersWcf.Add(marker);
+            //}
             return markersWcf.ToArray();
         }
 

@@ -101,6 +101,10 @@
       <Project>{5ddfbecc-9008-4ecd-a1df-9f72e1c6d480}</Project>
       <Name>DalForWcfLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ServerDtoLib\ServerDtoLib.csproj">
+      <Project>{281b7064-beea-4d29-9faf-8d559e31f7c4}</Project>
+      <Name>ServerDtoLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

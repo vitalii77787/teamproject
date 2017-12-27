@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AutoMapper;
+using ServerDtoLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -126,6 +128,29 @@ namespace DalForWcfLib
         public byte[] GetDefaultPicture()
         {
             return ctx.Markers.Where(item => item.Type.Name == "other").Select(item => item.Picture).FirstOrDefault();
+        }
+
+        public MarkerDto[] GetMarkersDtoOfType(MarkerType type, City city)
+        {
+            Marker[] markers = ctx.Markers.Where(item => item.Type.Name == type.Name && item.Address.City.Name == city.Name).ToArray();
+            Mapper.Reset();
+            Mapper.Initialize(cfg => cfg.CreateMap<Marker, MarkerDto>()
+                    .ForMember(x => x.City, opt => opt.MapFrom(src => src.Address.City.Name))
+                    .ForMember(x => x.Street, opt => opt.MapFrom(src => src.Address.Street))
+                    .ForMember(x => x.Number, opt => opt.MapFrom(src => src.Address.Number))
+                    .ForMember(x => x.MarkerType, opt => opt.MapFrom(src => src.Type.Name))
+                    .ForMember(x => x.UserName, opt => opt.MapFrom(src => src.Login.Name))
+                    .ForMember(x => x.Contacts, opt => opt.MapFrom(src => src.Contacts.ToArray()))
+                    );
+            List<MarkerDto> markersDto = new List<MarkerDto>();
+            // Выполняем сопоставление
+            foreach (var item in markers)
+            {
+                MarkerDto markerDto = Mapper.Map<Marker, MarkerDto>(item);
+                markersDto.Add(markerDto);
+            }
+            
+            return markersDto.ToArray();
         }
     }
 }

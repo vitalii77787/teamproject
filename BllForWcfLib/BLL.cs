@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DalForWcfLib;
+using ServerDtoLib;
 
 namespace BllForWcfLib
 {
@@ -124,6 +125,13 @@ namespace BllForWcfLib
         public byte[] GetDefaultPicture()
         {
             return dal.GetDefaultPicture();
+        }
+
+        public MarkerDto[] GetMarkersDtoOfType(string markerType, string city)
+        {
+            MarkerType _markerType = dal.GetMarkerType(markerType);
+            City _city = dal.GetCity(city);
+            return dal.GetMarkersDtoOfType(_markerType, _city);
         }
     }
 }
