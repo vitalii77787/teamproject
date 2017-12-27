@@ -34,8 +34,8 @@ namespace GeoLocator
         {
             InitializeComponent();
             LoginName = string.Empty;
-            bll = new BllForUi();
-            MarkerTypes_combo.ItemsSource = bll.GetAllPlaceTypes();
+            //bll = new BllForUi();
+            //MarkerTypes_combo.ItemsSource = bll.GetAllPlaceTypes();
         }
 
         IBllForUi.IBll bll;
