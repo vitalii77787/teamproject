@@ -19,9 +19,43 @@ namespace GeoLocator
     /// </summary>
     public partial class AdminWindow : Window
     {
+        //IBllForUi.IBll bll;
+
         public AdminWindow()
         {
             InitializeComponent();
+            //bll = new IBllForUi.BllForUi();
+            //Marker_DataGrid.ItemsSource = bll.GetAllMarkers;
+        }
+
+        private void AddClick(object sender, RoutedEventArgs e)
+        {
+            switch (DataBase_TabControl.SelectedIndex)
+            {
+                case 0:
+                default:
+                    break;
+            }
+        }
+
+        private void DeleteClick(object sender, RoutedEventArgs e)
+        {
+            switch (DataBase_TabControl.SelectedIndex)
+            {
+                case 0:
+                default:
+                    break;
+            }
+        }
+
+        private void UpdateClick(object sender, RoutedEventArgs e)
+        {
+            switch (DataBase_TabControl.SelectedIndex)
+            {
+                case 0:
+                default:
+                    break;
+            }
         }
     }
 }
