@@ -12,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using IBllForUi;
-
+using System.Collections.ObjectModel;
+using ServerDtoLib;
 namespace GeoLocator
 {
     /// <summary>
@@ -21,12 +22,14 @@ namespace GeoLocator
     public partial class AdminWindow : Window
     {
         //IBllForUi.IBll bll;
-
+       // public ObservableCollection<ClassLib.Marker> Markers { get; set; }
         public AdminWindow()
         {
             InitializeComponent();
             bll = new BllForUi();
-            Marker_DataGrid.ItemsSource = bll.GetMarkersOfTypeAsDataTable("supermarket", "Rivne").DefaultView;
+           // Markers= bll.GetMarkersOfTypeAsDataTable("supermarket", "Rivne");
+             Marker_DataGrid.ItemsSource = bll.GetMarkersOfTypeAsDataTable("supermarket", "Rivne").DefaultView;
+           // Marker_DataGrid.DataContext = Markers;
         }
 
         IBllForUi.IBll bll;
