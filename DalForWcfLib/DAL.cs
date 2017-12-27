@@ -133,6 +133,7 @@ namespace DalForWcfLib
         public MarkerDto[] GetMarkersDtoOfType(MarkerType type, City city)
         {
             Marker[] markers = ctx.Markers.Where(item => item.Type.Name == type.Name && item.Address.City.Name == city.Name).ToArray();
+            Mapper.Reset();
             Mapper.Initialize(cfg => cfg.CreateMap<Marker, MarkerDto>()
                     .ForMember(x => x.City, opt => opt.MapFrom(src => src.Address.City.Name))
                     .ForMember(x => x.Street, opt => opt.MapFrom(src => src.Address.Street))
