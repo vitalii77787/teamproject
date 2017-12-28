@@ -24,7 +24,7 @@
             <TabItem Header="Markers">
                 <DataGrid x:Name="Marker_DataGrid"  ColumnHeaderStyle="{StaticResource DatagridHeader}" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding }">
                     <DataGrid.Columns >
-                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="30" />
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="30" IsReadOnly="True"/>
                         <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="50" />
                         <DataGridTextColumn Header="City" Width="50" Binding="{Binding City}" />
                         <DataGridTextColumn Header="Street" Width="100" Binding="{Binding Street}" />
@@ -54,7 +54,7 @@
             <TabItem Header="Logins" >
                 <DataGrid x:Name="Logins_DataGrid"  ColumnHeaderStyle="{StaticResource DatagridHeader}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Width="30" />
+                        <DataGridTextColumn Header="Id" Width="30" IsReadOnly="True" />
                         <DataGridTextColumn Header="Name"  Width="50" />
                         <DataGridTextColumn Header="Password"  Width="50" />
                     </DataGrid.Columns>
@@ -63,7 +63,7 @@
             <TabItem Header="MarkerType">
                 <DataGrid x:Name="MarkerType_DataGrid"  ColumnHeaderStyle="{StaticResource DatagridHeader}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Width="30" />
+                        <DataGridTextColumn Header="Id" Width="30" IsReadOnly="True" />
                         <DataGridTextColumn Header="Name"  Width="50" />
                     </DataGrid.Columns>
                 </DataGrid>
@@ -71,9 +71,8 @@
             <TabItem Header="City" >
                 <DataGrid x:Name="City_DataGrid"  ColumnHeaderStyle="{StaticResource DatagridHeader}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Width="30" />
+                        <DataGridTextColumn Header="Id" Width="30" IsReadOnly="True" />
                         <DataGridTextColumn Header="Name"  Width="50" />
-
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
