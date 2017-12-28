@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
         <TabControl x:Name="DataBase_TabControl">
             <TabItem Header="Markers">
-                <DataGrid x:Name="Marker_DataGrid"  ColumnHeaderStyle="{StaticResource DatagridHeader}">
+                <DataGrid x:Name="Marker_DataGrid"  ColumnHeaderStyle="{StaticResource DatagridHeader}" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding }">
                     <DataGrid.Columns >
                         <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="30" />
                         <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="50" />
@@ -30,17 +30,17 @@
                         <DataGridTextColumn Header="Street" Width="100" Binding="{Binding Street}" />
                         <DataGridTextColumn Header="Number" Width="35" Binding="{Binding Number}" />
                         <DataGridTextColumn Header="Description" Width="100" Binding="{Binding Description}" />
-                        <DataGridTextColumn Header="Type" Width="50" Binding="{Binding Type}" />
+                        <DataGridTextColumn Header="Type" Width="50" Binding="{Binding MarkerType}" />
                         <DataGridTextColumn Header="Lat" Width="50" Binding="{Binding Lat}" />
                         <DataGridTextColumn Header="Lng" Width="50" Binding="{Binding Lng}" />
-                        <DataGridTemplateColumn  Header="Image" Width="SizeToCells" IsReadOnly="True" MinWidth="80">
+                        <DataGridTemplateColumn  Header="Image" Width="SizeToCells" IsReadOnly="True" MinWidth="50">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Image Width="16" Height="16"  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <Image Width="48" Height="24"  HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding Picture}"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTextColumn Header="User" Width="50" Binding="{Binding Login}" />
+                        <DataGridTextColumn Header="User" Width="50" Binding="{Binding UserName}" />
                         <DataGridTemplateColumn  Header="Contacts" Width="SizeToCells"  MinWidth="50">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
