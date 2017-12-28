@@ -26,7 +26,7 @@ namespace GeoLocator
         {
             InitializeComponent();
             bll = new BllForUi();
-            Marker_DataGrid.ItemsSource = bll.GetMarkersOfTypeAsDataTable("supermarket", "Rivne").DefaultView;
+          //  Marker_DataGrid.ItemsSource = bll.GetMarkersOfTypeAsDataTable("supermarket", "Rivne").DefaultView;
         }
 
         IBllForUi.IBll bll;
