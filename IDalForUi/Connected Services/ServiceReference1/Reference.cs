@@ -32,6 +32,9 @@ namespace IDalForUi.ServiceReference1 {
         private string DescriptionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private double LatField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -100,6 +103,19 @@ namespace IDalForUi.ServiceReference1 {
                 if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
                     this.DescriptionField = value;
                     this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
                 }
             }
         }
@@ -293,6 +309,12 @@ namespace IDalForUi.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetDefaultPicture", ReplyAction="http://tempuri.org/IService1/GetDefaultPictureResponse")]
         System.Threading.Tasks.Task<byte[]> GetDefaultPictureAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllMarkersDto", ReplyAction="http://tempuri.org/IService1/GetAllMarkersDtoResponse")]
+        IDalForUi.ServiceReference1.MarkerWcf[] GetAllMarkersDto();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllMarkersDto", ReplyAction="http://tempuri.org/IService1/GetAllMarkersDtoResponse")]
+        System.Threading.Tasks.Task<IDalForUi.ServiceReference1.MarkerWcf[]> GetAllMarkersDtoAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -416,6 +438,14 @@ namespace IDalForUi.ServiceReference1 {
         
         public System.Threading.Tasks.Task<byte[]> GetDefaultPictureAsync() {
             return base.Channel.GetDefaultPictureAsync();
+        }
+        
+        public IDalForUi.ServiceReference1.MarkerWcf[] GetAllMarkersDto() {
+            return base.Channel.GetAllMarkersDto();
+        }
+        
+        public System.Threading.Tasks.Task<IDalForUi.ServiceReference1.MarkerWcf[]> GetAllMarkersDtoAsync() {
+            return base.Channel.GetAllMarkersDtoAsync();
         }
     }
 }

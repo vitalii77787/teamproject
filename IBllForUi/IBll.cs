@@ -23,6 +23,7 @@ namespace IBllForUi
         string[] GetCityStreetAndNumberOfUser(string userName);
         byte[] GetDefaultPicture();
         DataTable GetMarkersOfTypeAsDataTable(string type, string city);
+        DataTable GetAllMarkers();
 
     }
 }

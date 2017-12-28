@@ -48,9 +48,12 @@ namespace DalForWcfLib
             var directoryPath = System.IO.Directory.GetCurrentDirectory();
             //byte[] supermarketImage = File.ReadAllBytes(@"Resources\supermarket_icon.jpg");
             //byte[] schoolImage = File.ReadAllBytes(@"Resources\school_icon.jpg");
-            byte[] otherImage = File.ReadAllBytes(@"C: \Users\vitalii_best\Downloads\bankimage.jpg"); /*(@"C:\Users\Serge\Source\Repos\team\teamproject\DalForWcfLib\Resources\Pointer.jpg");*/
-            byte[] supermarketImage = File.ReadAllBytes(@"C: \Users\vitalii_best\Downloads\bankimage.jpg"); /*(@"C:\Users\Serge\Source\Repos\team\teamproject\DalForWcfLib\Resources\supermarket_icon.jpg");*/
-            byte[] schoolImage = File.ReadAllBytes(@"C: \Users\vitalii_best\Downloads\bankimage.jpg");/* (@"C:\Users\Serge\Source\Repos\team\teamproject\DalForWcfLib\Resources\school_icon.jpg");*/
+            //byte[] otherImage = File.ReadAllBytes(@"C: \Users\vitalii_best\Downloads\bankimage.jpg"); /*(@"C:\Users\Serge\Source\Repos\team\teamproject\DalForWcfLib\Resources\Pointer.jpg");*/
+            //byte[] supermarketImage = File.ReadAllBytes(@"C: \Users\vitalii_best\Downloads\bankimage.jpg"); /*(@"C:\Users\Serge\Source\Repos\team\teamproject\DalForWcfLib\Resources\supermarket_icon.jpg");*/
+            //byte[] schoolImage = File.ReadAllBytes(@"C: \Users\vitalii_best\Downloads\bankimage.jpg");/* (@"C:\Users\Serge\Source\Repos\team\teamproject\DalForWcfLib\Resources\school_icon.jpg");*/
+            byte[] otherImage = File.ReadAllBytes(@"C:\Users\Serge\Source\Repos\team\teamproject\DalForWcfLib\Resources\Pointer.jpg"); /*(@"C:\Users\Serge\Source\Repos\team\teamproject\DalForWcfLib\Resources\Pointer.jpg");*/
+            byte[] supermarketImage = File.ReadAllBytes(@"C:\Users\Serge\Source\Repos\team\teamproject\DalForWcfLib\Resources\supermarket_icon.jpg"); /*(@"C:\Users\Serge\Source\Repos\team\teamproject\DalForWcfLib\Resources\supermarket_icon.jpg");*/
+            byte[] schoolImage = File.ReadAllBytes(@"C:\Users\Serge\Source\Repos\team\teamproject\DalForWcfLib\Resources\school_icon.jpg");/* (@"C:\Users\Serge\Source\Repos\team\teamproject\DalForWcfLib\Resources\school_icon.jpg");*/
             Address silpoAddress = new Address() { City = cityRivne, Street = "Київська", Number = "69" };
             Address fozziAddress = new Address() { City = cityRivne, Street = "Курчатова", Number = "9" };
             Address velmartAddress = new Address() { City = cityRivne, Street = "Макарова", Number = "22" };

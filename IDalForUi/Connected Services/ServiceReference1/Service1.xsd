@@ -179,4 +179,16 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAllMarkersDto">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllMarkersDtoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WcfGoogleMaps" minOccurs="0" name="GetAllMarkersDtoResult" nillable="true" type="q7:ArrayOfMarkerWcf" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

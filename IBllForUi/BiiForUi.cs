@@ -97,12 +97,11 @@ namespace IBllForUi
             markersDataTable.Columns.Add("UserName", typeof(string));
             markersDataTable.Columns.Add("Contacts", typeof(string[]));
             List<ClassLib.Marker> markersList = GetMarkersOfType(type, city);
-            int i = 0;
+            //int i = 0;
             foreach (var item in markersList)
             {
-                ++i;
                 DataRow dr = markersDataTable.NewRow();
-                dr["Id"] = i;
+                dr["Id"] = item.Id;
                 dr["Name"] = item.Name;
                 dr["Description"] = item.Description;
                 dr["City"] = item.City;
@@ -119,6 +118,42 @@ namespace IBllForUi
             return markersDataTable;
         }
 
-
+        public DataTable GetAllMarkers()
+        {
+            DataTable markersDataTable = new DataTable("markers");
+            DataColumn markerId = markersDataTable.Columns.Add("Id", typeof(Int32));
+            markersDataTable.PrimaryKey = new DataColumn[] { markerId };
+            markersDataTable.Columns.Add("Name", typeof(string));
+            markersDataTable.Columns.Add("Description", typeof(string));
+            markersDataTable.Columns.Add("City", typeof(string));
+            markersDataTable.Columns.Add("Street", typeof(string));
+            markersDataTable.Columns.Add("Number", typeof(string));
+            markersDataTable.Columns.Add("MarkerType", typeof(string));
+            markersDataTable.Columns.Add("Lat", typeof(double));
+            markersDataTable.Columns.Add("Lng", typeof(double));
+            markersDataTable.Columns.Add("Picture", typeof(byte[]));
+            markersDataTable.Columns.Add("UserName", typeof(string));
+            markersDataTable.Columns.Add("Contacts", typeof(string[]));
+            List<ClassLib.Marker> markersList = dalUi.GetAllMarkers();
+            //int i = 0;
+            foreach (var item in markersList)
+            {
+                DataRow dr = markersDataTable.NewRow();
+                dr["Id"] = item.Id;
+                dr["Name"] = item.Name;
+                dr["Description"] = item.Description;
+                dr["City"] = item.City;
+                dr["Street"] = item.Street;
+                dr["Number"] = item.Number;
+                dr["MarkerType"] = item.MarkerType;
+                dr["Lat"] = item.Lat;
+                dr["Lng"] = item.Lng;
+                dr["Picture"] = item.Picture;
+                dr["UserName"] = item.UserName;
+                dr["Contacts"] = item.Contacts;
+                markersDataTable.Rows.Add(dr);
+            }
+            return markersDataTable;
+        }
     }
 }

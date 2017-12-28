@@ -57,6 +57,34 @@ namespace WcfGoogleMaps
             return bll.GetAllCities();
         }
 
+        public MarkerWcf[] GetAllMarkersDto()
+        {
+            //Marker[] markers = bll.GetMar;
+            MarkerDto[] markersDto = bll.GetAllMarkersDto();
+
+            List<MarkerWcf> markersWcf = new List<MarkerWcf>();
+            foreach (var item in markersDto)
+            {
+                MarkerWcf marker = new MarkerWcf()
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    City = item.City,
+                    Contacts = item.Contacts,
+                    Street = item.Street,
+                    Number = item.Number,
+                    Description = item.Description,
+                    Lat = item.Lat,
+                    Lng = item.Lng,
+                    MarkerType = item.MarkerType,
+                    Picture = item.Picture,
+                    UserName = item.UserName
+                };
+                markersWcf.Add(marker);
+            }
+            return markersWcf.ToArray();
+        }
+
         public string[] GetAllPlaceTypes()
         {
             return bll.GetAllPlaceTypes();

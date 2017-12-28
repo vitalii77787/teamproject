@@ -31,6 +31,7 @@ namespace IDalForUi
             {
                 Marker marker = new Marker()
                 {
+                    Id = item.Id,
                     Name = item.Name,
                     City = item.City,
                     Contacts = item.Contacts,
@@ -56,6 +57,33 @@ namespace IDalForUi
             {
                 Marker marker = new Marker()
                 {
+                    Id = item.Id,
+                    Name = item.Name,
+                    City = item.City,
+                    Contacts = item.Contacts,
+                    Street = item.Street,
+                    Number = item.Number,
+                    Description = item.Description,
+                    Lat = item.Lat,
+                    Lng = item.Lng,
+                    MarkerType = item.MarkerType,
+                    Picture = item.Picture,
+                    UserName = item.UserName
+                };
+                markers.Add(marker);
+            }
+            return markers;
+        }
+
+        public List<Marker> GetAllMarkers()
+        {
+            MarkerWcf[] markersWcf = client.GetAllMarkersDto();
+            List<Marker> markers = new List<Marker>();
+            foreach (var item in markersWcf)
+            {
+                Marker marker = new Marker()
+                {
+                    Id = item.Id,
                     Name = item.Name,
                     City = item.City,
                     Contacts = item.Contacts,

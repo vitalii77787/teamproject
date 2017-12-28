@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using IBllForUi;
 using System.Collections.ObjectModel;
-using ServerDtoLib;
+//using ServerDtoLib;
 using System.Data;
 
 namespace GeoLocator
@@ -30,7 +30,7 @@ namespace GeoLocator
             InitializeComponent();
             bll = new BllForUi();
            // Markers= bll.GetMarkersOfTypeAsDataTable("supermarket", "Rivne");
-           var collection= bll.GetMarkersOfTypeAsDataTable("supermarket", "Rivne");
+           var collection= bll.GetAllMarkers();
             collection.RowChanged += new DataRowChangeEventHandler(Row_Changed);
             Marker_DataGrid.ItemsSource = collection.DefaultView;
            // Marker_DataGrid.DataContext = Markers;

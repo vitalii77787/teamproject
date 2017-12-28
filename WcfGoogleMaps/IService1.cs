@@ -50,6 +50,9 @@ namespace WcfGoogleMaps
         [OperationContract]
         byte[] GetDefaultPicture();
 
+        [OperationContract]
+        MarkerWcf[] GetAllMarkersDto();
+
         // TODO: Add your service operations here
     }
 
@@ -58,6 +61,7 @@ namespace WcfGoogleMaps
     [DataContract]
     public class MarkerWcf
     {
+        int id;
         string name = string.Empty;
         string description = string.Empty;
         string city = string.Empty;
@@ -69,6 +73,13 @@ namespace WcfGoogleMaps
         byte[] picture;
         string userName = string.Empty;
         string[] contacts;
+
+        [DataMember]
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
 
         [DataMember]
         public string Name
