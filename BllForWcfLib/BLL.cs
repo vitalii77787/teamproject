@@ -133,5 +133,10 @@ namespace BllForWcfLib
             City _city = dal.GetCity(city);
             return dal.GetMarkersDtoOfType(_markerType, _city);
         }
+
+        public MarkerDto[] GetAllMarkersDto()
+        {
+            return dal.GetAllMarkersDto();
+        }
     }
 }

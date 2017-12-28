@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using IBllForUi;
 using System.Collections.ObjectModel;
-using ServerDtoLib;
+//using ServerDtoLib;
 using System.Data;
 
 namespace GeoLocator
@@ -23,7 +23,6 @@ namespace GeoLocator
     /// </summary>
     public partial class AdminWindow : Window
     {
-        DataTable markers;
         //IBllForUi.IBll bll;
        // public ObservableCollection<ClassLib.Marker> Markers { get; set; }
         public AdminWindow()
@@ -31,9 +30,9 @@ namespace GeoLocator
             InitializeComponent();
             bll = new BllForUi();
            // Markers= bll.GetMarkersOfTypeAsDataTable("supermarket", "Rivne");
-           markers= bll.GetMarkersOfTypeAsDataTable("supermarket", "Rivne");
-            markers.RowChanged += new DataRowChangeEventHandler(Row_Changed);
-            Marker_DataGrid.ItemsSource = markers.DefaultView;
+           var collection= bll.GetAllMarkers();
+            collection.RowChanged += new DataRowChangeEventHandler(Row_Changed);
+            Marker_DataGrid.ItemsSource = collection.DefaultView;
            // Marker_DataGrid.DataContext = Markers;
         }
 
@@ -41,90 +40,12 @@ namespace GeoLocator
 
         private void AddClick(object sender, RoutedEventArgs e)
         {
-            switch (DataBase_TabControl.SelectedIndex)
-            {
-                case 0:
-                    {
-                        DataRow row = markers.NewRow();
-                        markers.Rows.Add(row);
-                        break;
 
-                    }
-                case 1:
-                    {
-                        while (Logins_DataGrid.SelectedItems.Count >= 1)
-                        {
-                            DataRowView drv = (DataRowView)Logins_DataGrid.SelectedItem;
-                            drv.Row.Delete();
-                        }
-                        break;
-                    }
-                case 2:
-                    {
-                        while (MarkerType_DataGrid.SelectedItems.Count >= 1)
-                        {
-                            DataRowView drv = (DataRowView)MarkerType_DataGrid.SelectedItem;
-                            drv.Row.Delete();
-                        }
-                        break;
-                    }
-                case 3:
-                    {
-                        while (City_DataGrid.SelectedItems.Count >= 1)
-                        {
-                            DataRowView drv = (DataRowView)City_DataGrid.SelectedItem;
-                            drv.Row.Delete();
-                        }
-                        break;
-                    }
-                default:
-                    break;
-            }
         }
 
         private void DeleteClick(object sender, RoutedEventArgs e)
         {
-            switch (DataBase_TabControl.SelectedIndex)
-            {
-                case 0:
-                    {
-                        while (Marker_DataGrid.SelectedItems.Count >= 1)
-                        {
-                            DataRowView drv = (DataRowView)Marker_DataGrid.SelectedItem;
-                            drv.Row.Delete();
-                        }
-                        break;
-                    }
-                case 1:
-                    {
-                        while (Logins_DataGrid.SelectedItems.Count >= 1)
-                        {
-                            DataRowView drv = (DataRowView)Logins_DataGrid.SelectedItem;
-                            drv.Row.Delete();
-                        }
-                        break;
-                    }
-                case 2:
-                    {
-                        while (MarkerType_DataGrid.SelectedItems.Count >= 1)
-                        {
-                            DataRowView drv = (DataRowView)MarkerType_DataGrid.SelectedItem;
-                            drv.Row.Delete();
-                        }
-                        break;
-                    }
-                case 3:
-                    {
-                        while (City_DataGrid.SelectedItems.Count >= 1)
-                        {
-                            DataRowView drv = (DataRowView)City_DataGrid.SelectedItem;
-                            drv.Row.Delete();
-                        }
-                        break;
-                    }
-                default:
-                    break;
-            }
+
         }
 
         private void UpdateClick(object sender, RoutedEventArgs e)
