@@ -60,16 +60,6 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
-            <TabItem Header="Address">
-                <DataGrid x:Name="Address_DataGrid"  ColumnHeaderStyle="{StaticResource DatagridHeader}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Width="30" />
-                        <DataGridTextColumn Header="City"  Width="50" />
-                        <DataGridTextColumn Header="Street"  Width="50" />
-                        <DataGridTextColumn Header="Number"  Width="50" />
-                    </DataGrid.Columns>
-                </DataGrid>
-            </TabItem>
             <TabItem Header="MarkerType">
                 <DataGrid x:Name="MarkerType_DataGrid"  ColumnHeaderStyle="{StaticResource DatagridHeader}">
                     <DataGrid.Columns>
@@ -83,24 +73,7 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Id" Width="30" />
                         <DataGridTextColumn Header="Name"  Width="50" />
-                       
-                    </DataGrid.Columns>
-                </DataGrid>
-            </TabItem>
-            <TabItem Header="Contacts">
-                <DataGrid x:Name="Contacts_DataGrid"  ColumnHeaderStyle="{StaticResource DatagridHeader}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Width="30" />
-                        <DataGridTextColumn Header="Name"  Width="50" />
-                       
-                    </DataGrid.Columns>
-                </DataGrid>
-            </TabItem>
-            <TabItem Header="LoginStatus">
-                <DataGrid x:Name="LoginStatus_DataGrid"  ColumnHeaderStyle="{StaticResource DatagridHeader}">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Width="30" />
-                        <DataGridTextColumn Header="Name"  Width="50" />
+
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
