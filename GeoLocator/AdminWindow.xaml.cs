@@ -28,7 +28,8 @@ namespace GeoLocator
             InitializeComponent();
             bll = new BllForUi();
            // Markers= bll.GetMarkersOfTypeAsDataTable("supermarket", "Rivne");
-             Marker_DataGrid.ItemsSource = bll.GetMarkersOfTypeAsDataTable("supermarket", "Rivne").DefaultView;
+           var collection= bll.GetMarkersOfTypeAsDataTable("supermarket", "Rivne").DefaultView;
+            Marker_DataGrid.ItemsSource = collection;
            // Marker_DataGrid.DataContext = Markers;
         }
 

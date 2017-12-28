@@ -140,7 +140,7 @@ namespace DalForWcfLib
                     .ForMember(x => x.Number, opt => opt.MapFrom(src => src.Address.Number))
                     .ForMember(x => x.MarkerType, opt => opt.MapFrom(src => src.Type.Name))
                     .ForMember(x => x.UserName, opt => opt.MapFrom(src => src.Login.Name))
-                    .ForMember(x => x.Contacts, opt => opt.MapFrom(src => src.Contacts.ToArray()))
+                    .ForMember(x => x.Contacts, opt => opt.MapFrom(src => src.Contacts.Select(item=>item.Name).ToArray()))
                     );
             List<MarkerDto> markersDto = new List<MarkerDto>();
             // Выполняем сопоставление
