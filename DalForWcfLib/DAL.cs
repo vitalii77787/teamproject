@@ -175,5 +175,20 @@ namespace DalForWcfLib
 
             return markersDto.ToArray();
         }
+
+        public void UpdateMarker(int id, Marker newMarker)
+        {
+            Marker marker = ctx.Markers.Where(item => item.Id == id).FirstOrDefault();
+            marker.Address = newMarker.Address;
+            marker.Contacts = newMarker.Contacts;
+            marker.Description = newMarker.Description;
+            marker.Lat = newMarker.Lat;
+            marker.Lng = newMarker.Lng;
+            marker.Login = newMarker.Login;
+            marker.Name = newMarker.Name;
+            marker.Picture = newMarker.Picture;
+            marker.Type = newMarker.Type;
+            ctx.SaveChanges();
+        }
     }
 }

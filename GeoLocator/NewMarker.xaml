@@ -94,7 +94,12 @@
         <TextBox MinWidth="120" Margin="5" Text="{Binding Name}"
 	materialDesign:HintAssist.Hint="MarkerName"
 	Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" HorizontalContentAlignment="Center" />
-        <ComboBox x:Name="Type" Grid.Row="3" Height="50" Visibility="Collapsed" SelectedItem="{Binding Type}"></ComboBox>
+        <ComboBox Name="MarkerType_combo" Grid.Row="3" Height="50" Visibility="Collapsed"
+                  SelectedItem="{Binding Type}"
+                          materialDesign:HintAssist.Hint="Type" 
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+        </ComboBox>
+        <!--<ComboBox x:Name="Type" Grid.Row="3" Height="50" Visibility="Collapsed" SelectedItem="{Binding Type}"></ComboBox>-->
         <StackPanel Grid.Row="4">
             <materialDesign:DialogHost Grid.Row="4" Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type StackPanel}}, Path=ActualWidth}" Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type StackPanel}}, Path=ActualHeight}"
 	HorizontalAlignment="Center"
@@ -142,7 +147,7 @@
                             <RowDefinition Height="*" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <ListBox  x:Name="FruitListBox" ItemsSource="{Binding Contacts}" Height="50">
+                        <ListBox  x:Name="ContactsListBox" ItemsSource="{Binding Contacts}" Height="50">
                         </ListBox>
                         <materialDesign:ColorZone
 				Grid.Row="1"

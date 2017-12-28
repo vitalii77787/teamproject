@@ -1,4 +1,6 @@
-﻿using GeoLocator.ContextObjects;
+﻿using ClassLib;
+using GeoLocator.ContextObjects;
+using GMap.NET;
 using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using System;
@@ -15,6 +17,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ClassLib;
+using IBllForUi;
 
 namespace GeoLocator
 {
@@ -26,10 +30,20 @@ namespace GeoLocator
         MarkerContext markercontext = new MarkerContext();
         private bool iscorrect=true;
         public bool IsLoginUser { get; set; }
-        public NewMarker()
+        //Marker marker;
+        string loginName = string.Empty;
+        IBllForUi.IBll bll;
+        public NewMarker(string userName)
         {
             InitializeComponent();
+            loginName = userName;
             DataContext = markercontext;
+            bll = new BllForUi();
+            if (loginName == "admin")
+            {
+                MarkerType_combo.Visibility = Visibility.Visible;
+                MarkerType_combo.ItemsSource = bll.GetAllPlaceTypes();
+            }
         }
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
@@ -107,21 +121,45 @@ namespace GeoLocator
 
         private void BtnOkClick(object sender, RoutedEventArgs e)
         {
-            if(IsLoginUser==true)
+            
+            if (IsLoginUser == true)
             {
-                iscorrect = (markercontext.Name != null && markercontext.Street != null && markercontext.City != null && markercontext.StreetNumber != null && markercontext.MyImageSource != null && markercontext.Description != null && Type!=null);
+                iscorrect = (markercontext.Name != null && markercontext.Street != null && markercontext.City != null && markercontext.StreetNumber != null && 
+                    markercontext.MyImageSource != null && markercontext.Description != null && MarkerType_combo.Text != null);
             }
             else
             {
-                iscorrect = (markercontext.Name != null && markercontext.Street != null && markercontext.City != null && markercontext.StreetNumber != null && markercontext.MyImageSource != null && markercontext.Description != null);
+                iscorrect = (markercontext.Name != null && markercontext.Street != null && markercontext.City != null && markercontext.StreetNumber != null && 
+                    markercontext.MyImageSource != null && markercontext.Description != null);
 
             }
 
             if (iscorrect)
             {
                 DialogResult = true;
-               // var bytearr = ImageToByte(markercontext.MyImage);
-               // MessageBox.Show(markercontext.ToString());
+                byte[] picture = File.ReadAllBytes(markercontext.MyImageSource);
+                PointLatLng pointLatLng = GetCoordinates(markercontext.City, markercontext.Street, markercontext.StreetNumber);
+                string markerType = "user";
+                if (loginName != "admin")
+                {
+                    markerType = MarkerType_combo.Text;
+                }
+                Marker marker = new Marker()
+                {
+                    Name = markercontext.Name,
+                    City = markercontext.City,
+                    Contacts = markercontext.Contacts.ToArray(),
+                    Description = markercontext.Description,
+                    Lat = pointLatLng.Lat,
+                    Lng = pointLatLng.Lng,
+                    MarkerType = markerType,
+                    Number = markercontext.StreetNumber,
+                    Picture = picture,
+                    Street = markercontext.Street,
+                    UserName = loginName
+                };
+                bll.AddNewPlace(marker);
+                MessageBox.Show("New marker was added!");
                 Close();
             }
             else
@@ -134,11 +172,63 @@ namespace GeoLocator
 
         private void ClearListBox(object sender, RoutedEventArgs e)
         {
-            if (FruitListBox.SelectedItem != null)
+            if (ContactsListBox.SelectedItem != null)
             {
-                var item = FruitListBox.SelectedItem;
+                var item = ContactsListBox.SelectedItem;
                 markercontext.Contacts.Remove((string)item);
             }
+        }
+
+        private GMap.NET.PointLatLng GetCoordinates(string city, string street, string number)
+        {
+            GMap.NET.PointLatLng coords = new PointLatLng();
+            string address = city + ", " + street + " " + number;
+            string url = string.Format(
+             "http://maps.googleapis.com/maps/api/geocode/xml?address={0}&sensor=true_or_false&language=ru",
+                 Uri.EscapeDataString(address));
+
+            //Выполняем запрос к универсальному коду ресурса (URI).
+            System.Net.HttpWebRequest request =
+                (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);
+
+            //Получаем ответ от интернет-ресурса.
+            System.Net.WebResponse response =
+                request.GetResponse();
+
+            //Экземпляр класса System.IO.Stream 
+            //для чтения данных из интернет-ресурса.
+            System.IO.Stream dataStream =
+                response.GetResponseStream();
+
+            //Инициализируем новый экземпляр класса 
+            //System.IO.StreamReader для указанного потока.
+            System.IO.StreamReader sreader =
+                new System.IO.StreamReader(dataStream);
+
+            //Считывает поток от текущего положения до конца.            
+            string responsereader = sreader.ReadToEnd();
+
+            //Закрываем поток ответа.
+            response.Close();
+
+            System.Xml.XmlDocument xmldoc =
+                new System.Xml.XmlDocument();
+
+            xmldoc.LoadXml(responsereader);
+            if (xmldoc.GetElementsByTagName("status")[0].ChildNodes[0].InnerText == "OK")
+            {
+                System.Xml.XmlNodeList nodes =
+                    xmldoc.SelectNodes("//location");
+                //Получаем широту и долготу.
+                foreach (System.Xml.XmlNode node in nodes)
+                {
+                    coords.Lat =
+                       System.Xml.XmlConvert.ToDouble(node.SelectSingleNode("lat").InnerText.ToString());
+                    coords.Lng =
+                       System.Xml.XmlConvert.ToDouble(node.SelectSingleNode("lng").InnerText.ToString());
+                }
+            }
+            return coords;
         }
     }
 }

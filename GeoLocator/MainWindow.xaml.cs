@@ -86,11 +86,11 @@ namespace GeoLocator
 
         private void OpenNewMarker(object sender, RoutedEventArgs e)
         {
-            NewMarker nm = new NewMarker();
+            NewMarker nm = new NewMarker(LoginName);
             if (LoginName != string.Empty)
             {
-                nm.Type.Visibility = Visibility.Visible;
-                nm.Type.ItemsSource = bll.GetAllPlaceTypes();
+                nm.MarkerType_combo.Visibility = Visibility.Visible;
+                nm.MarkerType_combo.ItemsSource = bll.GetAllPlaceTypes();
                 nm.IsLoginUser = true;
             }
             bool? res = nm.ShowDialog();
