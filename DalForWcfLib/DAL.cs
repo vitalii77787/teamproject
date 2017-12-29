@@ -176,11 +176,10 @@ namespace DalForWcfLib
             return markersDto.ToArray();
         }
 
-        public void UpdateMarker(int id, Marker newMarker)
+        public void UpdateMarker(int id, Marker newMarker, string[] contacts)
         {
             Marker marker = ctx.Markers.Where(item => item.Id == id).FirstOrDefault();
             marker.Address = newMarker.Address;
-            marker.Contacts = newMarker.Contacts;
             marker.Description = newMarker.Description;
             marker.Lat = newMarker.Lat;
             marker.Lng = newMarker.Lng;
@@ -188,6 +187,42 @@ namespace DalForWcfLib
             marker.Name = newMarker.Name;
             marker.Picture = newMarker.Picture;
             marker.Type = newMarker.Type;
+            marker.Contacts.Clear();
+            ctx.SaveChanges();
+            foreach (var item in contacts)
+            {
+                if (isSuchContactInDB(item))
+                {
+                    Contact contact = GetContact(item);
+                    contact.Marker = marker;
+                }
+                else
+                {
+                    AddNewContact(item, marker);
+                }
+            }
+            ctx.SaveChanges();
+        }
+
+        public bool isSuchContactInDB(string contactName)
+        {
+            bool isSuchContact = false;
+            if (ctx.Contacts.Where(item => item.Name == contactName).Count() > 0)
+            {
+                isSuchContact = true;
+            }
+            return isSuchContact;
+        }
+
+
+        public Contact GetContact(string contactName)
+        {
+            return ctx.Contacts.Where(item => item.Name == contactName).FirstOrDefault();
+        }
+
+        public void AddNewContact(string contactName, Marker marker)
+        {
+            ctx.Contacts.Add(new Contact() { Name = contactName, Marker = marker });
             ctx.SaveChanges();
         }
     }

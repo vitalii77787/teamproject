@@ -145,5 +145,25 @@ namespace IDalForUi
         {
             return client.GetDefaultPicture();
         }
+
+        public void UpdateMarker(Marker newMarker)
+        {
+            MarkerWcf marker = new MarkerWcf()
+            {
+                Id = newMarker.Id,
+                Name = newMarker.Name,
+                City = newMarker.City,
+                Street = newMarker.Street,
+                Number = newMarker.Number,
+                Description = newMarker.Description,
+                Lat = newMarker.Lat,
+                Lng = newMarker.Lng,
+                UserName = newMarker.UserName,
+                Picture = newMarker.Picture,
+                MarkerType = newMarker.MarkerType,
+                Contacts = newMarker.Contacts
+            };
+            client.UpdateMarker(marker);
+        }
     }
 }

@@ -190,6 +190,25 @@ namespace WcfGoogleMaps
             return bll.IsSuchUserNameInDB(userName);
         }
 
+        public void UpdateMarker(MarkerWcf newMarker)
+        {
+            MarkerDto markerDto = new MarkerDto()
+            {
+                Id = newMarker.Id,
+                Name = newMarker.Name,
+                City = newMarker.City,
+                Street = newMarker.Street,
+                Number = newMarker.Number,
+                Description = newMarker.Description,
+                Lat = newMarker.Lat,
+                Lng = newMarker.Lng,
+                UserName = newMarker.UserName,
+                Picture = newMarker.Picture,
+                MarkerType = newMarker.MarkerType,
+                Contacts = newMarker.Contacts
+            };
 
+            bll.UpdateMarker(markerDto);
+        }
     }
 }

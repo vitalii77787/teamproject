@@ -138,5 +138,33 @@ namespace BllForWcfLib
         {
             return dal.GetAllMarkersDto();
         }
+
+        public void UpdateMarker(MarkerDto newMarker)
+        {
+            MarkerType _markerType = dal.GetMarkerType(newMarker.MarkerType);
+            Address address;
+            if (IsSuchAddress(newMarker.City, newMarker.Street, newMarker.Number))
+            {
+                address = dal.GetQueryableAddress(newMarker.City, newMarker.Street, newMarker.Number).FirstOrDefault();
+            }
+            else
+            {
+                City _city = dal.GetCity(newMarker.City);
+                address = dal.AddNewAddress(_city, newMarker.Street, newMarker.Number);
+            }
+            Login login = dal.GetLoginByName(newMarker.UserName);
+            Marker marker = new Marker()
+            {
+                Name = newMarker.Name,
+                Address = address,
+                Description = newMarker.Description,
+                Lat = newMarker.Lat,
+                Lng = newMarker.Lng,
+                Login = login,
+                Picture = newMarker.Picture,
+                Type = _markerType
+            };
+            dal.UpdateMarker(newMarker.Id, marker, newMarker.Contacts);
+        }
     }
 }

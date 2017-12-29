@@ -39,6 +39,7 @@ namespace GeoLocator
             loginName = userName;
             DataContext = markercontext;
             bll = new BllForUi();
+            City_combo.ItemsSource = bll.GetAllCities();
             if (loginName == "admin")
             {
                 MarkerType_combo.Visibility = Visibility.Visible;

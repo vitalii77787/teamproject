@@ -24,6 +24,7 @@ namespace IBllForUi
         byte[] GetDefaultPicture();
         DataTable GetMarkersOfTypeAsDataTable(string type, string city);
         DataTable GetAllMarkers();
+        void UpdateMarker(ClassLib.Marker marker);
 
     }
 }

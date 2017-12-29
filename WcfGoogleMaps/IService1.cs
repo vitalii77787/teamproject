@@ -53,6 +53,9 @@ namespace WcfGoogleMaps
         [OperationContract]
         MarkerWcf[] GetAllMarkersDto();
 
+        [OperationContract]
+        void UpdateMarker(MarkerWcf newMarker);
+
         // TODO: Add your service operations here
     }
 

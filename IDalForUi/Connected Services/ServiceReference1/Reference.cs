@@ -315,6 +315,12 @@ namespace IDalForUi.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllMarkersDto", ReplyAction="http://tempuri.org/IService1/GetAllMarkersDtoResponse")]
         System.Threading.Tasks.Task<IDalForUi.ServiceReference1.MarkerWcf[]> GetAllMarkersDtoAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateMarker", ReplyAction="http://tempuri.org/IService1/UpdateMarkerResponse")]
+        void UpdateMarker(IDalForUi.ServiceReference1.MarkerWcf newMarker);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateMarker", ReplyAction="http://tempuri.org/IService1/UpdateMarkerResponse")]
+        System.Threading.Tasks.Task UpdateMarkerAsync(IDalForUi.ServiceReference1.MarkerWcf newMarker);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -446,6 +452,14 @@ namespace IDalForUi.ServiceReference1 {
         
         public System.Threading.Tasks.Task<IDalForUi.ServiceReference1.MarkerWcf[]> GetAllMarkersDtoAsync() {
             return base.Channel.GetAllMarkersDtoAsync();
+        }
+        
+        public void UpdateMarker(IDalForUi.ServiceReference1.MarkerWcf newMarker) {
+            base.Channel.UpdateMarker(newMarker);
+        }
+        
+        public System.Threading.Tasks.Task UpdateMarkerAsync(IDalForUi.ServiceReference1.MarkerWcf newMarker) {
+            return base.Channel.UpdateMarkerAsync(newMarker);
         }
     }
 }

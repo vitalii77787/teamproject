@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using IDalForUi;
 using System.Security.Cryptography;
 using System.Data;
+using ClassLib;
 
 namespace IBllForUi
 {
@@ -154,6 +155,11 @@ namespace IBllForUi
                 markersDataTable.Rows.Add(dr);
             }
             return markersDataTable;
+        }
+
+        public void UpdateMarker(Marker marker)
+        {
+            dalUi.UpdateMarker(marker);
         }
     }
 }

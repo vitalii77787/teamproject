@@ -81,9 +81,14 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <TextBox MinWidth="120" Margin="5" Grid.Column="0" Text="{Binding City}"
+            <ComboBox Name="City_combo" Grid.Column="0" Height="50" Visibility="Visible"
+                  SelectedItem="{Binding City}" Margin="5 20"
+                          materialDesign:HintAssist.Hint="City" 
+                          Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+            </ComboBox>
+            <!--<TextBox MinWidth="120" Margin="5" Grid.Column="0" Text="{Binding City}"
 	materialDesign:HintAssist.Hint="City"
-	Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" />
+	Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" />-->
             <TextBox MinWidth="120" Margin="5" Grid.Column="1" Text="{Binding Street}"
 	materialDesign:HintAssist.Hint="Street"
 	Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" />

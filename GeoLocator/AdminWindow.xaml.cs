@@ -16,7 +16,7 @@ using System.Collections.ObjectModel;
 //using GMap;
 //using ServerDtoLib;
 using System.Data;
-
+using ClassLib;
 
 namespace GeoLocator
 {
@@ -101,10 +101,40 @@ namespace GeoLocator
         }
 
       
-        private static void Row_Changed(object sender, DataRowChangeEventArgs e)
+        private void Row_Changed(object sender, DataRowChangeEventArgs e)
         {
-            Console.WriteLine("Row_Changed Event: name={0}; action={1}",
-                e.Row["name"], e.Action);
+            //Console.WriteLine("Row_Changed Event: name={0}; action={1}",
+            //    e.Row["name"], e.Action);
+            var Id = (int)e.Row["Id"];
+            var Name = (string)e.Row["Name"];
+            var City = e.Row["City"].ToString();
+            var Street = (string)e.Row["Street"];
+            var Number = (string)e.Row["Number"];
+            var Description = (string)e.Row["Description"];
+            var Lat = (double)e.Row["Lat"];
+            var Lng = (double)e.Row["Lng"];
+            var UserName = (string)e.Row["UserName"];
+            var Picture = (byte[])e.Row["Picture"];
+            var MarkerType = (string)e.Row["MarkerType"];
+            var Contacts = (string[])e.Row[11];
+            Marker marker = new Marker()
+            {
+                Id = (int)e.Row["Id"],
+                Name = (string)e.Row["Name"],
+                City = "Rivne",
+                Street = (string)e.Row["Street"],
+                Number = (string)e.Row["Number"],
+                Description = (string)e.Row["Description"],
+                Lat = (double)e.Row["Lat"],
+                Lng = (double)e.Row["Lng"],
+                UserName = (string)e.Row["UserName"],
+                Picture = (byte[])e.Row["Picture"],
+                MarkerType = (string)e.Row["MarkerType"],
+                Contacts = (string[])e.Row[11]
+            };
+            //IBll bll = new BllForUi();
+            bll.UpdateMarker(marker);
+            Marker_DataGrid.ItemsSource = bll.GetAllMarkers().DefaultView;
         }
     }
 }
