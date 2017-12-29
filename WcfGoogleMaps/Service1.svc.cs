@@ -52,6 +52,11 @@ namespace WcfGoogleMaps
             bll.AddNewUserPlace(name, city, street, number, markerType, lat, lng, picture, userName, description, contacts);
         }
 
+        public void DeleteMarker(int id)
+        {
+            bll.DeleteMarker(id);
+        }
+
         public string[] GetAllCities()
         {
             return bll.GetAllCities();

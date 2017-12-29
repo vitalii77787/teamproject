@@ -321,6 +321,12 @@ namespace IDalForUi.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateMarker", ReplyAction="http://tempuri.org/IService1/UpdateMarkerResponse")]
         System.Threading.Tasks.Task UpdateMarkerAsync(IDalForUi.ServiceReference1.MarkerWcf newMarker);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteMarker", ReplyAction="http://tempuri.org/IService1/DeleteMarkerResponse")]
+        void DeleteMarker(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteMarker", ReplyAction="http://tempuri.org/IService1/DeleteMarkerResponse")]
+        System.Threading.Tasks.Task DeleteMarkerAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -460,6 +466,14 @@ namespace IDalForUi.ServiceReference1 {
         
         public System.Threading.Tasks.Task UpdateMarkerAsync(IDalForUi.ServiceReference1.MarkerWcf newMarker) {
             return base.Channel.UpdateMarkerAsync(newMarker);
+        }
+        
+        public void DeleteMarker(int id) {
+            base.Channel.DeleteMarker(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteMarkerAsync(int id) {
+            return base.Channel.DeleteMarkerAsync(id);
         }
     }
 }

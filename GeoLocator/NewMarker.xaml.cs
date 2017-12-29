@@ -141,7 +141,7 @@ namespace GeoLocator
                 byte[] picture = File.ReadAllBytes(markercontext.MyImageSource);
                 PointLatLng pointLatLng = GetCoordinates(markercontext.City, markercontext.Street, markercontext.StreetNumber);
                 string markerType = "user";
-                if (loginName != "admin")
+                if (loginName == "admin")
                 {
                     markerType = MarkerType_combo.Text;
                 }

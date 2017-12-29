@@ -165,5 +165,10 @@ namespace IDalForUi
             };
             client.UpdateMarker(marker);
         }
+
+        public void DeleteMarker(int id)
+        {
+            client.DeleteMarker(id);
+        }
     }
 }

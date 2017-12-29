@@ -166,5 +166,10 @@ namespace BllForWcfLib
             };
             dal.UpdateMarker(newMarker.Id, marker, newMarker.Contacts);
         }
+
+        public void DeleteMarker(int id)
+        {
+            dal.DeleteMarker(id);
+        }
     }
 }

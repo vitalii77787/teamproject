@@ -225,5 +225,12 @@ namespace DalForWcfLib
             ctx.Contacts.Add(new Contact() { Name = contactName, Marker = marker });
             ctx.SaveChanges();
         }
+
+        public void DeleteMarker(int id)
+        {
+            Marker marker = ctx.Markers.Where(item => item.Id == id).FirstOrDefault();
+            ctx.Markers.Remove(marker);
+            ctx.SaveChanges();
+        }
     }
 }

@@ -56,6 +56,9 @@ namespace WcfGoogleMaps
         [OperationContract]
         void UpdateMarker(MarkerWcf newMarker);
 
+        [OperationContract]
+        void DeleteMarker(int id);
+
         // TODO: Add your service operations here
     }
 

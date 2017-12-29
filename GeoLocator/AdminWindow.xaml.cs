@@ -35,6 +35,7 @@ namespace GeoLocator
            // Markers= bll.GetMarkersOfTypeAsDataTable("supermarket", "Rivne");
           markers= bll.GetAllMarkers();
             markers.RowChanged += new DataRowChangeEventHandler(Row_Changed);
+            markers.RowDeleting += new DataRowChangeEventHandler(Row_Deleted);
             Marker_DataGrid.ItemsSource = markers.DefaultView;
            // Marker_DataGrid.DataContext = Markers;
         }
@@ -134,6 +135,13 @@ namespace GeoLocator
             };
             //IBll bll = new BllForUi();
             bll.UpdateMarker(marker);
+            Marker_DataGrid.ItemsSource = bll.GetAllMarkers().DefaultView;
+        }
+
+        private void Row_Deleted(object sender, DataRowChangeEventArgs e)
+        {
+            int id = (int)e.Row["Id"];
+            bll.DeleteMarker(id);
             Marker_DataGrid.ItemsSource = bll.GetAllMarkers().DefaultView;
         }
     }

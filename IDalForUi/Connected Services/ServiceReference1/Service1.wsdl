@@ -92,6 +92,12 @@
   <wsdl:message name="IService1_UpdateMarker_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdateMarkerResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_DeleteMarker_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMarker" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteMarker_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMarkerResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="IsSuchAddress">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/IsSuchAddress" message="tns:IService1_IsSuchAddress_InputMessage" />
@@ -148,6 +154,10 @@
     <wsdl:operation name="UpdateMarker">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateMarker" message="tns:IService1_UpdateMarker_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateMarkerResponse" message="tns:IService1_UpdateMarker_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMarker">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteMarker" message="tns:IService1_DeleteMarker_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteMarkerResponse" message="tns:IService1_DeleteMarker_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -271,6 +281,15 @@
     </wsdl:operation>
     <wsdl:operation name="UpdateMarker">
       <soap:operation soapAction="http://tempuri.org/IService1/UpdateMarker" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMarker">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteMarker" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

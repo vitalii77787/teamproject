@@ -161,5 +161,10 @@ namespace IBllForUi
         {
             dalUi.UpdateMarker(marker);
         }
+
+        public void DeleteMarker(int id)
+        {
+            dalUi.DeleteMarker(id);
+        }
     }
 }
