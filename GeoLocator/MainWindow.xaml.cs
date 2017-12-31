@@ -157,6 +157,8 @@ namespace GeoLocator
             ToolTip toolTip = new ToolTip { Content = marker.Description };
             GMap.NET.WindowsPresentation.GMapMarker markerG = new GMap.NET.WindowsPresentation.GMapMarker(new GMap.NET.PointLatLng(marker.Lat, marker.Lng));
             Image image = new Image();
+            image.MouseEnter += ((sender, e) => { Image_MouseEnter(sender, e, marker.Description); });
+            image.MouseLeave += Image_MouseLeave;
             image.ToolTip = toolTip;
             BitmapImage biImg = new BitmapImage();
             MemoryStream ms = new MemoryStream(marker.Picture);
@@ -205,6 +207,8 @@ namespace GeoLocator
             PointLatLng pointLatLng = GetCoordinates(city, street, number);
             GMap.NET.WindowsPresentation.GMapMarker markerG = new GMap.NET.WindowsPresentation.GMapMarker(pointLatLng);
             Image image =new Image();
+            image.MouseEnter += ((sender, e) => { Image_MouseEnter(sender, e, description); });
+            image.MouseLeave += Image_MouseLeave;
             image.ToolTip = toolTip;
             image.Source = new BitmapImage(new Uri(markerimage)); 
             image.Width = 20;
@@ -213,6 +217,18 @@ namespace GeoLocator
             markerG.Offset = new Point(-16, -32);
             //markerG.ZIndex = int.MaxValue;
             mapView.Markers.Add(markerG);       ///////////////////////
+        }
+
+        private void Image_MouseLeave(object sender, MouseEventArgs e)
+        {
+            DescriptionText.Opacity = 0;
+            DescriptionText.Text = "";
+        }
+
+        private void Image_MouseEnter(object sender, MouseEventArgs e, string description)
+        {
+            DescriptionText.Opacity = 100;
+            DescriptionText.Text = description;
         }
 
         private GMap.NET.PointLatLng GetCoordinates(string city, string street, string number)

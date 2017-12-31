@@ -120,7 +120,8 @@
                             </EventTrigger.Actions>
                         </EventTrigger>
                     </Button.Triggers>
-                    Login</Button>
+                    Login
+                </Button>
                 <Button Name="Register_btn" Margin="10,20,10,10" 
                         Width="150" Height="25" Click="Register_btn_Click">
                     <Button.Triggers>
@@ -149,15 +150,17 @@
                             </EventTrigger.Actions>
                         </EventTrigger>
                     </Button.Triggers>
-                    Registration</Button>
+                    Registration
+                </Button>
                 <StackPanel.Background>
                     <SolidColorBrush Color="WhiteSmoke" Opacity="0.6"></SolidColorBrush>
                 </StackPanel.Background>
             </StackPanel>
             <StackPanel Orientation="Vertical" Grid.Row="1" MaxWidth="200" HorizontalAlignment="Right" >
                 <StackPanel.Background>
-                    <SolidColorBrush Color="WhiteSmoke" Opacity="0.6"></SolidColorBrush></StackPanel.Background>
-                
+                    <SolidColorBrush Color="WhiteSmoke" Opacity="0.6"></SolidColorBrush>
+                </StackPanel.Background>
+
                 <ComboBox Name="MarkerTypes_combo"  VerticalAlignment="Top" Margin="10" Background="Azure"
                           materialDesign:HintAssist.Hint="Choose Marker Type" 
                           Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
@@ -248,5 +251,6 @@
                 </Button>
             </StackPanel>
         </Grid>
+        <TextBlock x:Name="DescriptionText" Width="100" Height="160" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0" Background="Beige" Margin="5,100,5,5" FontFamily="Times New Roman"></TextBlock>
     </Grid>
 </Window>
