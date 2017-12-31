@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -45,7 +46,7 @@ namespace DalForWcfLib
             ctx.SaveChanges();
 
 
-            var directoryPath = System.IO.Directory.GetCurrentDirectory().Replace("GeoLocator\\bin\\Debug", "") + @"DalForWcfLib\Resources\";
+            var directoryPath = AppDomain.CurrentDomain.BaseDirectory.Replace("WcfGoogleMaps", "") + @"DalForWcfLib\Resources\";
             byte[] supermarketImage = File.ReadAllBytes(directoryPath+"supermarket_icon.jpg");
             byte[] schoolImage = File.ReadAllBytes(directoryPath + "school_icon.jpg");
             byte[] otherImage = File.ReadAllBytes(directoryPath + "Pointer.jpg");
