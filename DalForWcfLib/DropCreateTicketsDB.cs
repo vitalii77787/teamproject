@@ -141,6 +141,18 @@ namespace DalForWcfLib
             ctx.SaveChanges();
 
             Address school12Address = new Address() { City = cityRivne, Street = "Академіка Грушевського", Number = "81А" };
+            Address school19Address = new Address() { City = cityRivne, Street = "Макарова", Number = "48" };
+            Address school8Address= new Address() { City = cityRivne, Street = "Князя Острозького", Number = "20" };
+            Address school27Address = new Address() { City = cityRivne, Street = "Дубенська", Number = "133" };
+            Address school23Address = new Address() { City = cityRivne, Street = "Вербова", Number = "42" };
+            Address school26Address = new Address() { City = cityRivne, Street = "Павлюченка", Number = "24" };
+            Address school6Address = new Address() { City = cityRivne, Street = "Олени Пчілки", Number = "9" };
+            ctx.Addresses.Add(school6Address);
+            ctx.Addresses.Add(school26Address);
+            ctx.Addresses.Add(school23Address);
+            ctx.Addresses.Add(school27Address);
+            ctx.Addresses.Add(school8Address);
+            ctx.Addresses.Add(school19Address);
             ctx.Addresses.Add(school12Address);
             ctx.SaveChanges();
             //Address school12Address = new Address() { Name = "school 12", City = cityRivne, Street = "Академіка Грушевського", Number = "81А" };
@@ -152,13 +164,91 @@ namespace DalForWcfLib
                 Name = "School 12",
                 Address = school12Address,
                 Picture = schoolImage,
-
                 Description = "school",
                 Login = adminLogin
             };
+
+            Marker school19Marker = new Marker()
+            {
+                Type = schoolType,
+                Lat = 50.6412649,
+                Lng = 26.1956746,
+                Name = "School 19",
+                Address = school19Address,
+                Picture = schoolImage,
+                Description = "Rivne Educational Complex №19",
+                Login = adminLogin
+            };
+            Marker school8Marker = new Marker()
+            {
+                Type = schoolType,
+                Lat = 50.6391284,
+                Lng = 26.1985821,
+                Name = "School 8",
+                Address = school8Address,
+                Picture = schoolImage,
+                Description = "Школа №8",
+                Login = adminLogin
+            };
+            Marker school27Marker = new Marker()
+            {
+                Type = schoolType,
+                Lat = 50.6113521,
+                Lng = 26.2149297,
+                Name = "School 27",
+                Address = school27Address,
+                Picture = schoolImage,
+                Description = "Школа №27",
+                Login = adminLogin
+            };
+            Marker school23Marker = new Marker()
+            {
+                Type = schoolType,
+                Lat = 50.632157,
+                Lng = 26.2051265,
+                Name = "School 23",
+                Address = school23Address,
+                Picture = schoolImage,
+                Description = "Школа №23",
+                Login = adminLogin
+            };
+            Marker school26Marker = new Marker()
+            {
+                Type = schoolType,
+                Lat = 50.6226748,
+                Lng = 26.2096796,
+                Name = "School 26",
+                Address = school26Address,
+                Picture = schoolImage,
+                Description = "Школа №26",
+                Login = adminLogin
+            };
+            Marker school6Marker = new Marker()
+            {
+                Type = schoolType,
+                Lat = 50.6129689,
+                Lng =26.2263948,
+                Name = "School 6",
+                Address = school6Address,
+                Picture = schoolImage,
+                Description = "Школа №6",
+                Login = adminLogin
+            };
+            ctx.Markers.Add(school6Marker);
+            ctx.Markers.Add(school26Marker);
+            ctx.Markers.Add(school23Marker);
+            ctx.Markers.Add(school27Marker);
+            ctx.Markers.Add(school8Marker);
             ctx.Markers.Add(school12Marker);
+            ctx.Markers.Add(school19Marker);
             ctx.SaveChanges();
-            ctx.Contacts.Add(new Contact() { Name = "0362 20 52 04", Marker = school12Marker });
+            ctx.Contacts.Add(new Contact() { Name = "097 716 7813", Marker = school6Marker });
+            ctx.Contacts.Add(new Contact() { Name = "03622 52083", Marker = school23Marker });
+            ctx.Contacts.Add(new Contact() { Name = "0362 628 377", Marker = school27Marker });
+            ctx.Contacts.Add(new Contact() { Name = "03622 85592", Marker = school12Marker });
+            ctx.Contacts.Add(new Contact() { Name = "0362 25 63 05", Marker = school19Marker });
+            ctx.Contacts.Add(new Contact() { Name = "0362 641 257", Marker = school8Marker });
+            ctx.Contacts.Add(new Contact() { Name = "03622 53238", Marker = school26Marker });
             ctx.SaveChanges();
             base.Seed(ctx);
         }

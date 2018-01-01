@@ -157,7 +157,7 @@ namespace GeoLocator
             ToolTip toolTip = new ToolTip { Content = marker.Description };
             GMap.NET.WindowsPresentation.GMapMarker markerG = new GMap.NET.WindowsPresentation.GMapMarker(new GMap.NET.PointLatLng(marker.Lat, marker.Lng));
             Image image = new Image();
-            image.MouseEnter += ((sender, e) => { Image_MouseEnter(sender, e, marker.Description); });
+            image.MouseEnter += ((sender, e) => { Image_MouseEnter(sender, e, marker.Description, marker.Contacts); });
             image.MouseLeave += Image_MouseLeave;
             image.ToolTip = toolTip;
             BitmapImage biImg = new BitmapImage();
@@ -207,7 +207,7 @@ namespace GeoLocator
             PointLatLng pointLatLng = GetCoordinates(city, street, number);
             GMap.NET.WindowsPresentation.GMapMarker markerG = new GMap.NET.WindowsPresentation.GMapMarker(pointLatLng);
             Image image =new Image();
-            image.MouseEnter += ((sender, e) => { Image_MouseEnter(sender, e, description); });
+            image.MouseEnter += ((sender, e) => { Image_MouseEnter(sender, e, description, contacts); });
             image.MouseLeave += Image_MouseLeave;
             image.ToolTip = toolTip;
             image.Source = new BitmapImage(new Uri(markerimage)); 
@@ -225,10 +225,14 @@ namespace GeoLocator
             DescriptionText.Text = "";
         }
 
-        private void Image_MouseEnter(object sender, MouseEventArgs e, string description)
+        private void Image_MouseEnter(object sender, MouseEventArgs e, string description, string[] contacts)
         {
-            DescriptionText.Opacity = 100;
-            DescriptionText.Text = description;
+            DescriptionText.Opacity = 80;
+            DescriptionText.Text = description+"\nContacts:";
+            foreach (var item in contacts)
+            {
+                DescriptionText.Text += "\n" + item;
+            }
         }
 
         private GMap.NET.PointLatLng GetCoordinates(string city, string street, string number)

@@ -251,6 +251,7 @@
                 </Button>
             </StackPanel>
         </Grid>
-        <TextBlock x:Name="DescriptionText" Width="100" Height="160" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0" Background="Beige" Margin="5,100,5,5" FontFamily="Times New Roman"></TextBlock>
+        <TextBlock  x:Name="DescriptionText" TextWrapping="WrapWithOverflow" Width="100" Height="160" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0" Background="Beige" Margin="5,100,5,5" FontFamily="Times New Roman"
+	></TextBlock>
     </Grid>
 </Window>
