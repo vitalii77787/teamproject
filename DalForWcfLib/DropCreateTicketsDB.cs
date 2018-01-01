@@ -50,6 +50,7 @@ namespace DalForWcfLib
             byte[] supermarketImage = File.ReadAllBytes(directoryPath+"supermarket_icon.jpg");
             byte[] schoolImage = File.ReadAllBytes(directoryPath + "school_icon.jpg");
             byte[] otherImage = File.ReadAllBytes(directoryPath + "Pointer.jpg");
+            byte[] cinemaImage = File.ReadAllBytes(directoryPath + "cinema_icon.png");
             //byte[] schoolImage = File.ReadAllBytes(@"Resources\school_icon.jpg");
             //byte[] otherImage = File.ReadAllBytes(@"C: \Users\vitalii_best\Downloads\bankimage.jpg"); /*(@"C:\Users\Serge\Source\Repos\team\teamproject\DalForWcfLib\Resources\Pointer.jpg");*/
             //byte[] supermarketImage = File.ReadAllBytes(@"C: \Users\vitalii_best\Downloads\bankimage.jpg"); /*(@"C:\Users\Serge\Source\Repos\team\teamproject\DalForWcfLib\Resources\supermarket_icon.jpg");*/
@@ -140,6 +141,8 @@ namespace DalForWcfLib
             ctx.Contacts.Add(new Contact() { Name = "0362 20 52 04", Marker = otherMarker });
             ctx.SaveChanges();
 
+            Address cinemaEra = new Address() { City = cityRivne, Street = "Гагаріна", Number = "51" };
+            Address cinemaUkraine=new Address() { City = cityRivne, Street = "майдан Незалежності", Number = "2" };
             Address school12Address = new Address() { City = cityRivne, Street = "Академіка Грушевського", Number = "81А" };
             Address school19Address = new Address() { City = cityRivne, Street = "Макарова", Number = "48" };
             Address school8Address= new Address() { City = cityRivne, Street = "Князя Острозького", Number = "20" };
@@ -147,6 +150,8 @@ namespace DalForWcfLib
             Address school23Address = new Address() { City = cityRivne, Street = "Вербова", Number = "42" };
             Address school26Address = new Address() { City = cityRivne, Street = "Павлюченка", Number = "24" };
             Address school6Address = new Address() { City = cityRivne, Street = "Олени Пчілки", Number = "9" };
+            ctx.Addresses.Add(cinemaEra);
+            ctx.Addresses.Add(cinemaUkraine);
             ctx.Addresses.Add(school6Address);
             ctx.Addresses.Add(school26Address);
             ctx.Addresses.Add(school23Address);
@@ -171,8 +176,8 @@ namespace DalForWcfLib
             Marker school19Marker = new Marker()
             {
                 Type = schoolType,
-                Lat = 50.6412649,
-                Lng = 26.1956746,
+                Lat = 50.6413633,
+                Lng = 26.1992904,
                 Name = "School 19",
                 Address = school19Address,
                 Picture = schoolImage,
@@ -182,8 +187,8 @@ namespace DalForWcfLib
             Marker school8Marker = new Marker()
             {
                 Type = schoolType,
-                Lat = 50.6391284,
-                Lng = 26.1985821,
+                Lat = 50.6379384,
+                Lng = 26.2014107,
                 Name = "School 8",
                 Address = school8Address,
                 Picture = schoolImage,
@@ -234,6 +239,32 @@ namespace DalForWcfLib
                 Description = "Школа №6",
                 Login = adminLogin
             };
+
+            Marker cinemaUkr = new Marker()
+            {
+                Type = ctx.MarkerTypes.FirstOrDefaultAsync(x=>x.Name=="cinema").Result,
+                Lat = 50.6202974,
+                Lng = 26.2514783,
+                Name = "Україна Кінопалац",
+                Address = cinemaUkraine,
+                Picture = cinemaImage,
+                Description = "Украина Кинопалац",
+                Login = adminLogin
+            };
+
+            Marker Eracinema = new Marker()
+            {
+                Type = ctx.MarkerTypes.FirstOrDefaultAsync(x => x.Name == "cinema").Result,
+                Lat = 50.6320133,
+                Lng = 26.2736146,
+                Name = "Ера",
+                Address = cinemaEra,
+                Picture = cinemaImage,
+                Description = "Мультиплекс Кіноцентр Ера",
+                Login = adminLogin
+            };
+            ctx.Markers.Add(Eracinema);
+            ctx.Markers.Add(cinemaUkr);
             ctx.Markers.Add(school6Marker);
             ctx.Markers.Add(school26Marker);
             ctx.Markers.Add(school23Marker);
@@ -242,6 +273,8 @@ namespace DalForWcfLib
             ctx.Markers.Add(school12Marker);
             ctx.Markers.Add(school19Marker);
             ctx.SaveChanges();
+            ctx.Contacts.Add(new Contact() { Name = "0800 505 333", Marker = Eracinema });
+            ctx.Contacts.Add(new Contact() { Name = "068 800 5588", Marker = cinemaUkr });
             ctx.Contacts.Add(new Contact() { Name = "097 716 7813", Marker = school6Marker });
             ctx.Contacts.Add(new Contact() { Name = "03622 52083", Marker = school23Marker });
             ctx.Contacts.Add(new Contact() { Name = "0362 628 377", Marker = school27Marker });
