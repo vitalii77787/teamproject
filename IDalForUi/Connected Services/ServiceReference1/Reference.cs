@@ -234,6 +234,83 @@ namespace IDalForUi.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CityWcf", Namespace="http://schemas.datacontract.org/2004/07/WcfGoogleMaps")]
+    [System.SerializableAttribute()]
+    public partial class CityWcf : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] CityAddressesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CityIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CityNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] CityAddresses {
+            get {
+                return this.CityAddressesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityAddressesField, value) != true)) {
+                    this.CityAddressesField = value;
+                    this.RaisePropertyChanged("CityAddresses");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CityId {
+            get {
+                return this.CityIdField;
+            }
+            set {
+                if ((this.CityIdField.Equals(value) != true)) {
+                    this.CityIdField = value;
+                    this.RaisePropertyChanged("CityId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CityName {
+            get {
+                return this.CityNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CityNameField, value) != true)) {
+                    this.CityNameField = value;
+                    this.RaisePropertyChanged("CityName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
@@ -315,6 +392,12 @@ namespace IDalForUi.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllMarkersDto", ReplyAction="http://tempuri.org/IService1/GetAllMarkersDtoResponse")]
         System.Threading.Tasks.Task<IDalForUi.ServiceReference1.MarkerWcf[]> GetAllMarkersDtoAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllCitiesDto", ReplyAction="http://tempuri.org/IService1/GetAllCitiesDtoResponse")]
+        IDalForUi.ServiceReference1.CityWcf[] GetAllCitiesDto();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllCitiesDto", ReplyAction="http://tempuri.org/IService1/GetAllCitiesDtoResponse")]
+        System.Threading.Tasks.Task<IDalForUi.ServiceReference1.CityWcf[]> GetAllCitiesDtoAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateMarker", ReplyAction="http://tempuri.org/IService1/UpdateMarkerResponse")]
         void UpdateMarker(IDalForUi.ServiceReference1.MarkerWcf newMarker);
@@ -458,6 +541,14 @@ namespace IDalForUi.ServiceReference1 {
         
         public System.Threading.Tasks.Task<IDalForUi.ServiceReference1.MarkerWcf[]> GetAllMarkersDtoAsync() {
             return base.Channel.GetAllMarkersDtoAsync();
+        }
+        
+        public IDalForUi.ServiceReference1.CityWcf[] GetAllCitiesDto() {
+            return base.Channel.GetAllCitiesDto();
+        }
+        
+        public System.Threading.Tasks.Task<IDalForUi.ServiceReference1.CityWcf[]> GetAllCitiesDtoAsync() {
+            return base.Channel.GetAllCitiesDtoAsync();
         }
         
         public void UpdateMarker(IDalForUi.ServiceReference1.MarkerWcf newMarker) {

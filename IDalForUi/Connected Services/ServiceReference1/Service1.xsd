@@ -191,10 +191,22 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAllCitiesDto">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllCitiesDtoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WcfGoogleMaps" minOccurs="0" name="GetAllCitiesDtoResult" nillable="true" type="q8:ArrayOfCityWcf" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="UpdateMarker">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WcfGoogleMaps" minOccurs="0" name="newMarker" nillable="true" type="q8:MarkerWcf" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WcfGoogleMaps" minOccurs="0" name="newMarker" nillable="true" type="q9:MarkerWcf" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

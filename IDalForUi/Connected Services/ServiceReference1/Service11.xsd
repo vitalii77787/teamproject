@@ -24,4 +24,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MarkerWcf" nillable="true" type="tns:MarkerWcf" />
+  <xs:complexType name="ArrayOfCityWcf">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CityWcf" nillable="true" type="tns:CityWcf" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCityWcf" nillable="true" type="tns:ArrayOfCityWcf" />
+  <xs:complexType name="CityWcf">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CityAddresses" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="CityId" type="xs:int" />
+      <xs:element minOccurs="0" name="CityName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CityWcf" nillable="true" type="tns:CityWcf" />
 </xs:schema>
