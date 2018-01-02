@@ -101,6 +101,23 @@ namespace IDalForUi
             return markers;
         }
 
+        public List<City> GetCities()
+        {
+            CityWcf[] citiesWcf = client.GetAllCitiesDto();
+            List<City> cities = new List<City>();
+            foreach (var item in citiesWcf)
+            {
+                City city = new City()
+                {
+                    Id = item.CityId,
+                    Name = item.CityName,
+                    Addresses = item.CityAddresses,
+                };
+                cities.Add(city);
+            }
+            return cities;
+        }
+
         public bool IsPasswordsEquals(string userName, byte[] password)
         {
             return client.IsPasswordsEquals(userName, password);

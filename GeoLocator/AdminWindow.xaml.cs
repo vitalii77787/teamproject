@@ -28,21 +28,24 @@ namespace GeoLocator
         //IBllForUi.IBll bll;
         // public ObservableCollection<ClassLib.Marker> Markers { get; set; }
         DataTable markers;
+        DataTable cities;
         public AdminWindow()
         {
             InitializeComponent();
             bll = new BllForUi();
-           // Markers= bll.GetMarkersOfTypeAsDataTable("supermarket", "Rivne");
-          markers= bll.GetAllMarkers();
+            // Markers= bll.GetMarkersOfTypeAsDataTable("supermarket", "Rivne");
+            markers = bll.GetAllMarkers();
+            cities = bll.GetAllCitiesCollection();
             markers.RowChanged += new DataRowChangeEventHandler(Row_Changed);
             markers.RowDeleting += new DataRowChangeEventHandler(Row_Deleted);
             Marker_DataGrid.ItemsSource = markers.DefaultView;
-           // Marker_DataGrid.DataContext = Markers;
+            City_DataGrid.ItemsSource = cities.DefaultView;
+            // Marker_DataGrid.DataContext = Markers;
         }
 
         IBllForUi.IBll bll;
 
-        
+
 
         private void AddClick(object sender, RoutedEventArgs e)
         {
@@ -101,7 +104,7 @@ namespace GeoLocator
 
         }
 
-      
+
         private void Row_Changed(object sender, DataRowChangeEventArgs e)
         {
             //Console.WriteLine("Row_Changed Event: name={0}; action={1}",

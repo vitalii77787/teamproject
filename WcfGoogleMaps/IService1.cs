@@ -54,6 +54,9 @@ namespace WcfGoogleMaps
         MarkerWcf[] GetAllMarkersDto();
 
         [OperationContract]
+        CityWcf[] GetAllCitiesDto();
+
+        [OperationContract]
         void UpdateMarker(MarkerWcf newMarker);
 
         [OperationContract]
@@ -162,6 +165,34 @@ namespace WcfGoogleMaps
         {
             get { return contacts; }
             set { contacts = value; }
+        }
+    }
+
+    [DataContract]
+    public class CityWcf
+    {
+        int cityid;
+        string cityname = string.Empty;
+        string[] cityaddresses;
+
+        [DataMember]
+        public int CityId
+        {
+            get { return cityid; }
+            set { cityid = value; }
+        }
+
+        [DataMember]
+        public string CityName
+        {
+            get { return cityname; }
+            set { cityname = value; }
+        }
+        [DataMember]
+        public string[] CityAddresses
+        {
+            get { return cityaddresses; }
+            set { cityaddresses = value; }
         }
     }
 }

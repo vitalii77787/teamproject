@@ -153,6 +153,23 @@ namespace DalForWcfLib
             return markersDto.ToArray();
         }
 
+        public CityDto[] GetAllCitiesDto()
+        {
+            City[] cities = ctx.Cities.ToArray();
+            Mapper.Reset();
+            Mapper.Initialize(cfg => cfg.CreateMap<City, CityDto>()
+                    .ForMember(x => x.Id, opt => opt.MapFrom(src => src.Id))
+                    .ForMember(x => x.Name, opt => opt.MapFrom(src => src.Name))
+                    .ForMember(x => x.Addresses, opt => opt.MapFrom(src => src.Addresses.Select(item => item.Street+" "+item.Number).ToArray()))
+                    );
+            List<CityDto> citiesDto = new List<CityDto>();
+            foreach (var item in cities)
+            {
+                CityDto cityDto = Mapper.Map<City, CityDto>(item);
+                citiesDto.Add(cityDto);
+            }
+            return citiesDto.ToArray();
+        }
         public MarkerDto[] GetAllMarkersDto()
         {
             Marker[] markers = ctx.Markers.ToArray();

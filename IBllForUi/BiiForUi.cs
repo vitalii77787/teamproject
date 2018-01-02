@@ -166,5 +166,24 @@ namespace IBllForUi
         {
             dalUi.DeleteMarker(id);
         }
+
+        public DataTable GetAllCitiesCollection()
+        {
+            DataTable citiesDataTable = new DataTable("cities");
+            DataColumn cityId = citiesDataTable.Columns.Add("Id", typeof(Int32));
+            citiesDataTable.PrimaryKey = new DataColumn[] { cityId };
+            citiesDataTable.Columns.Add("Name", typeof(string));
+            citiesDataTable.Columns.Add("Addresses", typeof(string[]));
+            List<City> citiesList = dalUi.GetCities();
+            foreach (var item in citiesList)
+            {
+                DataRow dr = citiesDataTable.NewRow();
+                dr["Id"] = item.Id;
+                dr["Name"] = item.Name;
+                dr["Addresses"] = item.Addresses;
+                citiesDataTable.Rows.Add(dr);
+            }
+            return citiesDataTable;
+        }
     }
 }

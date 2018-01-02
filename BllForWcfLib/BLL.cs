@@ -139,6 +139,11 @@ namespace BllForWcfLib
             return dal.GetAllMarkersDto();
         }
 
+        public CityDto[] GetAllCitiesDto()
+        {
+            return dal.GetAllCitiesDto();
+        }
+
         public void UpdateMarker(MarkerDto newMarker)
         {
             MarkerType _markerType = dal.GetMarkerType(newMarker.MarkerType);

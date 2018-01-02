@@ -62,6 +62,23 @@ namespace WcfGoogleMaps
             return bll.GetAllCities();
         }
 
+        public CityWcf[] GetAllCitiesDto()
+        {
+            CityDto[] citiesDto = bll.GetAllCitiesDto();
+            List<CityWcf> citiesWcf = new List<CityWcf>();
+            foreach (var item in citiesDto)
+            {
+                CityWcf city = new CityWcf()
+                {
+                    CityId = item.Id,
+                    CityName = item.Name,
+                    CityAddresses = item.Addresses
+                };
+                citiesWcf.Add(city);
+            }
+            return citiesWcf.ToArray();
+        }
+
         public MarkerWcf[] GetAllMarkersDto()
         {
             //Marker[] markers = bll.GetMar;
@@ -89,6 +106,8 @@ namespace WcfGoogleMaps
             }
             return markersWcf.ToArray();
         }
+
+
 
         public string[] GetAllPlaceTypes()
         {
