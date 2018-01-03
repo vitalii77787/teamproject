@@ -22,13 +22,13 @@
         </Grid.RowDefinitions>
         <TabControl x:Name="DataBase_TabControl">
             <TabItem Header="Markers">
-                <DataGrid x:Name="Marker_DataGrid"  ColumnHeaderStyle="{StaticResource DatagridHeader}" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding }">
+                <DataGrid x:Name="Marker_DataGrid" AlternatingRowBackground="Cornsilk" ColumnHeaderStyle="{StaticResource DatagridHeader}" AutoGenerateColumns="False" CanUserAddRows="False" ItemsSource="{Binding }">
                     <DataGrid.Columns >
-                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="30" IsReadOnly="True"/>
-                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="50" />
-                        <DataGridTextColumn Header="City" Width="50" Binding="{Binding City}" />
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="40" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="90" />
+                        <DataGridTextColumn Header="City" Width="80" Binding="{Binding City}" />
                         <DataGridTextColumn Header="Street" Width="100" Binding="{Binding Street}" />
-                        <DataGridTextColumn Header="Number" Width="35" Binding="{Binding Number}" />
+                        <DataGridTextColumn Header="Number" Width="45" Binding="{Binding Number}" />
                         <DataGridTextColumn Header="Description" Width="100" Binding="{Binding Description}" />
                         <DataGridTextColumn Header="Type" Width="50" Binding="{Binding MarkerType}" />
                         <DataGridTextColumn Header="Lat" Width="50" Binding="{Binding Lat}" />
