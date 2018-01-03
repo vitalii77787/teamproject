@@ -251,7 +251,16 @@
                 </Button>
             </StackPanel>
         </Grid>
-        <TextBlock  x:Name="DescriptionText" TextWrapping="WrapWithOverflow" Width="100" Height="160" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0" Background="Beige" Margin="5,100,5,5" FontFamily="Times New Roman"
-	></TextBlock>
+        <Border x:Name="ToolTipBorder" Width="120" Height="180" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="5,100,5,5" BorderThickness="2" CornerRadius="8,8,8,8" BorderBrush="Brown"  Opacity="0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                    <GradientStop Color="#FFDEAD" Offset="0.0" />
+                    <GradientStop Color="#F4A460" Offset="0.5" />
+                    <GradientStop Color="#CD853F" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <TextBlock  x:Name="DescriptionText" TextWrapping="WrapWithOverflow" Width="120" Height="180" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0"  Padding="10" FontFamily="Times New Roman" >
+        </TextBlock>
+        </Border>
     </Grid>
 </Window>

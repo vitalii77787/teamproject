@@ -221,12 +221,14 @@ namespace GeoLocator
 
         private void Image_MouseLeave(object sender, MouseEventArgs e)
         {
+            ToolTipBorder.Opacity = 0;
             DescriptionText.Opacity = 0;
             DescriptionText.Text = "";
         }
 
         private void Image_MouseEnter(object sender, MouseEventArgs e, string description, string[] contacts)
         {
+            ToolTipBorder.Opacity = 80;
             DescriptionText.Opacity = 80;
             DescriptionText.Text = description+"\nContacts:";
             foreach (var item in contacts)
