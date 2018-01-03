@@ -185,5 +185,24 @@ namespace IBllForUi
             }
             return citiesDataTable;
         }
+
+        public DataTable GetAllMarkerTypes()
+        {
+            DataTable markertypesDatatable = new DataTable("markertypes");
+            DataColumn markertypeId = markertypesDatatable.Columns.Add("Id", typeof(Int32));
+            markertypesDatatable.PrimaryKey = new DataColumn[] { markertypeId };
+            markertypesDatatable.Columns.Add("Name", typeof(string));
+            markertypesDatatable.Columns.Add("Markers", typeof(string[]));
+            List<MarkerType> markertypeList = dalUi.GetAllMarkerTypes();
+            foreach (var item in markertypeList)
+            {
+                DataRow dr = markertypesDatatable.NewRow();
+                dr["Id"] = item.Id;
+                dr["Name"] = item.Name;
+                dr["Markers"] = item.MarkersCollection;
+                markertypesDatatable.Rows.Add(dr);
+            }
+            return markertypesDatatable;
+        }
     }
 }

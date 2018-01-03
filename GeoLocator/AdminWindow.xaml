@@ -61,10 +61,17 @@
                 </DataGrid>
             </TabItem>
             <TabItem Header="MarkerType">
-                <DataGrid x:Name="MarkerType_DataGrid"  ColumnHeaderStyle="{StaticResource DatagridHeader}">
+                <DataGrid x:Name="MarkerType_DataGrid"  ColumnHeaderStyle="{StaticResource DatagridHeader}" ItemsSource="{Binding }" AutoGenerateColumns="False" CanUserAddRows="False">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Width="30" IsReadOnly="True" />
-                        <DataGridTextColumn Header="Name"  Width="50" />
+                        <DataGridTextColumn Header="Id" Width="50" IsReadOnly="True"  Binding="{Binding Id}" />
+                        <DataGridTextColumn Header="Name"  Width="90" Binding="{Binding Name}" />
+                        <DataGridTemplateColumn  Header="Markers" Width="SizeToCells"  MinWidth="120">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ListBox ItemsSource="{Binding Markers}"  ScrollViewer.VerticalScrollBarVisibility="Visible" Height="80" ></ListBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>

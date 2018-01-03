@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="City.cs" />
     <Compile Include="Marker.cs" />
+    <Compile Include="MarkerType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

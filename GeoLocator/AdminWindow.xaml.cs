@@ -29,6 +29,7 @@ namespace GeoLocator
         // public ObservableCollection<ClassLib.Marker> Markers { get; set; }
         DataTable markers;
         DataTable cities;
+        DataTable markertypes;
         public AdminWindow()
         {
             InitializeComponent();
@@ -36,10 +37,12 @@ namespace GeoLocator
             // Markers= bll.GetMarkersOfTypeAsDataTable("supermarket", "Rivne");
             markers = bll.GetAllMarkers();
             cities = bll.GetAllCitiesCollection();
+            markertypes = bll.GetAllMarkerTypes();
             markers.RowChanged += new DataRowChangeEventHandler(Row_Changed);
             markers.RowDeleting += new DataRowChangeEventHandler(Row_Deleted);
             Marker_DataGrid.ItemsSource = markers.DefaultView;
             City_DataGrid.ItemsSource = cities.DefaultView;
+            MarkerType_DataGrid.ItemsSource = markertypes.DefaultView;
             // Marker_DataGrid.DataContext = Markers;
         }
 

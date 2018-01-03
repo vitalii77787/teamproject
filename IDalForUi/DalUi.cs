@@ -118,6 +118,23 @@ namespace IDalForUi
             return cities;
         }
 
+        public List<MarkerType> GetAllMarkerTypes()
+        {
+            MarkerTypeWcf[] markerTypeWcf = client.GetAllMarkerTypesDto();
+            List<MarkerType> markertypes = new List<MarkerType>();
+            foreach (var item in markerTypeWcf)
+            {
+                MarkerType markerType = new MarkerType()
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    MarkersCollection = item.Markers,
+                };
+                markertypes.Add(markerType);
+            }
+            return markertypes;
+        }
+
         public bool IsPasswordsEquals(string userName, byte[] password)
         {
             return client.IsPasswordsEquals(userName, password);

@@ -107,7 +107,22 @@ namespace WcfGoogleMaps
             return markersWcf.ToArray();
         }
 
-
+        public MarkerTypeWcf[] GetAllMarkerTypesDto()
+        {
+            MarkerTypeDto[] markerTypesDto = bll.GetAllMarkerTypesDto();
+            List<MarkerTypeWcf> markertypesWcf = new List<MarkerTypeWcf>();
+            foreach (var item in markerTypesDto)
+            {
+                MarkerTypeWcf markertype = new MarkerTypeWcf()
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Markers = item.MarkersCollection
+                };
+                markertypesWcf.Add(markertype);
+            }
+            return markertypesWcf.ToArray();
+        }
 
         public string[] GetAllPlaceTypes()
         {
