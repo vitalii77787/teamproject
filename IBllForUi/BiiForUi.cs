@@ -27,6 +27,10 @@ namespace IBllForUi
             dalUi.AddNewUser(userName, md5password, city, street, number, loginStatus);
         }
 
+        public void AddNewMarkerType(string name)
+        {
+            dalUi.AddNewMarkerType(name);
+        }
 
         public string[] GetAllCities()
         {

@@ -21,6 +21,8 @@ namespace WcfGoogleMaps
             string description, string[] contacts);
 
         [OperationContract]
+        void AddNewMarkerType(string name);
+        [OperationContract]
         MarkerWcf[] GetMarkersOfType(string markerType, string city);
 
         [OperationContract]

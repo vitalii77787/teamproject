@@ -48,6 +48,11 @@ namespace BllForWcfLib
             dal.AddNewUserPlace(name, address, _markerType, description, lat, lng, picture, login, contacts);
         }
 
+        public void AddNewMarkerType(string name)
+        {
+            dal.AddNewMarkerType(name);
+        }
+
         public Marker[] GetMarkersOfType(string markerType, string city)
         {
             MarkerType _markerType = dal.GetMarkerType(markerType);

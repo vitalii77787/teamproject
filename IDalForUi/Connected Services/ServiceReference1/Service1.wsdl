@@ -20,6 +20,12 @@
   <wsdl:message name="IService1_AddNewUserPlace_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddNewUserPlaceResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_AddNewMarkerType_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewMarkerType" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddNewMarkerType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewMarkerTypeResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_GetMarkersOfType_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMarkersOfType" />
   </wsdl:message>
@@ -119,6 +125,10 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddNewUserPlace" message="tns:IService1_AddNewUserPlace_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddNewUserPlaceResponse" message="tns:IService1_AddNewUserPlace_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="AddNewMarkerType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddNewMarkerType" message="tns:IService1_AddNewMarkerType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddNewMarkerTypeResponse" message="tns:IService1_AddNewMarkerType_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetMarkersOfType">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMarkersOfType" message="tns:IService1_GetMarkersOfType_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetMarkersOfTypeResponse" message="tns:IService1_GetMarkersOfType_OutputMessage" />
@@ -193,6 +203,15 @@
     </wsdl:operation>
     <wsdl:operation name="AddNewUserPlace">
       <soap:operation soapAction="http://tempuri.org/IService1/AddNewUserPlace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewMarkerType">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddNewMarkerType" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

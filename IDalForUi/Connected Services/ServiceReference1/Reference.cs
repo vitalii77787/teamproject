@@ -404,6 +404,12 @@ namespace IDalForUi.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddNewUserPlace", ReplyAction="http://tempuri.org/IService1/AddNewUserPlaceResponse")]
         System.Threading.Tasks.Task AddNewUserPlaceAsync(string name, string city, string street, string number, string markerType, double lat, double lng, byte[] picture, string userName, string description, string[] contacts);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddNewMarkerType", ReplyAction="http://tempuri.org/IService1/AddNewMarkerTypeResponse")]
+        void AddNewMarkerType(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddNewMarkerType", ReplyAction="http://tempuri.org/IService1/AddNewMarkerTypeResponse")]
+        System.Threading.Tasks.Task AddNewMarkerTypeAsync(string name);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMarkersOfType", ReplyAction="http://tempuri.org/IService1/GetMarkersOfTypeResponse")]
         IDalForUi.ServiceReference1.MarkerWcf[] GetMarkersOfType(string markerType, string city);
         
@@ -536,6 +542,14 @@ namespace IDalForUi.ServiceReference1 {
         
         public System.Threading.Tasks.Task AddNewUserPlaceAsync(string name, string city, string street, string number, string markerType, double lat, double lng, byte[] picture, string userName, string description, string[] contacts) {
             return base.Channel.AddNewUserPlaceAsync(name, city, street, number, markerType, lat, lng, picture, userName, description, contacts);
+        }
+        
+        public void AddNewMarkerType(string name) {
+            base.Channel.AddNewMarkerType(name);
+        }
+        
+        public System.Threading.Tasks.Task AddNewMarkerTypeAsync(string name) {
+            return base.Channel.AddNewMarkerTypeAsync(name);
         }
         
         public IDalForUi.ServiceReference1.MarkerWcf[] GetMarkersOfType(string markerType, string city) {

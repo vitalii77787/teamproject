@@ -23,6 +23,11 @@ namespace IDalForUi
             client.AddNewUserPlace(name, city, street, number, markerType, lat, lng, picture, userName, description, contacts);
         }
 
+        public void AddNewMarkerType(string name)
+        {
+            client.AddNewMarkerType(name);
+        }
+
         public List<Marker> GetMarkersOfType(string markerType, string city)
         {
             MarkerWcf[] markersWcf = client.GetMarkersOfType(markerType, city);

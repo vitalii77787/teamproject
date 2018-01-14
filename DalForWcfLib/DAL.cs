@@ -82,6 +82,13 @@ namespace DalForWcfLib
             return ctx.MarkerTypes.Where(item => item.Name == marketType).FirstOrDefault();
         }
 
+        public void AddNewMarkerType(string name)
+        {
+            MarkerType markerType = new MarkerType() { Name = name};
+            ctx.MarkerTypes.Add(markerType);
+            ctx.SaveChanges();
+        }
+
         public Address AddNewAddress(City city, string street, string number)
         {
             Address address = new Address() { City = city, Street = street, Number = number };

@@ -28,6 +28,7 @@ namespace IBllForUi
         DataTable GetAllMarkerTypes();
         void UpdateMarker(ClassLib.Marker marker);
         void DeleteMarker(int id);
+        void AddNewMarkerType(string name);
 
     }
 }

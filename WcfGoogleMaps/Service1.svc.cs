@@ -41,6 +41,12 @@ namespace WcfGoogleMaps
             
             //cfg.Save();
         }
+
+        public void AddNewMarkerType(string name)
+        {
+            bll.AddNewMarkerType(name);
+        }
+
         public void AddNewUser(string userName, byte[] password, string city, string street, string number, string loginStatus)
         {
             bll.AddNewUser(userName, password, city, street, number, loginStatus);

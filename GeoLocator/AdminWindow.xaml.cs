@@ -52,9 +52,34 @@ namespace GeoLocator
 
         private void AddClick(object sender, RoutedEventArgs e)
         {
-            NewMarker newMarker = new NewMarker("admin");
-            newMarker.ShowDialog();
-            Marker_DataGrid.ItemsSource = bll.GetAllMarkers().DefaultView;
+            switch (DataBase_TabControl.SelectedIndex)
+            {
+                case 0:
+                    {
+                        NewMarker newMarker = new NewMarker("admin");
+                        newMarker.ShowDialog();
+                        Marker_DataGrid.ItemsSource = bll.GetAllMarkers().DefaultView;
+                    }
+                    break;
+                case 1:
+                    {
+                       
+                        break;
+                    }
+                case 2:
+                    {
+                        NewMarkerType newMarkerType = new NewMarkerType();
+                        newMarkerType.ShowDialog();
+                        MarkerType_DataGrid.ItemsSource = bll.GetAllMarkerTypes().DefaultView;
+                        break;
+                    }
+                case 3:
+                    {
+                        break;
+                    }
+                default:
+                    break;
+            }
         }
 
         private void DeleteClick(object sender, RoutedEventArgs e)
