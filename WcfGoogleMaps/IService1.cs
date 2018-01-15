@@ -60,7 +60,8 @@ namespace WcfGoogleMaps
 
         [OperationContract]
         MarkerTypeWcf[] GetAllMarkerTypesDto();
-
+        [OperationContract]
+        LoginWcf[] GetAllLoginDto();
         [OperationContract]
         void UpdateMarker(MarkerWcf newMarker);
 
@@ -225,6 +226,33 @@ namespace WcfGoogleMaps
         {
             get { return markers; }
             set { markers = value; }
+        }
+    }
+
+    [DataContract]
+    public class LoginWcf
+    {
+        int id;
+        string name = string.Empty;
+        byte[] password;
+
+        [DataMember]
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        [DataMember]
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        [DataMember]
+        public byte[] Password
+        {
+            get { return password; }
+            set { password = value; }
         }
     }
 }

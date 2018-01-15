@@ -195,6 +195,23 @@ namespace DalForWcfLib
             }
             return citiesDto.ToArray();
         }
+
+        public LoginDto[] GetAllLoginsDto()
+        {
+            Login[] logins = ctx.Logins.ToArray();
+            Mapper.Reset();
+            Mapper.Initialize(cfg => cfg.CreateMap<Login, LoginDto>()
+            .ForMember(x => x.Id, opt => opt.MapFrom(src => src.Id))
+            .ForMember(x => x.Name, opt => opt.MapFrom(src => src.Name))
+            .ForMember(x => x.Password, opt => opt.MapFrom(src => src.Password)));
+            List<LoginDto> loginsDto = new List<LoginDto>();
+            foreach (var item in logins)
+            {
+                LoginDto loginDto = Mapper.Map<Login, LoginDto>(item);
+                loginsDto.Add(loginDto);
+            }
+            return loginsDto.ToArray();
+        }
         public MarkerDto[] GetAllMarkersDto()
         {
             Marker[] markers = ctx.Markers.ToArray();

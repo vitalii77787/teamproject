@@ -30,6 +30,7 @@ namespace GeoLocator
         DataTable markers;
         DataTable cities;
         DataTable markertypes;
+        DataTable logins;
         public AdminWindow()
         {
             InitializeComponent();
@@ -38,6 +39,7 @@ namespace GeoLocator
             markers = bll.GetAllMarkers();
             cities = bll.GetAllCitiesCollection();
             markertypes = bll.GetAllMarkerTypes();
+            logins = bll.GetAllLogins();
             markers.RowChanged += new DataRowChangeEventHandler(Row_Changed);
             markers.RowDeleting += new DataRowChangeEventHandler(Row_Deleted);
             markertypes.RowChanged += new DataRowChangeEventHandler(MarkerTypeRow_Changed);
@@ -47,6 +49,7 @@ namespace GeoLocator
             Marker_DataGrid.ItemsSource = markers.DefaultView;
             City_DataGrid.ItemsSource = cities.DefaultView;
             MarkerType_DataGrid.ItemsSource = markertypes.DefaultView;
+            Logins_DataGrid.ItemsSource = logins.DefaultView;
             // Marker_DataGrid.DataContext = Markers;
         }
 

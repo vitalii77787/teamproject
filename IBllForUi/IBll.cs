@@ -26,6 +26,7 @@ namespace IBllForUi
         DataTable GetAllMarkers();
         DataTable GetAllCitiesCollection();
         DataTable GetAllMarkerTypes();
+        DataTable GetAllLogins();
         void UpdateMarker(ClassLib.Marker marker);
         void DeleteMarker(int id);
         void AddNewMarkerType(string name);

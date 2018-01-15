@@ -388,6 +388,83 @@ namespace IDalForUi.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LoginWcf", Namespace="http://schemas.datacontract.org/2004/07/WcfGoogleMaps")]
+    [System.SerializableAttribute()]
+    public partial class LoginWcf : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] PasswordField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
@@ -487,6 +564,12 @@ namespace IDalForUi.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllMarkerTypesDto", ReplyAction="http://tempuri.org/IService1/GetAllMarkerTypesDtoResponse")]
         System.Threading.Tasks.Task<IDalForUi.ServiceReference1.MarkerTypeWcf[]> GetAllMarkerTypesDtoAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllLoginDto", ReplyAction="http://tempuri.org/IService1/GetAllLoginDtoResponse")]
+        IDalForUi.ServiceReference1.LoginWcf[] GetAllLoginDto();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllLoginDto", ReplyAction="http://tempuri.org/IService1/GetAllLoginDtoResponse")]
+        System.Threading.Tasks.Task<IDalForUi.ServiceReference1.LoginWcf[]> GetAllLoginDtoAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateMarker", ReplyAction="http://tempuri.org/IService1/UpdateMarkerResponse")]
         void UpdateMarker(IDalForUi.ServiceReference1.MarkerWcf newMarker);
@@ -654,6 +737,14 @@ namespace IDalForUi.ServiceReference1 {
         
         public System.Threading.Tasks.Task<IDalForUi.ServiceReference1.MarkerTypeWcf[]> GetAllMarkerTypesDtoAsync() {
             return base.Channel.GetAllMarkerTypesDtoAsync();
+        }
+        
+        public IDalForUi.ServiceReference1.LoginWcf[] GetAllLoginDto() {
+            return base.Channel.GetAllLoginDto();
+        }
+        
+        public System.Threading.Tasks.Task<IDalForUi.ServiceReference1.LoginWcf[]> GetAllLoginDtoAsync() {
+            return base.Channel.GetAllLoginDtoAsync();
         }
         
         public void UpdateMarker(IDalForUi.ServiceReference1.MarkerWcf newMarker) {

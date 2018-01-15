@@ -85,6 +85,23 @@ namespace WcfGoogleMaps
             return citiesWcf.ToArray();
         }
 
+        public LoginWcf[] GetAllLoginDto()
+        {
+            LoginDto[] loginsDto = bll.GetAllLoginDto();
+            List<LoginWcf> loginsWcf = new List<LoginWcf>();
+            foreach (var item in loginsDto)
+            {
+                LoginWcf login = new LoginWcf()
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Password = item.Password
+                };
+                loginsWcf.Add(login);
+            }
+            return loginsWcf.ToArray();
+        }
+
         public MarkerWcf[] GetAllMarkersDto()
         {
             //Marker[] markers = bll.GetMar;
