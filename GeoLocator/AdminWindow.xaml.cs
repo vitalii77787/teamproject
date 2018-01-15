@@ -42,10 +42,25 @@ namespace GeoLocator
             markers.RowDeleting += new DataRowChangeEventHandler(Row_Deleted);
             markertypes.RowChanged += new DataRowChangeEventHandler(MarkerTypeRow_Changed);
             markertypes.RowDeleting += new DataRowChangeEventHandler(MarkerTypeRow_Deleted);
+            cities.RowChanged += new DataRowChangeEventHandler(CitiesRow_Changed);
+            cities.RowDeleting += new DataRowChangeEventHandler(CitiesRow_Deleted);
             Marker_DataGrid.ItemsSource = markers.DefaultView;
             City_DataGrid.ItemsSource = cities.DefaultView;
             MarkerType_DataGrid.ItemsSource = markertypes.DefaultView;
             // Marker_DataGrid.DataContext = Markers;
+        }
+
+        private void CitiesRow_Deleted(object sender, DataRowChangeEventArgs e)
+        {
+            var Id = (int)e.Row["Id"];
+            //bll.DeleteCity(int id);
+        }
+
+        private void CitiesRow_Changed(object sender, DataRowChangeEventArgs e)
+        {
+            var Id = (int)e.Row["Id"];
+            var  Name = (string)e.Row["Name"];
+            //bll.UpdateCity(int id, string name);
         }
 
         IBllForUi.IBll bll;
