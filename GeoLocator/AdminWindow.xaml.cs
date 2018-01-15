@@ -40,6 +40,8 @@ namespace GeoLocator
             markertypes = bll.GetAllMarkerTypes();
             markers.RowChanged += new DataRowChangeEventHandler(Row_Changed);
             markers.RowDeleting += new DataRowChangeEventHandler(Row_Deleted);
+            markertypes.RowChanged += new DataRowChangeEventHandler(MarkerTypeRow_Changed);
+            markertypes.RowDeleting += new DataRowChangeEventHandler(MarkerTypeRow_Deleted);
             Marker_DataGrid.ItemsSource = markers.DefaultView;
             City_DataGrid.ItemsSource = cities.DefaultView;
             MarkerType_DataGrid.ItemsSource = markertypes.DefaultView;
@@ -132,7 +134,18 @@ namespace GeoLocator
 
         }
 
-
+        private void MarkerTypeRow_Changed(object sender, DataRowChangeEventArgs e)
+        {
+            var Id = (int)e.Row["Id"];
+            var Name = (string)e.Row["Name"];
+            var Markers = (string[])e.Row["Markers"];
+            //bll.UpdateMarkerType(int id, string name);
+        }
+        private void MarkerTypeRow_Deleted(object sender, DataRowChangeEventArgs e)
+        {
+            var Id = (int)e.Row["Id"];
+            //bll.DeleteMarkerType(int id);
+        }
         private void Row_Changed(object sender, DataRowChangeEventArgs e)
         {
             //Console.WriteLine("Row_Changed Event: name={0}; action={1}",
