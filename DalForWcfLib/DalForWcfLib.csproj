@@ -92,15 +92,15 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ServerDtoLib\ServerDtoLib.csproj">
-      <Project>{281b7064-beea-4d29-9faf-8d559e31f7c4}</Project>
-      <Name>ServerDtoLib</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\cinema_icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ServerDtoLib\ServerDtoLib.csproj">
+      <Project>{281B7064-BEEA-4D29-9FAF-8D559E31F7C4}</Project>
+      <Name>ServerDtoLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -164,7 +164,7 @@ namespace DalForWcfLib
         {
             MarkerType[] markertypes = ctx.MarkerTypes.ToArray();
             Mapper.Reset();
-            Mapper.Initialize(cfg => cfg.CreateMap<MarkerType, MarkerTypeDto>()
+            Mapper.Initialize(cfg => cfg.CreateMap<MarkerType, ServerDtoLib. MarkerTypeDto>()
                   .ForMember(x => x.Id, opt => opt.MapFrom(src => src.Id))
                   .ForMember(x => x.Name, opt => opt.MapFrom(src => src.Name))
                   .ForMember(x => x.MarkersCollection, opt => opt.MapFrom(src => src.Markers.Select(item => item.Name).ToArray()))

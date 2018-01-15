@@ -106,39 +106,39 @@ namespace IDalForUi
             return markers;
         }
 
-        //public List<City> GetCities()
-        //{
-        //    CityWcf[] citiesWcf = client.GetAllCitiesDto();
-        //    List<City> cities = new List<City>();
-        //    foreach (var item in citiesWcf)
-        //    {
-        //        City city = new City()
-        //        {
-        //            Id = item.CityId,
-        //            Name = item.CityName,
-        //            Addresses = item.CityAddresses,
-        //        };
-        //        cities.Add(city);
-        //    }
-        //    return cities;
-        //}
+        public List<City> GetCities()
+        {
+            CityWcf[] citiesWcf = client.GetAllCitiesDto();
+            List<City> cities = new List<City>();
+            foreach (var item in citiesWcf)
+            {
+                City city = new City()
+                {
+                    Id = item.CityId,
+                    Name = item.CityName,
+                    Addresses = item.CityAddresses,
+                };
+                cities.Add(city);
+            }
+            return cities;
+        }
 
-        //public List<MarkerType> GetAllMarkerTypes()
-        //{
-        //    MarkerTypeWcf[] markerTypeWcf = client.GetAllMarkerTypesDto();
-        //    List<MarkerType> markertypes = new List<MarkerType>();
-        //    foreach (var item in markerTypeWcf)
-        //    {
-        //        MarkerType markerType = new MarkerType()
-        //        {
-        //            Id = item.Id,
-        //            Name = item.Name,
-        //            MarkersCollection = item.Markers,
-        //        };
-        //        markertypes.Add(markerType);
-        //    }
-        //    return markertypes;
-        //}
+        public List<MarkerType> GetAllMarkerTypes()
+        {
+            MarkerTypeWcf[] markerTypeWcf = client.GetAllMarkerTypesDto();
+            List<MarkerType> markertypes = new List<MarkerType>();
+            foreach (var item in markerTypeWcf)
+            {
+                MarkerType markerType = new MarkerType()
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    MarkersCollection = item.Markers,
+                };
+                markertypes.Add(markerType);
+            }
+            return markertypes;
+        }
 
         public bool IsPasswordsEquals(string userName, byte[] password)
         {
