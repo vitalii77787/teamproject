@@ -164,7 +164,7 @@ namespace DalForWcfLib
         {
             MarkerType[] markertypes = ctx.MarkerTypes.ToArray();
             Mapper.Reset();
-            Mapper.Initialize(cfg => cfg.CreateMap<MarkerType, MarkerTypeDto>()
+            Mapper.Initialize(cfg => cfg.CreateMap<MarkerType, ServerDtoLib. MarkerTypeDto>()
                   .ForMember(x => x.Id, opt => opt.MapFrom(src => src.Id))
                   .ForMember(x => x.Name, opt => opt.MapFrom(src => src.Name))
                   .ForMember(x => x.MarkersCollection, opt => opt.MapFrom(src => src.Markers.Select(item => item.Name).ToArray()))
@@ -271,6 +271,13 @@ namespace DalForWcfLib
         public void DeleteMarker(int id)
         {
             Marker marker = ctx.Markers.Where(item => item.Id == id).FirstOrDefault();
+            Contact[] contacts = ctx.Contacts.Where(item => item.Marker.Id == id).ToArray();
+            foreach (var item in contacts)
+            {
+                ctx.Contacts.Remove(item);
+            }
+            ctx.SaveChanges();
+            //ctx.Entry(marker).State = System.Data.Entity.EntityState.Deleted;
             ctx.Markers.Remove(marker);
             ctx.SaveChanges();
         }

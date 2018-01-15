@@ -20,6 +20,12 @@
   <wsdl:message name="IService1_AddNewUserPlace_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddNewUserPlaceResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_AddNewMarkerType_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewMarkerType" />
+  </wsdl:message>
+  <wsdl:message name="IService1_AddNewMarkerType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddNewMarkerTypeResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_GetMarkersOfType_InputMessage">
     <wsdl:part name="parameters" element="tns:GetMarkersOfType" />
   </wsdl:message>
@@ -62,6 +68,54 @@
   <wsdl:message name="IService1_GetAllCities_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllCitiesResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetLoginStatusOfUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoginStatusOfUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetLoginStatusOfUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoginStatusOfUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCityStreetAndNumberOfUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityStreetAndNumberOfUser" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetCityStreetAndNumberOfUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCityStreetAndNumberOfUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDefaultPicture_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDefaultPicture" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetDefaultPicture_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDefaultPictureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllMarkersDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarkersDto" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllMarkersDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarkersDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllCitiesDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCitiesDto" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllCitiesDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllCitiesDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllMarkerTypesDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarkerTypesDto" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllMarkerTypesDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllMarkerTypesDtoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateMarker_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMarker" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateMarker_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateMarkerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteMarker_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMarker" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteMarker_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteMarkerResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="IsSuchAddress">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/IsSuchAddress" message="tns:IService1_IsSuchAddress_InputMessage" />
@@ -70,6 +124,10 @@
     <wsdl:operation name="AddNewUserPlace">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddNewUserPlace" message="tns:IService1_AddNewUserPlace_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddNewUserPlaceResponse" message="tns:IService1_AddNewUserPlace_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNewMarkerType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/AddNewMarkerType" message="tns:IService1_AddNewMarkerType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/AddNewMarkerTypeResponse" message="tns:IService1_AddNewMarkerType_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetMarkersOfType">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetMarkersOfType" message="tns:IService1_GetMarkersOfType_InputMessage" />
@@ -99,6 +157,38 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllCities" message="tns:IService1_GetAllCities_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllCitiesResponse" message="tns:IService1_GetAllCities_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetLoginStatusOfUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetLoginStatusOfUser" message="tns:IService1_GetLoginStatusOfUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetLoginStatusOfUserResponse" message="tns:IService1_GetLoginStatusOfUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCityStreetAndNumberOfUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetCityStreetAndNumberOfUser" message="tns:IService1_GetCityStreetAndNumberOfUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetCityStreetAndNumberOfUserResponse" message="tns:IService1_GetCityStreetAndNumberOfUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultPicture">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetDefaultPicture" message="tns:IService1_GetDefaultPicture_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetDefaultPictureResponse" message="tns:IService1_GetDefaultPicture_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarkersDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllMarkersDto" message="tns:IService1_GetAllMarkersDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllMarkersDtoResponse" message="tns:IService1_GetAllMarkersDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCitiesDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllCitiesDto" message="tns:IService1_GetAllCitiesDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllCitiesDtoResponse" message="tns:IService1_GetAllCitiesDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarkerTypesDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllMarkerTypesDto" message="tns:IService1_GetAllMarkerTypesDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllMarkerTypesDtoResponse" message="tns:IService1_GetAllMarkerTypesDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMarker">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateMarker" message="tns:IService1_UpdateMarker_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateMarkerResponse" message="tns:IService1_UpdateMarker_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMarker">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteMarker" message="tns:IService1_DeleteMarker_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteMarkerResponse" message="tns:IService1_DeleteMarker_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -113,6 +203,15 @@
     </wsdl:operation>
     <wsdl:operation name="AddNewUserPlace">
       <soap:operation soapAction="http://tempuri.org/IService1/AddNewUserPlace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNewMarkerType">
+      <soap:operation soapAction="http://tempuri.org/IService1/AddNewMarkerType" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -176,6 +275,78 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllCities">
       <soap:operation soapAction="http://tempuri.org/IService1/GetAllCities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoginStatusOfUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetLoginStatusOfUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCityStreetAndNumberOfUser">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetCityStreetAndNumberOfUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDefaultPicture">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetDefaultPicture" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarkersDto">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllMarkersDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCitiesDto">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllCitiesDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllMarkerTypesDto">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllMarkerTypesDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateMarker">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateMarker" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteMarker">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteMarker" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
