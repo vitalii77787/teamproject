@@ -271,6 +271,13 @@ namespace DalForWcfLib
         public void DeleteMarker(int id)
         {
             Marker marker = ctx.Markers.Where(item => item.Id == id).FirstOrDefault();
+            Contact[] contacts = ctx.Contacts.Where(item => item.Marker.Id == id).ToArray();
+            foreach (var item in contacts)
+            {
+                ctx.Contacts.Remove(item);
+            }
+            ctx.SaveChanges();
+            //ctx.Entry(marker).State = System.Data.Entity.EntityState.Deleted;
             ctx.Markers.Remove(marker);
             ctx.SaveChanges();
         }
