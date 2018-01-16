@@ -40,17 +40,37 @@ namespace GeoLocator
             cities = bll.GetAllCitiesCollection();
             markertypes = bll.GetAllMarkerTypes();
             logins = bll.GetAllLogins();
+            InitEvents();
+            Marker_DataGrid.ItemsSource = markers.DefaultView;
+            City_DataGrid.ItemsSource = cities.DefaultView;
+            MarkerType_DataGrid.ItemsSource = markertypes.DefaultView;
+            Logins_DataGrid.ItemsSource = logins.DefaultView;
+            // Marker_DataGrid.DataContext = Markers;
+        }
+
+        private void InitEvents()
+        {
             markers.RowChanged += new DataRowChangeEventHandler(Row_Changed);
             markers.RowDeleting += new DataRowChangeEventHandler(Row_Deleted);
             markertypes.RowChanged += new DataRowChangeEventHandler(MarkerTypeRow_Changed);
             markertypes.RowDeleting += new DataRowChangeEventHandler(MarkerTypeRow_Deleted);
             cities.RowChanged += new DataRowChangeEventHandler(CitiesRow_Changed);
             cities.RowDeleting += new DataRowChangeEventHandler(CitiesRow_Deleted);
-            Marker_DataGrid.ItemsSource = markers.DefaultView;
-            City_DataGrid.ItemsSource = cities.DefaultView;
-            MarkerType_DataGrid.ItemsSource = markertypes.DefaultView;
-            Logins_DataGrid.ItemsSource = logins.DefaultView;
-            // Marker_DataGrid.DataContext = Markers;
+            logins.RowChanged += new DataRowChangeEventHandler(LoginsRow_Changed);
+            logins.RowDeleting += new DataRowChangeEventHandler(LoginsRow_Deleted);
+        }
+
+        private void LoginsRow_Deleted(object sender, DataRowChangeEventArgs e)
+        {
+            var Id = (int)e.Row["Id"];
+            //bll.DeleteLogin(int id);
+        }
+
+        private void LoginsRow_Changed(object sender, DataRowChangeEventArgs e)
+        {
+            var Id = (int)e.Row["Id"];
+            var Name = (string)e.Row["Name"];
+            //bll.UpdateLogin(int id, string name);
         }
 
         private void CitiesRow_Deleted(object sender, DataRowChangeEventArgs e)
@@ -83,16 +103,18 @@ namespace GeoLocator
                     break;
                 case 1:
                     {
-                       
-                        break;
+                        RegisterNewUser registerNewUser = new RegisterNewUser();
+                        registerNewUser.ShowDialog();
+                        Logins_DataGrid.ItemsSource = bll.GetAllLogins().DefaultView;
                     }
+                    break;
                 case 2:
                     {
                         //NewMarkerType newMarkerType = new NewMarkerType();
                         //newMarkerType.ShowDialog();
                         MarkerType_DataGrid.ItemsSource = bll.GetAllMarkerTypes().DefaultView;
-                        break;
                     }
+                    break;
                 case 3:
                     {
                         break;
