@@ -1,17 +1,18 @@
 ﻿using GeoLocator.ContextObjects;
-using System.Windows;
 using IBllForUi;
+using System.Windows;
+
 
 namespace GeoLocator
 {
     /// <summary>
-    /// Interaction logic for NewMarkerType.xaml
+    /// Interaction logic for NewCity.xaml
     /// </summary>
-    public partial class NewMarkerType : Window
+    public partial class NewCity : Window
     {
         IBllForUi.IBll bll;
-        NewMarkerTypeContext context = new NewMarkerTypeContext();
-        public NewMarkerType()
+        NewCityContext context = new NewCityContext();
+        public NewCity()
         {
             InitializeComponent();
             DataContext = context;
@@ -20,9 +21,9 @@ namespace GeoLocator
 
         private void OKClick(object sender, RoutedEventArgs e)
         {
-            if(context.Name!=null)
+            if (context.Name != null)
             {
-                bll.AddNewMarkerType(context.Name);
+                //bll.AddNewCity(context.Name);
             }
             Close();
         }

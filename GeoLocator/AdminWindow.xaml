@@ -66,7 +66,7 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Id" Width="50" IsReadOnly="True"  Binding="{Binding Id}" />
                         <DataGridTextColumn Header="Name"  Width="90" Binding="{Binding Name}" />
-                        <DataGridTemplateColumn  Header="Markers" Width="SizeToCells"  MinWidth="120">
+                        <!--<DataGridTemplateColumn  Header="Markers" Width="SizeToCells"  MinWidth="120">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <ListBox ItemsSource="{Binding Markers}"  ScrollViewer.VerticalScrollBarVisibility="Visible" Height="50" AlternationCount="2" >
@@ -89,7 +89,7 @@
                                     </ListBox>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                        </DataGridTemplateColumn>-->
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
@@ -98,7 +98,7 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Id" Width="50" IsReadOnly="True"  Binding="{Binding Id}"  />
                         <DataGridTextColumn Header="Name"  Width="90" Binding="{Binding Name}" />
-                        <DataGridTemplateColumn  Header="Addresses" Width="SizeToCells"  MinWidth="120">
+                        <!--<DataGridTemplateColumn  Header="Addresses" Width="SizeToCells"  MinWidth="120">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <ListBox ItemsSource="{Binding Addresses}"  ScrollViewer.VerticalScrollBarVisibility="Visible" Height="50" AlternationCount="2">
@@ -121,7 +121,7 @@
                                     </ListBox>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
+                        </DataGridTemplateColumn>-->
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>

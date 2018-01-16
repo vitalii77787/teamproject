@@ -96,9 +96,13 @@
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ContextObjects\AdminWindowContext.cs" />
+    <Compile Include="ContextObjects\NewCityContext.cs" />
     <Compile Include="ContextObjects\NewMarkerTypeContext.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="NewCity.xaml.cs">
+      <DependentUpon>NewCity.xaml</DependentUpon>
     </Compile>
     <Compile Include="NewMarkerType.xaml.cs">
       <DependentUpon>NewMarkerType.xaml</DependentUpon>
@@ -133,6 +137,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NewCity.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="NewMarker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

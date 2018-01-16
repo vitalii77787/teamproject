@@ -85,15 +85,18 @@ namespace GeoLocator
                     }
                 case 2:
                     {
-                        //NewMarkerType newMarkerType = new NewMarkerType();
-                        //newMarkerType.ShowDialog();
+                        NewMarkerType newMarkerType = new NewMarkerType();
+                        newMarkerType.ShowDialog();
                         MarkerType_DataGrid.ItemsSource = bll.GetAllMarkerTypes().DefaultView;
-                        break;
                     }
+                    break;
                 case 3:
                     {
-                        break;
+                        NewCity newcity = new NewCity();
+                        newcity.ShowDialog();
+                        City_DataGrid.ItemsSource = bll.GetAllCitiesCollection().DefaultView;
                     }
+                    break;
                 default:
                     break;
             }
