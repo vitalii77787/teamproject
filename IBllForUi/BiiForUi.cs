@@ -31,7 +31,26 @@ namespace IBllForUi
         {
             dalUi.AddNewMarkerType(name);
         }
-
+        public void AddNewCity(string name)
+        {
+            dalUi.AddNewCity(name);
+        }
+        public void UpdateMarkerType(int id, string name)
+        {
+            dalUi.UpdateMarkerType(id, name);
+        }
+        public void UpdateCity(int id, string name)
+        {
+            dalUi.UpdateCity(id, name);
+        }
+        public void DeleteMarkerType(int id)
+        {
+            dalUi.DeleteMarkerType(id);
+        }
+        public void DeleteCity(int id)
+        {
+            dalUi.DeleteCity(id);
+        }
         public string[] GetAllCities()
         {
             return dalUi.GetAllCities();

@@ -88,7 +88,36 @@ namespace DalForWcfLib
             ctx.MarkerTypes.Add(markerType);
             ctx.SaveChanges();
         }
-
+        public void UpdateMarkerType(int id, string name)
+        {
+            MarkerType markertype = ctx.MarkerTypes.Where(item => item.Id == id).FirstOrDefault();
+            markertype.Name = name;
+            ctx.SaveChanges();
+        }
+        public void DeleteMarkerType(int id)
+        {
+            MarkerType markertype = ctx.MarkerTypes.Where(item => item.Id == id).FirstOrDefault();
+            ctx.MarkerTypes.Remove(markertype);
+            ctx.SaveChanges();
+        }
+        public void AddNewCity(string name)
+        {
+            City city = new City() { Name = name };
+            ctx.Cities.Add(city);
+            ctx.SaveChanges();
+        }
+        public void UpdateCity(int id, string name)
+        {
+            City city = ctx.Cities.Where(item => item.Id == id).FirstOrDefault();
+            city.Name = name;
+            ctx.SaveChanges();
+        }
+        public void DeleteCity(int id)
+        {
+            City city= ctx.Cities.Where(item => item.Id == id).FirstOrDefault();
+            ctx.Cities.Remove(city);
+            ctx.SaveChanges();
+        }
         public Address AddNewAddress(City city, string street, string number)
         {
             Address address = new Address() { City = city, Street = street, Number = number };

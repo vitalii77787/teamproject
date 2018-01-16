@@ -469,6 +469,42 @@ namespace IDalForUi.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddNewMarkerType", ReplyAction="http://tempuri.org/IService1/AddNewMarkerTypeResponse")]
+        void AddNewMarkerType(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddNewMarkerType", ReplyAction="http://tempuri.org/IService1/AddNewMarkerTypeResponse")]
+        System.Threading.Tasks.Task AddNewMarkerTypeAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddNewCity", ReplyAction="http://tempuri.org/IService1/AddNewCityResponse")]
+        void AddNewCity(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddNewCity", ReplyAction="http://tempuri.org/IService1/AddNewCityResponse")]
+        System.Threading.Tasks.Task AddNewCityAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateMarkerType", ReplyAction="http://tempuri.org/IService1/UpdateMarkerTypeResponse")]
+        void UpdateMarkerType(int id, string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateMarkerType", ReplyAction="http://tempuri.org/IService1/UpdateMarkerTypeResponse")]
+        System.Threading.Tasks.Task UpdateMarkerTypeAsync(int id, string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateCity", ReplyAction="http://tempuri.org/IService1/UpdateCityResponse")]
+        void UpdateCity(int id, string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateCity", ReplyAction="http://tempuri.org/IService1/UpdateCityResponse")]
+        System.Threading.Tasks.Task UpdateCityAsync(int id, string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteMarkerType", ReplyAction="http://tempuri.org/IService1/DeleteMarkerTypeResponse")]
+        void DeleteMarkerType(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteMarkerType", ReplyAction="http://tempuri.org/IService1/DeleteMarkerTypeResponse")]
+        System.Threading.Tasks.Task DeleteMarkerTypeAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteCity", ReplyAction="http://tempuri.org/IService1/DeleteCityResponse")]
+        void DeleteCity(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteCity", ReplyAction="http://tempuri.org/IService1/DeleteCityResponse")]
+        System.Threading.Tasks.Task DeleteCityAsync(int id);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/IsSuchAddress", ReplyAction="http://tempuri.org/IService1/IsSuchAddressResponse")]
         bool IsSuchAddress(string city, string street, string number);
         
@@ -480,12 +516,6 @@ namespace IDalForUi.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddNewUserPlace", ReplyAction="http://tempuri.org/IService1/AddNewUserPlaceResponse")]
         System.Threading.Tasks.Task AddNewUserPlaceAsync(string name, string city, string street, string number, string markerType, double lat, double lng, byte[] picture, string userName, string description, string[] contacts);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddNewMarkerType", ReplyAction="http://tempuri.org/IService1/AddNewMarkerTypeResponse")]
-        void AddNewMarkerType(string name);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddNewMarkerType", ReplyAction="http://tempuri.org/IService1/AddNewMarkerTypeResponse")]
-        System.Threading.Tasks.Task AddNewMarkerTypeAsync(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMarkersOfType", ReplyAction="http://tempuri.org/IService1/GetMarkersOfTypeResponse")]
         IDalForUi.ServiceReference1.MarkerWcf[] GetMarkersOfType(string markerType, string city);
@@ -611,6 +641,54 @@ namespace IDalForUi.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
+        public void AddNewMarkerType(string name) {
+            base.Channel.AddNewMarkerType(name);
+        }
+        
+        public System.Threading.Tasks.Task AddNewMarkerTypeAsync(string name) {
+            return base.Channel.AddNewMarkerTypeAsync(name);
+        }
+        
+        public void AddNewCity(string name) {
+            base.Channel.AddNewCity(name);
+        }
+        
+        public System.Threading.Tasks.Task AddNewCityAsync(string name) {
+            return base.Channel.AddNewCityAsync(name);
+        }
+        
+        public void UpdateMarkerType(int id, string name) {
+            base.Channel.UpdateMarkerType(id, name);
+        }
+        
+        public System.Threading.Tasks.Task UpdateMarkerTypeAsync(int id, string name) {
+            return base.Channel.UpdateMarkerTypeAsync(id, name);
+        }
+        
+        public void UpdateCity(int id, string name) {
+            base.Channel.UpdateCity(id, name);
+        }
+        
+        public System.Threading.Tasks.Task UpdateCityAsync(int id, string name) {
+            return base.Channel.UpdateCityAsync(id, name);
+        }
+        
+        public void DeleteMarkerType(int id) {
+            base.Channel.DeleteMarkerType(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteMarkerTypeAsync(int id) {
+            return base.Channel.DeleteMarkerTypeAsync(id);
+        }
+        
+        public void DeleteCity(int id) {
+            base.Channel.DeleteCity(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteCityAsync(int id) {
+            return base.Channel.DeleteCityAsync(id);
+        }
+        
         public bool IsSuchAddress(string city, string street, string number) {
             return base.Channel.IsSuchAddress(city, street, number);
         }
@@ -625,14 +703,6 @@ namespace IDalForUi.ServiceReference1 {
         
         public System.Threading.Tasks.Task AddNewUserPlaceAsync(string name, string city, string street, string number, string markerType, double lat, double lng, byte[] picture, string userName, string description, string[] contacts) {
             return base.Channel.AddNewUserPlaceAsync(name, city, street, number, markerType, lat, lng, picture, userName, description, contacts);
-        }
-        
-        public void AddNewMarkerType(string name) {
-            base.Channel.AddNewMarkerType(name);
-        }
-        
-        public System.Threading.Tasks.Task AddNewMarkerTypeAsync(string name) {
-            return base.Channel.AddNewMarkerTypeAsync(name);
         }
         
         public IDalForUi.ServiceReference1.MarkerWcf[] GetMarkersOfType(string markerType, string city) {

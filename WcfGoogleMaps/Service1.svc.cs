@@ -42,6 +42,11 @@ namespace WcfGoogleMaps
             //cfg.Save();
         }
 
+        public void AddNewCity(string name)
+        {
+            bll.AddNewCity(name);
+        }
+
         public void AddNewMarkerType(string name)
         {
             bll.AddNewMarkerType(name);
@@ -58,9 +63,19 @@ namespace WcfGoogleMaps
             bll.AddNewUserPlace(name, city, street, number, markerType, lat, lng, picture, userName, description, contacts);
         }
 
+        public void DeleteCity(int id)
+        {
+            bll.DeleteCity(id);
+        }
+
         public void DeleteMarker(int id)
         {
             bll.DeleteMarker(id);
+        }
+
+        public void DeleteMarkerType(int id)
+        {
+            bll.DeleteMarkerType(id);
         }
 
         public string[] GetAllCities()
@@ -252,6 +267,11 @@ namespace WcfGoogleMaps
             return bll.IsSuchUserNameInDB(userName);
         }
 
+        public void UpdateCity(int id, string name)
+        {
+            bll.UpdateCity(id, name);
+        }
+
         public void UpdateMarker(MarkerWcf newMarker)
         {
             MarkerDto markerDto = new MarkerDto()
@@ -271,6 +291,11 @@ namespace WcfGoogleMaps
             };
 
             bll.UpdateMarker(markerDto);
+        }
+
+        public void UpdateMarkerType(int id, string name)
+        {
+            bll.UpdateMarkerType(id, name);
         }
     }
 }

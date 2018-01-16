@@ -47,7 +47,6 @@ namespace GeoLocator
             Logins_DataGrid.ItemsSource = logins.DefaultView;
             // Marker_DataGrid.DataContext = Markers;
         }
-
         private void InitEvents()
         {
             markers.RowChanged += new DataRowChangeEventHandler(Row_Changed);
@@ -59,37 +58,29 @@ namespace GeoLocator
             logins.RowChanged += new DataRowChangeEventHandler(LoginsRow_Changed);
             logins.RowDeleting += new DataRowChangeEventHandler(LoginsRow_Deleted);
         }
-
         private void LoginsRow_Deleted(object sender, DataRowChangeEventArgs e)
         {
             var Id = (int)e.Row["Id"];
             //bll.DeleteLogin(int id);
         }
-
         private void LoginsRow_Changed(object sender, DataRowChangeEventArgs e)
         {
             var Id = (int)e.Row["Id"];
             var Name = (string)e.Row["Name"];
             //bll.UpdateLogin(int id, string name);
         }
-
         private void CitiesRow_Deleted(object sender, DataRowChangeEventArgs e)
         {
             var Id = (int)e.Row["Id"];
-            //bll.DeleteCity(int id);
+            bll.DeleteCity(Id);
         }
-
         private void CitiesRow_Changed(object sender, DataRowChangeEventArgs e)
         {
             var Id = (int)e.Row["Id"];
             var  Name = (string)e.Row["Name"];
-            //bll.UpdateCity(int id, string name);
+            bll.UpdateCity(Id,Name);
         }
-
         IBllForUi.IBll bll;
-
-
-
         private void AddClick(object sender, RoutedEventArgs e)
         {
             switch (DataBase_TabControl.SelectedIndex)
@@ -126,7 +117,6 @@ namespace GeoLocator
                     break;
             }
         }
-
         private void DeleteClick(object sender, RoutedEventArgs e)
         {
             switch (DataBase_TabControl.SelectedIndex)
@@ -171,23 +161,17 @@ namespace GeoLocator
                     break;
             }
         }
-
-        private void UpdateClick(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void MarkerTypeRow_Changed(object sender, DataRowChangeEventArgs e)
         {
             var Id = (int)e.Row["Id"];
             var Name = (string)e.Row["Name"];
             var Markers = (string[])e.Row["Markers"];
-            //bll.UpdateMarkerType(int id, string name);
+            bll.UpdateMarkerType(Id,Name);
         }
         private void MarkerTypeRow_Deleted(object sender, DataRowChangeEventArgs e)
         {
             var Id = (int)e.Row["Id"];
-            //bll.DeleteMarkerType(int id);
+            bll.DeleteMarkerType(Id);
         }
         private void Row_Changed(object sender, DataRowChangeEventArgs e)
         {
@@ -224,7 +208,6 @@ namespace GeoLocator
             bll.UpdateMarker(marker);
             Marker_DataGrid.ItemsSource = bll.GetAllMarkers().DefaultView;
         }
-
         private void Row_Deleted(object sender, DataRowChangeEventArgs e)
         {
             int id = (int)e.Row["Id"];

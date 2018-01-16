@@ -23,7 +23,7 @@ namespace GeoLocator
         {
             if (context.Name != null)
             {
-                //bll.AddNewCity(context.Name);
+                bll.AddNewCity(context.Name);
             }
             Close();
         }
