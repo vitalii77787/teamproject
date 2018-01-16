@@ -59,6 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="City.cs" />
+    <Compile Include="Login.cs" />
     <Compile Include="Marker.cs" />
     <Compile Include="MarkerType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -208,5 +208,23 @@ namespace IBllForUi
             }
             return markertypesDatatable;
         }
+        public DataTable GetAllLogins()
+        {
+            DataTable loginsDatatable = new DataTable("logins");
+            DataColumn loginId=loginsDatatable.Columns.Add("Id", typeof(Int32));
+            loginsDatatable.PrimaryKey = new DataColumn[] { loginId };
+            loginsDatatable.Columns.Add("Name", typeof(string));
+            loginsDatatable.Columns.Add("Password", typeof(byte[]));
+            List<Login> logins = dalUi.GetAllLogin();
+            foreach (var item in logins)
+            {
+                DataRow dr = loginsDatatable.NewRow();
+                dr["Id"] = item.Id;
+                dr["Name"] = item.Name;
+                dr["Password"] = item.Password;
+                loginsDatatable.Rows.Add(dr);
+            }
+            return loginsDatatable;
+        }
     }
 }

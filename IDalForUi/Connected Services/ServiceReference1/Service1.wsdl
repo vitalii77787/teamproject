@@ -104,6 +104,12 @@
   <wsdl:message name="IService1_GetAllMarkerTypesDto_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllMarkerTypesDtoResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetAllLoginDto_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllLoginDto" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllLoginDto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllLoginDtoResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_UpdateMarker_InputMessage">
     <wsdl:part name="parameters" element="tns:UpdateMarker" />
   </wsdl:message>
@@ -180,6 +186,10 @@
     <wsdl:operation name="GetAllMarkerTypesDto">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllMarkerTypesDto" message="tns:IService1_GetAllMarkerTypesDto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllMarkerTypesDtoResponse" message="tns:IService1_GetAllMarkerTypesDto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLoginDto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllLoginDto" message="tns:IService1_GetAllLoginDto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllLoginDtoResponse" message="tns:IService1_GetAllLoginDto_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="UpdateMarker">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateMarker" message="tns:IService1_UpdateMarker_InputMessage" />
@@ -329,6 +339,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllMarkerTypesDto">
       <soap:operation soapAction="http://tempuri.org/IService1/GetAllMarkerTypesDto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllLoginDto">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetAllLoginDto" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

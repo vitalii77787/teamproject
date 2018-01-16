@@ -227,10 +227,22 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAllLoginDto">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllLoginDtoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WcfGoogleMaps" minOccurs="0" name="GetAllLoginDtoResult" nillable="true" type="q10:ArrayOfLoginWcf" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="UpdateMarker">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WcfGoogleMaps" minOccurs="0" name="newMarker" nillable="true" type="q10:MarkerWcf" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WcfGoogleMaps" minOccurs="0" name="newMarker" nillable="true" type="q11:MarkerWcf" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

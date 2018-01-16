@@ -138,6 +138,10 @@ namespace BllForWcfLib
             City _city = dal.GetCity(city);
             return dal.GetMarkersDtoOfType(_markerType, _city);
         }
+        public LoginDto[] GetAllLoginDto()
+        {
+            return dal.GetAllLoginsDto();
+        }
 
         public MarkerDto[] GetAllMarkersDto()
         {

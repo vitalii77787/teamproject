@@ -52,4 +52,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MarkerTypeWcf" nillable="true" type="tns:MarkerTypeWcf" />
+  <xs:complexType name="ArrayOfLoginWcf">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LoginWcf" nillable="true" type="tns:LoginWcf" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLoginWcf" nillable="true" type="tns:ArrayOfLoginWcf" />
+  <xs:complexType name="LoginWcf">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LoginWcf" nillable="true" type="tns:LoginWcf" />
 </xs:schema>

@@ -140,6 +140,23 @@ namespace IDalForUi
             return markertypes;
         }
 
+        public List<Login> GetAllLogin()
+        {
+            LoginWcf[] loginWcf = client.GetAllLoginDto();
+            List<Login> logins = new List<Login>();
+            foreach (var item in loginWcf)
+            {
+                Login login = new Login()
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Password = item.Password
+                };
+                logins.Add(login);
+            }
+            return logins;
+        }
+
         public bool IsPasswordsEquals(string userName, byte[] password)
         {
             return client.IsPasswordsEquals(userName, password);

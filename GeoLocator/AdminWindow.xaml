@@ -53,11 +53,11 @@
                 </DataGrid>
             </TabItem>
             <TabItem Header="Logins" >
-                <DataGrid x:Name="Logins_DataGrid"  ColumnHeaderStyle="{StaticResource DatagridHeader}">
+                <DataGrid x:Name="Logins_DataGrid" AlternatingRowBackground="Cornsilk" ColumnHeaderStyle="{StaticResource DatagridHeader}" ItemsSource="{Binding }" AutoGenerateColumns="False" CanUserAddRows="False">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Width="30" IsReadOnly="True" />
-                        <DataGridTextColumn Header="Name"  Width="50" />
-                        <DataGridTextColumn Header="Password"  Width="50" />
+                        <DataGridTextColumn Header="Id" Width="50" IsReadOnly="True" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="Name"  Width="120" Binding="{Binding Name}" />
+                        <DataGridTextColumn Header="Password"  Width="120"  Binding="{Binding Password}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </TabItem>
