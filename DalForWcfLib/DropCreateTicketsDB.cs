@@ -47,6 +47,7 @@ namespace DalForWcfLib
 
 
             var directoryPath = AppDomain.CurrentDomain.BaseDirectory.Replace("WcfGoogleMaps", "") + @"DalForWcfLib\Resources\";
+            byte[] terminalImage = File.ReadAllBytes(directoryPath + "bancomat_icon.jpg");
             byte[] supermarketImage = File.ReadAllBytes(directoryPath+"supermarket_icon.jpg");
             byte[] schoolImage = File.ReadAllBytes(directoryPath + "school_icon.jpg");
             byte[] otherImage = File.ReadAllBytes(directoryPath + "Pointer.jpg");
@@ -150,6 +151,13 @@ namespace DalForWcfLib
             Address school23Address = new Address() { City = cityRivne, Street = "Вербова", Number = "42" };
             Address school26Address = new Address() { City = cityRivne, Street = "Павлюченка", Number = "24" };
             Address school6Address = new Address() { City = cityRivne, Street = "Олени Пчілки", Number = "9" };
+            Address terminal1 = new Address() { City = cityRivne, Street = "Соборна", Number = "15" };
+            Address terminal2 = new Address() { City = cityRivne, Street = "Соборна", Number = "17" };
+            Address terminal3 = new Address() { City = cityRivne, Street = "Соборна", Number = "12а" };
+            Address terminal4 = new Address() { City = cityRivne, Street = "Проспект Миру", Number = "2" };
+            Address terminal5 = new Address() { City = cityRivne, Street = "Словацького", Number = "4/6" };
+            Address terminal6 = new Address() { City = cityRivne, Street = "Шевченка", Number = "18" };
+            Address terminal7 = new Address() { City = cityRivne, Street = "Проспект Миру", Number = "8" };
             ctx.Addresses.Add(cinemaEra);
             ctx.Addresses.Add(cinemaUkraine);
             ctx.Addresses.Add(school6Address);
@@ -159,8 +167,92 @@ namespace DalForWcfLib
             ctx.Addresses.Add(school8Address);
             ctx.Addresses.Add(school19Address);
             ctx.Addresses.Add(school12Address);
+            ctx.Addresses.Add(terminal1);
+            ctx.Addresses.Add(terminal2);
+            ctx.Addresses.Add(terminal3);
+            ctx.Addresses.Add(terminal4);
+            ctx.Addresses.Add(terminal5);
+            ctx.Addresses.Add(terminal6);
+            ctx.Addresses.Add(terminal7);
             ctx.SaveChanges();
             //Address school12Address = new Address() { Name = "school 12", City = cityRivne, Street = "Академіка Грушевського", Number = "81А" };
+            Marker terminalmarker1 = new Marker()
+            {
+                Type = ctx.MarkerTypes.FirstOrDefaultAsync(x => x.Name == "bank").Result,
+                Lat = 50.6186878,
+                Lng = 26.2542766,
+                Name = "ATM",
+                Address = terminal1,
+                Picture = terminalImage,
+                Description = "ATM Privatbank",
+                Login = adminLogin
+            };
+            Marker terminalmarker2 = new Marker()
+            {
+                Type = ctx.MarkerTypes.FirstOrDefaultAsync(x => x.Name == "bank").Result,
+                Lat = 50.6186417,
+                Lng = 26.2526823,
+                Name = "ATM",
+                Address = terminal2,
+                Picture = terminalImage,
+                Description = "ATM Privatbank",
+                Login = adminLogin
+            };
+            Marker terminalmarker3 = new Marker()
+            {
+                Type = ctx.MarkerTypes.FirstOrDefaultAsync(x => x.Name == "bank").Result,
+                Lat = 50.6185876,
+                Lng = 26.2620209,
+                Name = "ATM",
+                Address = terminal3,
+                Picture = terminalImage,
+                Description = "ATM Privatbank",
+                Login = adminLogin
+            };
+            Marker terminalmarker4 = new Marker()
+            {
+                Type = ctx.MarkerTypes.FirstOrDefaultAsync(x => x.Name == "bank").Result,
+                Lat = 50.6232695,
+                Lng = 26.2532465,
+                Name = "ATM",
+                Address = terminal4,
+                Picture = terminalImage,
+                Description = "ATM Privatbank",
+                Login = adminLogin
+            };
+            Marker terminalmarker5 = new Marker()
+            {
+                Type = ctx.MarkerTypes.FirstOrDefaultAsync(x => x.Name == "bank").Result,
+                Lat = 50.6220565,
+                Lng = 26.2494317,
+                Name = "ATM",
+                Address = terminal5,
+                Picture = terminalImage,
+                Description = "ATM Privatbank",
+                Login = adminLogin
+            };
+            Marker terminalmarker6 = new Marker()
+            {
+                Type = ctx.MarkerTypes.FirstOrDefaultAsync(x => x.Name == "bank").Result,
+                Lat = 50.6224676,
+                Lng = 26.2434406,
+                Name = "ATM",
+                Address = terminal6,
+                Picture = terminalImage,
+                Description = "ATM Privatbank",
+                Login = adminLogin
+            };
+            Marker terminalmarker7 = new Marker()
+            {
+                Type = ctx.MarkerTypes.FirstOrDefaultAsync(x => x.Name == "bank").Result,
+                Lat = 50.6240029,
+                Lng = 26.250818,
+                Name = "ATM",
+                Address = terminal7,
+                Picture = terminalImage,
+                Description = "ATM Privatbank",
+                Login = adminLogin
+            };
             Marker school12Marker = new Marker()
             {
                 Type = schoolType,
@@ -263,6 +355,13 @@ namespace DalForWcfLib
                 Description = "Мультиплекс Кіноцентр Ера",
                 Login = adminLogin
             };
+            ctx.Markers.Add(terminalmarker1);
+            ctx.Markers.Add(terminalmarker2);
+            ctx.Markers.Add(terminalmarker3);
+            ctx.Markers.Add(terminalmarker4);
+            ctx.Markers.Add(terminalmarker5);
+            ctx.Markers.Add(terminalmarker6);
+            ctx.Markers.Add(terminalmarker7);
             ctx.Markers.Add(Eracinema);
             ctx.Markers.Add(cinemaUkr);
             ctx.Markers.Add(school6Marker);
@@ -282,6 +381,13 @@ namespace DalForWcfLib
             ctx.Contacts.Add(new Contact() { Name = "0362 25 63 05", Marker = school19Marker });
             ctx.Contacts.Add(new Contact() { Name = "0362 641 257", Marker = school8Marker });
             ctx.Contacts.Add(new Contact() { Name = "03622 53238", Marker = school26Marker });
+            ctx.Contacts.Add(new Contact() { Name = "0567161131", Marker = terminalmarker1 });
+            ctx.Contacts.Add(new Contact() { Name = "0567161131", Marker = terminalmarker2 });
+            ctx.Contacts.Add(new Contact() { Name = "0567161131", Marker = terminalmarker3 });
+            ctx.Contacts.Add(new Contact() { Name = "0567161131", Marker = terminalmarker4 });
+            ctx.Contacts.Add(new Contact() { Name = "0567161131", Marker = terminalmarker5 });
+            ctx.Contacts.Add(new Contact() { Name = "0567161131", Marker = terminalmarker6 });
+            ctx.Contacts.Add(new Contact() { Name = "0567161131", Marker = terminalmarker7 });
             ctx.SaveChanges();
             base.Seed(ctx);
         }
