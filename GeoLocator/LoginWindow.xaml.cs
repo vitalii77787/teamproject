@@ -39,7 +39,7 @@ namespace GeoLocator
             //DAL dal = new DAL();
             if (bll.IsSuchUserNameInDB(Login_field.Text))
             {
-                var data = Encoding.ASCII.GetBytes(Password_field.Password);
+              //  var data = Encoding.ASCII.GetBytes(Password_field.Password);
                 if (bll.IsValidPassword(Login_field.Text, Password_field.Password))
                 {
                     //login = bll.GetLoginWithName(Login_field.Text);

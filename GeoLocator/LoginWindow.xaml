@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GeoLocator"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="200" Width="300">
+        Title="LoginWindow" Height="250" Width="300" MinHeight="250" MinWidth="300"  MaxHeight="400" MaxWidth="500" WindowStartupLocation="CenterOwner">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.7*"></RowDefinition>
@@ -23,14 +23,14 @@
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.Column="0" Content="Login"
                VerticalAlignment="Center"
-               HorizontalAlignment="Center"></Label>
+               HorizontalAlignment="Center" FontSize="18" FontWeight="Bold"/>
             <TextBox Name="Login_field" Grid.Row="0" Grid.Column="1" 
-                     Margin="10"></TextBox>
+                     Margin="10" FontSize="18"></TextBox>
             <Label Grid.Row="1" Grid.Column="0" Content="Password"
                VerticalAlignment="Center"
-               HorizontalAlignment="Center"></Label>
+               HorizontalAlignment="Center" FontSize="18" FontWeight="Bold"></Label>
             <PasswordBox Name="Password_field" Grid.Row="1" Grid.Column="1" 
-                     Margin="10"></PasswordBox>
+                     Margin="10" FontSize="18"></PasswordBox>
         </Grid>
         <!--<Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

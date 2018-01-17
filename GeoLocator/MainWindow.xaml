@@ -91,7 +91,7 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="2*"></RowDefinition>
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Vertical" Grid.Row="0" HorizontalAlignment="Right"  >
+            <StackPanel Orientation="Vertical" Grid.Row="0" HorizontalAlignment="Right" Width="200" >
                 <Button Name="Login_btn" Margin="10" Width="150" Height="25"
                         Click="Login_btn_Click">
                     <Button.Triggers>
@@ -156,7 +156,7 @@
                     <SolidColorBrush Color="WhiteSmoke" Opacity="0.6"></SolidColorBrush>
                 </StackPanel.Background>
             </StackPanel>
-            <StackPanel Orientation="Vertical" Grid.Row="1" MaxWidth="200" HorizontalAlignment="Right" >
+            <StackPanel Orientation="Vertical" Grid.Row="1" MaxWidth="200" HorizontalAlignment="Right" Width="200" >
                 <StackPanel.Background>
                     <SolidColorBrush Color="WhiteSmoke" Opacity="0.6"></SolidColorBrush>
                 </StackPanel.Background>
