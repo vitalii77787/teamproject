@@ -43,6 +43,14 @@ namespace IBllForUi
         {
             dalUi.UpdateCity(id, name);
         }
+        public void UpdateLogin(int id, string name)
+        {
+            dalUi.UpdateLogin(id, name);
+        }
+        public void DeleteLogin(int id)
+        {
+            dalUi.DeleteLogin(id);
+        }
         public void DeleteMarkerType(int id)
         {
             dalUi.DeleteMarkerType(id);

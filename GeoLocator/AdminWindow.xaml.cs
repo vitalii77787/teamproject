@@ -61,13 +61,13 @@ namespace GeoLocator
         private void LoginsRow_Deleted(object sender, DataRowChangeEventArgs e)
         {
             var Id = (int)e.Row["Id"];
-            //bll.DeleteLogin(int id);
+            bll.DeleteLogin(Id);
         }
         private void LoginsRow_Changed(object sender, DataRowChangeEventArgs e)
         {
             var Id = (int)e.Row["Id"];
             var Name = (string)e.Row["Name"];
-            //bll.UpdateLogin(int id, string name);
+            bll.UpdateLogin(Id,Name);
         }
         private void CitiesRow_Deleted(object sender, DataRowChangeEventArgs e)
         {

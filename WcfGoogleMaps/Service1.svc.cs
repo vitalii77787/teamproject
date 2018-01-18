@@ -68,6 +68,11 @@ namespace WcfGoogleMaps
             bll.DeleteCity(id);
         }
 
+        public void DeleteLogin(int id)
+        {
+            bll.DeleteLogin(id);
+        }
+
         public void DeleteMarker(int id)
         {
             bll.DeleteMarker(id);
@@ -270,6 +275,11 @@ namespace WcfGoogleMaps
         public void UpdateCity(int id, string name)
         {
             bll.UpdateCity(id, name);
+        }
+
+        public void UpdateLogin(int id, string name)
+        {
+            bll.UpdateLogin(id, name);
         }
 
         public void UpdateMarker(MarkerWcf newMarker)

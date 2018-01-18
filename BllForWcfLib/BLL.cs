@@ -47,7 +47,14 @@ namespace BllForWcfLib
             MarkerType _markerType = dal.GetMarkerType(markerType);
             dal.AddNewUserPlace(name, address, _markerType, description, lat, lng, picture, login, contacts);
         }
-
+        public void UpdateLogin(int id, string name)
+        {
+            dal.UpdateLogin(id, name);
+        }
+        public void DeleteLogin(int id)
+        {
+            dal.DeleteLogin(id);
+        }
         public void AddNewMarkerType(string name)
         {
             dal.AddNewMarkerType(name);

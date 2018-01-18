@@ -44,6 +44,18 @@
   <wsdl:message name="IService1_DeleteCity_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteCityResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_DeleteLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteLogin" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateLogin" />
+  </wsdl:message>
+  <wsdl:message name="IService1_UpdateLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateLoginResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_IsSuchAddress_InputMessage">
     <wsdl:part name="parameters" element="tns:IsSuchAddress" />
   </wsdl:message>
@@ -177,6 +189,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteCity" message="tns:IService1_DeleteCity_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteCityResponse" message="tns:IService1_DeleteCity_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="DeleteLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteLogin" message="tns:IService1_DeleteLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteLoginResponse" message="tns:IService1_DeleteLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/UpdateLogin" message="tns:IService1_UpdateLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/UpdateLoginResponse" message="tns:IService1_UpdateLogin_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="IsSuchAddress">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/IsSuchAddress" message="tns:IService1_IsSuchAddress_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/IsSuchAddressResponse" message="tns:IService1_IsSuchAddress_OutputMessage" />
@@ -299,6 +319,24 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteCity">
       <soap:operation soapAction="http://tempuri.org/IService1/DeleteCity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteLogin">
+      <soap:operation soapAction="http://tempuri.org/IService1/DeleteLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLogin">
+      <soap:operation soapAction="http://tempuri.org/IService1/UpdateLogin" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

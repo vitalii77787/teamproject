@@ -168,6 +168,10 @@ namespace IDalForUi
         {
             client.UpdateMarkerType(id, name);
         }
+        public void UpdateLogin(int id, string name)
+        {
+            client.UpdateLogin(id, name);
+        }
         public void DeleteCity(int id)
         {
             client.DeleteCity(id);
@@ -175,6 +179,10 @@ namespace IDalForUi
         public void DeleteMarkerType(int id)
         {
             client.DeleteMarkerType(id);
+        }
+        public void DeleteLogin(int id)
+        {
+            client.DeleteLogin(id);
         }
         public bool IsPasswordsEquals(string userName, byte[] password)
         {
