@@ -281,5 +281,50 @@ namespace DalForWcfLib
             ctx.Markers.Remove(marker);
             ctx.SaveChanges();
         }
+
+        public string[] GetAllLogins()
+        {
+            return ctx.Logins.Select(item => item.Name).ToArray();
+        }
+
+        public void DeleteLogin(string loginName)
+        {
+            Login login = ctx.Logins.Where(item => item.Name == loginName).FirstOrDefault();
+            if (login != null)
+            {
+                ctx.Logins.Remove(login);
+                ctx.SaveChanges();
+            }
+            
+        }
+
+        public void DeleteMarkerType(string markerTypeName)
+        {
+            MarkerType markerType = ctx.MarkerTypes.Where(item => item.Name == markerTypeName).FirstOrDefault();
+            if (markerType != null)
+            {
+                ctx.MarkerTypes.Remove(markerType);
+                ctx.SaveChanges();
+            }
+        }
+
+        public void AddNewCity(string city)
+        {
+            if (ctx.Cities.Where(item => item.Name == city).Count() == 0)
+            {
+                ctx.Cities.Add(new City() { Name = city });
+                ctx.SaveChanges();
+            }
+        }
+
+        public void DeleteCity(string cityName)
+        {
+            City city = ctx.Cities.Where(item => item.Name == cityName).FirstOrDefault();
+            if (city != null)
+            {
+                ctx.Cities.Remove(city);
+                ctx.SaveChanges();
+            }
+        }
     }
 }
