@@ -185,6 +185,9 @@
     <None Include="Connected Services\ServiceReference1\GeoLocator.ServiceReference1.CityWcf.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference1\GeoLocator.ServiceReference1.LoginWcf.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference1\GeoLocator.ServiceReference1.MarkerTypeWcf.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

@@ -354,14 +354,14 @@ namespace DalForWcfLib
             }
         }
 
-        public void AddNewCity(string city)
-        {
-            if (ctx.Cities.Where(item => item.Name == city).Count() == 0)
-            {
-                ctx.Cities.Add(new City() { Name = city });
-                ctx.SaveChanges();
-            }
-        }
+        //public void AddNewCity(string city)
+        //{
+        //    if (ctx.Cities.Where(item => item.Name == city).Count() == 0)
+        //    {
+        //        ctx.Cities.Add(new City() { Name = city });
+        //        ctx.SaveChanges();
+        //    }
+        //}
 
         public void DeleteCity(string cityName)
         {

@@ -28,9 +28,10 @@ namespace DalForWcfLib
             var md5 = new MD5CryptoServiceProvider();
             byte[] md5passwordAdmin = md5.ComputeHash(password1);
             byte[] md5passwordUser = md5.ComputeHash(password2);
-            Login adminLogin = new Login() { Name = "admin", LoginStatus = loginStatusAdmin, Password = md5passwordAdmin };
+            Address adminAddress = new Address() { City = cityRivne, Street = "Київська", Number = "20" };
+            Login adminLogin = new Login() { Name = "admin", LoginStatus = loginStatusAdmin, Password = md5passwordAdmin, Address = adminAddress };
             ctx.Logins.Add(adminLogin);
-            ctx.Logins.Add(new Login() { Name = "serge", LoginStatus = loginStatusUser, Password = md5passwordUser });
+            ctx.Logins.Add(new Login() { Name = "serge", LoginStatus = loginStatusUser, Password = md5passwordUser, Address = adminAddress });
             ctx.SaveChanges();
 
             MarkerType supermarketType = new MarkerType() { Name = "supermarket" };

@@ -149,6 +149,31 @@ namespace GeoLocator
                 {
                     AddNewMarkerToMap(item);
                 }
+                PointLatLng pointLatLng = new PointLatLng();
+                double distanceMin = double.MaxValue;
+                if (LoginName.Length > 0)
+                {
+                    PointLatLng userStart = GetCoordinates(UserCity, UserStreetName, UserStreetNumber);
+                    foreach (var item in markers)
+                    {
+                        double distance = CalculateDistance(userStart.Lat, userStart.Lng, item.Lat, item.Lng);
+                        if (distanceMin > distance)
+                        {
+                            distanceMin = distance;
+                            pointLatLng.Lat = item.Lat;
+                            pointLatLng.Lng = item.Lng;
+                        }
+                    }
+                    try
+                    {
+                        ShowRoute(pointLatLng);
+                    }
+                    catch (Exception)
+                    {
+
+                    }
+
+                }
             }
         }
 
@@ -363,58 +388,76 @@ namespace GeoLocator
             }
             if (LoginName.Length > 0)
             {
-                ShowRoute();
+                try
+                {
+                    ShowRoute(StreetToFind_field.Text, NumberToFind_field.Text);
+                }
+                catch (Exception)
+                {
+
+                }
+                
             }
         }
 
+        public static double CalculateDistance(double sLatitude, double sLongitude, double eLatitude,
+                               double eLongitude)
+        {
+            var radiansOverDegrees = (Math.PI / 180.0);
 
-        private void ShowRoute()
+            var sLatitudeRadians = sLatitude * radiansOverDegrees;
+            var sLongitudeRadians = sLongitude * radiansOverDegrees;
+            var eLatitudeRadians = eLatitude * radiansOverDegrees;
+            var eLongitudeRadians = eLongitude * radiansOverDegrees;
+
+            var dLongitude = eLongitudeRadians - sLongitudeRadians;
+            var dLatitude = eLatitudeRadians - sLatitudeRadians;
+
+            var result1 = Math.Pow(Math.Sin(dLatitude / 2.0), 2.0) +
+                          Math.Cos(sLatitudeRadians) * Math.Cos(eLatitudeRadians) *
+                          Math.Pow(Math.Sin(dLongitude / 2.0), 2.0);
+
+            // Using 3956 as the number of miles around the earth
+            var result2 = 3956.0 * 2.0 *
+                          Math.Atan2(Math.Sqrt(result1), Math.Sqrt(1.0 - result1));
+
+            return result2;
+        }
+
+        private void ShowRoute(string street, string streetNumber)
         {
             
             PointLatLng userStart = GetCoordinates(UserCity, UserStreetName, UserStreetNumber);
-            PointLatLng endPoint = GetCoordinates("Рівне", StreetToFind_field.Text, NumberToFind_field.Text);
-            //PointLatLng userStart = GetCoordinates(UserCity, "Чебишева", "16");
-            //PointLatLng endPoint = GetCoordinates("Рівне", "Соборна", "20");
-
-            //GMap.NET.WindowsPresentation.GMapMarker markerG = new GMap.NET.WindowsPresentation.GMapMarker(routePoints[0]);
-
-            //markerG.Map = new GMap.NET.WindowsPresentation.GMapControl();
-            //markerG.Map.CreateRoutePath(listPoints);
-            //gMapControl1.Markers.Add(markerG);
-
-
-            //gMapControl1.CreateRoutePath(listPoints, true);
-            //GMap.NET.WindowsPresentation.GMapRoute mRoute = new GMap.NET.WindowsPresentation.GMapRoute(routePoints);
-            //mRoute.RegenerateShape(gMapControl1);
-            //((System.Windows.Shapes.Path)mRoute.Shape).Stroke = new SolidColorBrush(Colors.Red);
-            //((System.Windows.Shapes.Path)mRoute.Shape).StrokeThickness = 20;
-            //gMapControl1.Markers.Add(mRoute);
-
-            //GMapRoute gmRoute = new GMapRoute(route.Points);
-            //MapRoute mapRoute = GMap.NET.MapProviders.GoogleMapProvider.Instance.GetRoute()
-            //MapRoute route2 = GMap.NET.
+            PointLatLng endPoint = GetCoordinates("Рівне", street, streetNumber);
+            double distance = CalculateDistance(userStart.Lat, userStart.Lng, endPoint.Lat, endPoint.Lng);
 
             GDirections ss;
             var xx = GMapProviders.GoogleMap.GetDirections(out ss, userStart, endPoint, false, false, true, false, false);
             
             GMapRoute r = new GMapRoute(ss.Route);
+            
             r.RegenerateShape(mapView);
             ((System.Windows.Shapes.Path)r.Shape).Stroke = new SolidColorBrush(Colors.Red);
             ((System.Windows.Shapes.Path)r.Shape).StrokeThickness = 5;
-            //r.Map.BorderThickness = new Thickness(;
             mapView.Markers.Add(r);
-            //mapView.Markers[0].Shape = 
-            //MapRoute route2 = GMap.NET.MapProviders.GoogleMapProvider.Instance.GetRoute("Рівне, Чебишева 16", //start
-            //    "Рівне, Соборна 20", //end
-            //    false, //avoid highways 
-            //    true, 0);
+        }
 
-            //GMapRoute gmRoute2 = new GMapRoute(route2.Points);
+        private void ShowRoute(PointLatLng end)
+        {
 
-            //mapView.Markers.Add(gmRoute2);
-            //gMapControl1.Markers.Add(new GMap.NET.WindowsPresentation.GMapMarker());
+            PointLatLng userStart = GetCoordinates(UserCity, UserStreetName, UserStreetNumber);
+            PointLatLng endPoint = end;
+            double distance = CalculateDistance(userStart.Lat, userStart.Lng, endPoint.Lat, endPoint.Lng);
 
-            //gMapControl1.UpdateLayout();
+            GDirections ss;
+            var xx = GMapProviders.GoogleMap.GetDirections(out ss, userStart, endPoint, false, false, true, false, false);
+
+            GMapRoute r = new GMapRoute(ss.Route);
+
+            r.RegenerateShape(mapView);
+            ((System.Windows.Shapes.Path)r.Shape).Stroke = new SolidColorBrush(Colors.Red);
+            ((System.Windows.Shapes.Path)r.Shape).StrokeThickness = 5;
+            mapView.Markers.Add(r);
         }
     }
 }
