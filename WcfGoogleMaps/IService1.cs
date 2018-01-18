@@ -12,6 +12,18 @@ namespace WcfGoogleMaps
     [ServiceContract]
     public interface IService1
     {
+        [OperationContract]
+        void AddNewMarkerType(string name);
+        [OperationContract]
+        void AddNewCity(string name);
+        [OperationContract]
+        void UpdateMarkerType(int id, string name);
+        [OperationContract]
+        void UpdateCity(int id, string name);
+        [OperationContract]
+        void DeleteMarkerType(int id);
+        [OperationContract]
+        void DeleteCity(int id);
 
         [OperationContract]
         bool IsSuchAddress(string city, string street, string number);
@@ -20,8 +32,7 @@ namespace WcfGoogleMaps
         void AddNewUserPlace(string name, string city, string street, string number, string markerType, double lat, double lng, byte[] picture, string userName,
             string description, string[] contacts);
 
-        [OperationContract]
-        void AddNewMarkerType(string name);
+       
         [OperationContract]
         MarkerWcf[] GetMarkersOfType(string markerType, string city);
 
@@ -60,7 +71,8 @@ namespace WcfGoogleMaps
 
         [OperationContract]
         MarkerTypeWcf[] GetAllMarkerTypesDto();
-
+        [OperationContract]
+        LoginWcf[] GetAllLoginDto();
         [OperationContract]
         void UpdateMarker(MarkerWcf newMarker);
 
@@ -225,6 +237,33 @@ namespace WcfGoogleMaps
         {
             get { return markers; }
             set { markers = value; }
+        }
+    }
+
+    [DataContract]
+    public class LoginWcf
+    {
+        int id;
+        string name = string.Empty;
+        byte[] password;
+
+        [DataMember]
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+        [DataMember]
+        public string Name
+        {
+            get { return name; }
+            set { name = value; }
+        }
+        [DataMember]
+        public byte[] Password
+        {
+            get { return password; }
+            set { password = value; }
         }
     }
 }

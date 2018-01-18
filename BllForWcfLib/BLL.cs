@@ -52,7 +52,26 @@ namespace BllForWcfLib
         {
             dal.AddNewMarkerType(name);
         }
-
+        public void AddNewCity(string name)
+        {
+            dal.AddNewCity(name);
+        }
+        public void UpdateCity(int id, string name)
+        {
+            dal.UpdateCity(id, name);
+        }
+        public void UpdateMarkerType(int id, string name)
+        {
+            dal.UpdateMarkerType(id, name);
+        }
+        public void DeleteCity(int id)
+        {
+            dal.DeleteCity(id);
+        }
+        public void DeleteMarkerType(int id)
+        {
+            dal.DeleteMarkerType(id);
+        }
         public Marker[] GetMarkersOfType(string markerType, string city)
         {
             MarkerType _markerType = dal.GetMarkerType(markerType);
@@ -137,6 +156,10 @@ namespace BllForWcfLib
             MarkerType _markerType = dal.GetMarkerType(markerType);
             City _city = dal.GetCity(city);
             return dal.GetMarkersDtoOfType(_markerType, _city);
+        }
+        public LoginDto[] GetAllLoginDto()
+        {
+            return dal.GetAllLoginsDto();
         }
 
         public MarkerDto[] GetAllMarkersDto()

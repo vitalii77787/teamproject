@@ -167,8 +167,8 @@ namespace GeoLocator
             biImg.EndInit();
             ImageSource imgSrc = biImg as ImageSource;
             image.Source = biImg;
-            image.Width = 20;
-            image.Height = 20;
+            image.Width = 30;
+            image.Height = 30;
             markerG.Shape = image;
             markerG.Offset = new Point(-16, -32);
             markerG.ZIndex = int.MaxValue;
@@ -188,8 +188,8 @@ namespace GeoLocator
             biImg.EndInit();
             ImageSource imgSrc = biImg as ImageSource;
             image.Source = biImg;
-            image.Width = 20;
-            image.Height = 20;
+            image.Width = 30;
+            image.Height = 30;
             markerG.Shape = image;
             //markerG.Offset = new Point(-16, -32);
             markerG.Offset = new Point(-5, -5);
@@ -211,8 +211,8 @@ namespace GeoLocator
             image.MouseLeave += Image_MouseLeave;
             image.ToolTip = toolTip;
             image.Source = new BitmapImage(new Uri(markerimage)); 
-            image.Width = 20;
-            image.Height = 20;
+            image.Width = 30;
+            image.Height = 30;
             markerG.Shape = image;
             markerG.Offset = new Point(-16, -32);
             //markerG.ZIndex = int.MaxValue;

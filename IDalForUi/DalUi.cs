@@ -140,6 +140,42 @@ namespace IDalForUi
             return markertypes;
         }
 
+        public List<Login> GetAllLogin()
+        {
+            LoginWcf[] loginWcf = client.GetAllLoginDto();
+            List<Login> logins = new List<Login>();
+            foreach (var item in loginWcf)
+            {
+                Login login = new Login()
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Password = item.Password
+                };
+                logins.Add(login);
+            }
+            return logins;
+        }
+        public void AddNewCity(string name)
+        {
+            client.AddNewCity(name);
+        }
+        public void UpdateCity(int id, string name)
+        {
+            client.UpdateCity(id, name);
+        }
+        public void UpdateMarkerType(int id, string name)
+        {
+            client.UpdateMarkerType(id, name);
+        }
+        public void DeleteCity(int id)
+        {
+            client.DeleteCity(id);
+        }
+        public void DeleteMarkerType(int id)
+        {
+            client.DeleteMarkerType(id);
+        }
         public bool IsPasswordsEquals(string userName, byte[] password)
         {
             return client.IsPasswordsEquals(userName, password);

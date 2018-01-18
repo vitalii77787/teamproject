@@ -388,9 +388,122 @@ namespace IDalForUi.ServiceReference1 {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LoginWcf", Namespace="http://schemas.datacontract.org/2004/07/WcfGoogleMaps")]
+    [System.SerializableAttribute()]
+    public partial class LoginWcf : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] PasswordField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddNewMarkerType", ReplyAction="http://tempuri.org/IService1/AddNewMarkerTypeResponse")]
+        void AddNewMarkerType(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddNewMarkerType", ReplyAction="http://tempuri.org/IService1/AddNewMarkerTypeResponse")]
+        System.Threading.Tasks.Task AddNewMarkerTypeAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddNewCity", ReplyAction="http://tempuri.org/IService1/AddNewCityResponse")]
+        void AddNewCity(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddNewCity", ReplyAction="http://tempuri.org/IService1/AddNewCityResponse")]
+        System.Threading.Tasks.Task AddNewCityAsync(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateMarkerType", ReplyAction="http://tempuri.org/IService1/UpdateMarkerTypeResponse")]
+        void UpdateMarkerType(int id, string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateMarkerType", ReplyAction="http://tempuri.org/IService1/UpdateMarkerTypeResponse")]
+        System.Threading.Tasks.Task UpdateMarkerTypeAsync(int id, string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateCity", ReplyAction="http://tempuri.org/IService1/UpdateCityResponse")]
+        void UpdateCity(int id, string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateCity", ReplyAction="http://tempuri.org/IService1/UpdateCityResponse")]
+        System.Threading.Tasks.Task UpdateCityAsync(int id, string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteMarkerType", ReplyAction="http://tempuri.org/IService1/DeleteMarkerTypeResponse")]
+        void DeleteMarkerType(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteMarkerType", ReplyAction="http://tempuri.org/IService1/DeleteMarkerTypeResponse")]
+        System.Threading.Tasks.Task DeleteMarkerTypeAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteCity", ReplyAction="http://tempuri.org/IService1/DeleteCityResponse")]
+        void DeleteCity(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteCity", ReplyAction="http://tempuri.org/IService1/DeleteCityResponse")]
+        System.Threading.Tasks.Task DeleteCityAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/IsSuchAddress", ReplyAction="http://tempuri.org/IService1/IsSuchAddressResponse")]
         bool IsSuchAddress(string city, string street, string number);
@@ -403,12 +516,6 @@ namespace IDalForUi.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddNewUserPlace", ReplyAction="http://tempuri.org/IService1/AddNewUserPlaceResponse")]
         System.Threading.Tasks.Task AddNewUserPlaceAsync(string name, string city, string street, string number, string markerType, double lat, double lng, byte[] picture, string userName, string description, string[] contacts);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddNewMarkerType", ReplyAction="http://tempuri.org/IService1/AddNewMarkerTypeResponse")]
-        void AddNewMarkerType(string name);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/AddNewMarkerType", ReplyAction="http://tempuri.org/IService1/AddNewMarkerTypeResponse")]
-        System.Threading.Tasks.Task AddNewMarkerTypeAsync(string name);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetMarkersOfType", ReplyAction="http://tempuri.org/IService1/GetMarkersOfTypeResponse")]
         IDalForUi.ServiceReference1.MarkerWcf[] GetMarkersOfType(string markerType, string city);
@@ -488,6 +595,12 @@ namespace IDalForUi.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllMarkerTypesDto", ReplyAction="http://tempuri.org/IService1/GetAllMarkerTypesDtoResponse")]
         System.Threading.Tasks.Task<IDalForUi.ServiceReference1.MarkerTypeWcf[]> GetAllMarkerTypesDtoAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllLoginDto", ReplyAction="http://tempuri.org/IService1/GetAllLoginDtoResponse")]
+        IDalForUi.ServiceReference1.LoginWcf[] GetAllLoginDto();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllLoginDto", ReplyAction="http://tempuri.org/IService1/GetAllLoginDtoResponse")]
+        System.Threading.Tasks.Task<IDalForUi.ServiceReference1.LoginWcf[]> GetAllLoginDtoAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateMarker", ReplyAction="http://tempuri.org/IService1/UpdateMarkerResponse")]
         void UpdateMarker(IDalForUi.ServiceReference1.MarkerWcf newMarker);
         
@@ -528,6 +641,54 @@ namespace IDalForUi.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
+        public void AddNewMarkerType(string name) {
+            base.Channel.AddNewMarkerType(name);
+        }
+        
+        public System.Threading.Tasks.Task AddNewMarkerTypeAsync(string name) {
+            return base.Channel.AddNewMarkerTypeAsync(name);
+        }
+        
+        public void AddNewCity(string name) {
+            base.Channel.AddNewCity(name);
+        }
+        
+        public System.Threading.Tasks.Task AddNewCityAsync(string name) {
+            return base.Channel.AddNewCityAsync(name);
+        }
+        
+        public void UpdateMarkerType(int id, string name) {
+            base.Channel.UpdateMarkerType(id, name);
+        }
+        
+        public System.Threading.Tasks.Task UpdateMarkerTypeAsync(int id, string name) {
+            return base.Channel.UpdateMarkerTypeAsync(id, name);
+        }
+        
+        public void UpdateCity(int id, string name) {
+            base.Channel.UpdateCity(id, name);
+        }
+        
+        public System.Threading.Tasks.Task UpdateCityAsync(int id, string name) {
+            return base.Channel.UpdateCityAsync(id, name);
+        }
+        
+        public void DeleteMarkerType(int id) {
+            base.Channel.DeleteMarkerType(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteMarkerTypeAsync(int id) {
+            return base.Channel.DeleteMarkerTypeAsync(id);
+        }
+        
+        public void DeleteCity(int id) {
+            base.Channel.DeleteCity(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteCityAsync(int id) {
+            return base.Channel.DeleteCityAsync(id);
+        }
+        
         public bool IsSuchAddress(string city, string street, string number) {
             return base.Channel.IsSuchAddress(city, street, number);
         }
@@ -542,14 +703,6 @@ namespace IDalForUi.ServiceReference1 {
         
         public System.Threading.Tasks.Task AddNewUserPlaceAsync(string name, string city, string street, string number, string markerType, double lat, double lng, byte[] picture, string userName, string description, string[] contacts) {
             return base.Channel.AddNewUserPlaceAsync(name, city, street, number, markerType, lat, lng, picture, userName, description, contacts);
-        }
-        
-        public void AddNewMarkerType(string name) {
-            base.Channel.AddNewMarkerType(name);
-        }
-        
-        public System.Threading.Tasks.Task AddNewMarkerTypeAsync(string name) {
-            return base.Channel.AddNewMarkerTypeAsync(name);
         }
         
         public IDalForUi.ServiceReference1.MarkerWcf[] GetMarkersOfType(string markerType, string city) {
@@ -654,6 +807,14 @@ namespace IDalForUi.ServiceReference1 {
         
         public System.Threading.Tasks.Task<IDalForUi.ServiceReference1.MarkerTypeWcf[]> GetAllMarkerTypesDtoAsync() {
             return base.Channel.GetAllMarkerTypesDtoAsync();
+        }
+        
+        public IDalForUi.ServiceReference1.LoginWcf[] GetAllLoginDto() {
+            return base.Channel.GetAllLoginDto();
+        }
+        
+        public System.Threading.Tasks.Task<IDalForUi.ServiceReference1.LoginWcf[]> GetAllLoginDtoAsync() {
+            return base.Channel.GetAllLoginDtoAsync();
         }
         
         public void UpdateMarker(IDalForUi.ServiceReference1.MarkerWcf newMarker) {

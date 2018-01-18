@@ -31,7 +31,26 @@ namespace IBllForUi
         {
             dalUi.AddNewMarkerType(name);
         }
-
+        public void AddNewCity(string name)
+        {
+            dalUi.AddNewCity(name);
+        }
+        public void UpdateMarkerType(int id, string name)
+        {
+            dalUi.UpdateMarkerType(id, name);
+        }
+        public void UpdateCity(int id, string name)
+        {
+            dalUi.UpdateCity(id, name);
+        }
+        public void DeleteMarkerType(int id)
+        {
+            dalUi.DeleteMarkerType(id);
+        }
+        public void DeleteCity(int id)
+        {
+            dalUi.DeleteCity(id);
+        }
         public string[] GetAllCities()
         {
             return dalUi.GetAllCities();
@@ -207,6 +226,24 @@ namespace IBllForUi
                 markertypesDatatable.Rows.Add(dr);
             }
             return markertypesDatatable;
+        }
+        public DataTable GetAllLogins()
+        {
+            DataTable loginsDatatable = new DataTable("logins");
+            DataColumn loginId=loginsDatatable.Columns.Add("Id", typeof(Int32));
+            loginsDatatable.PrimaryKey = new DataColumn[] { loginId };
+            loginsDatatable.Columns.Add("Name", typeof(string));
+            loginsDatatable.Columns.Add("Password", typeof(byte[]));
+            List<Login> logins = dalUi.GetAllLogin();
+            foreach (var item in logins)
+            {
+                DataRow dr = loginsDatatable.NewRow();
+                dr["Id"] = item.Id;
+                dr["Name"] = item.Name;
+                dr["Password"] = item.Password;
+                loginsDatatable.Rows.Add(dr);
+            }
+            return loginsDatatable;
         }
     }
 }

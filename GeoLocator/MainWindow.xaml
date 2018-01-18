@@ -91,7 +91,7 @@
                 <RowDefinition Height="*"></RowDefinition>
                 <RowDefinition Height="2*"></RowDefinition>
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Vertical" Grid.Row="0" HorizontalAlignment="Right"  >
+            <StackPanel Orientation="Vertical" Grid.Row="0" HorizontalAlignment="Right" Width="200" >
                 <Button Name="Login_btn" Margin="10" Width="150" Height="25"
                         Click="Login_btn_Click">
                     <Button.Triggers>
@@ -156,7 +156,7 @@
                     <SolidColorBrush Color="WhiteSmoke" Opacity="0.6"></SolidColorBrush>
                 </StackPanel.Background>
             </StackPanel>
-            <StackPanel Orientation="Vertical" Grid.Row="1" MaxWidth="200" HorizontalAlignment="Right" >
+            <StackPanel Orientation="Vertical" Grid.Row="1" MaxWidth="200" HorizontalAlignment="Right" Width="200" >
                 <StackPanel.Background>
                     <SolidColorBrush Color="WhiteSmoke" Opacity="0.6"></SolidColorBrush>
                 </StackPanel.Background>
@@ -251,7 +251,7 @@
                 </Button>
             </StackPanel>
         </Grid>
-        <Border x:Name="ToolTipBorder" Width="120" Height="180" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="5,100,5,5" BorderThickness="2" CornerRadius="8,8,8,8" BorderBrush="Brown"  Opacity="0">
+        <Border x:Name="ToolTipBorder" Width="150" Height="250" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="5,100,5,5" BorderThickness="2" CornerRadius="8,8,8,8" BorderBrush="Brown"  Opacity="0">
             <Border.Background>
                 <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
                     <GradientStop Color="#FFDEAD" Offset="0.0" />
@@ -259,7 +259,7 @@
                     <GradientStop Color="#CD853F" Offset="1.0" />
                 </LinearGradientBrush>
             </Border.Background>
-            <TextBlock  x:Name="DescriptionText" TextWrapping="WrapWithOverflow" Width="120" Height="180" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0"  Padding="10" FontFamily="Times New Roman" >
+            <TextBlock  x:Name="DescriptionText" TextWrapping="WrapWithOverflow" Width="150" Height="250" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Opacity="0"  Padding="10" FontFamily="Times New Roman" FontSize="18" >
         </TextBlock>
         </Border>
     </Grid>
