@@ -55,13 +55,13 @@ namespace GeoLocator
             markertypes.RowDeleting += new DataRowChangeEventHandler(MarkerTypeRow_Deleted);
             cities.RowChanged += new DataRowChangeEventHandler(CitiesRow_Changed);
             cities.RowDeleting += new DataRowChangeEventHandler(CitiesRow_Deleted);
-            logins.RowChanged += new DataRowChangeEventHandler(LoginsRow_Changed);
+            //logins.RowChanged += new DataRowChangeEventHandler(LoginsRow_Changed);
             logins.RowDeleting += new DataRowChangeEventHandler(LoginsRow_Deleted);
         }
         private void LoginsRow_Deleted(object sender, DataRowChangeEventArgs e)
         {
-            var Id = (int)e.Row["Id"];
-            //bll.DeleteLogin(int id);
+            var name = (string)e.Row["Name"];
+            bll.DeleteLogin(name);
         }
         private void LoginsRow_Changed(object sender, DataRowChangeEventArgs e)
         {

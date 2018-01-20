@@ -208,5 +208,10 @@ namespace BllForWcfLib
         {
             dal.DeleteMarker(id);
         }
+
+        public void DeleteLogin(string loginName)
+        {
+            dal.DeleteLogin(loginName);
+        }
     }
 }

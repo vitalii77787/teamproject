@@ -79,6 +79,9 @@ namespace WcfGoogleMaps
         [OperationContract]
         void DeleteMarker(int id);
 
+        [OperationContract]
+        void DeleteLogin(string loginName);
+
         // TODO: Add your service operations here
     }
 

@@ -193,7 +193,7 @@
                         </EventTrigger>
                     </Button.Triggers>
                 </Button>
-                <Button  Margin="10,10,10,10" Width="150" Height="25" Click="OpenConstruct">ADD
+                <!--<Button  Margin="10,10,10,10" Width="150" Height="25" Click="OpenConstruct">ADD
                     <Button.Triggers>
                         <EventTrigger RoutedEvent="Button.MouseEnter">
                             <EventTrigger.Actions>
@@ -220,8 +220,8 @@
                             </EventTrigger.Actions>
                         </EventTrigger>
                     </Button.Triggers>
-                </Button>
-                <Button  Margin="10,10,10,10" Width="150" Height="25" Click="OpenNewMarker">NewMarker
+                </Button>-->
+                <Button  Margin="10,10,10,10" Width="150" Height="25" Click="OpenNewMarker">New Marker
                     <Button.Triggers>
                         <EventTrigger RoutedEvent="Button.MouseEnter">
                             <EventTrigger.Actions>

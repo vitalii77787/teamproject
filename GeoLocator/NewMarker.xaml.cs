@@ -29,7 +29,7 @@ namespace GeoLocator
     {
         MarkerContext markercontext = new MarkerContext();
         private bool iscorrect=true;
-        public bool IsLoginUser { get; set; }
+        public bool IsAdminUser { get; set; }
         //Marker marker;
         string loginName = string.Empty;
         IBllForUi.IBll bll;
@@ -123,7 +123,7 @@ namespace GeoLocator
         private void BtnOkClick(object sender, RoutedEventArgs e)
         {
             
-            if (IsLoginUser == true)
+            if (loginName == "admin")
             {
                 iscorrect = (markercontext.Name != null && markercontext.Street != null && markercontext.City != null && markercontext.StreetNumber != null && 
                     markercontext.MyImageSource != null && markercontext.Description != null && MarkerType_combo.Text != null);

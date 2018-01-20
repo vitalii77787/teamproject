@@ -68,6 +68,11 @@ namespace WcfGoogleMaps
             bll.DeleteCity(id);
         }
 
+        public void DeleteLogin(string loginName)
+        {
+            bll.DeleteLogin(loginName);
+        }
+
         public void DeleteMarker(int id)
         {
             bll.DeleteMarker(id);

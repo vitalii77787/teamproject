@@ -245,5 +245,10 @@ namespace IDalForUi
         {
             client.DeleteMarker(id);
         }
+
+        public void DeleteLogin(string loginName)
+        {
+            client.DeleteLogin(loginName);
+        }
     }
 }

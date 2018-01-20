@@ -44,6 +44,7 @@ namespace GeoLocator
         public string UserStreetName { get; set; }
         public string UserStreetNumber { get; set; }
         List<PointLatLng> points = new List<PointLatLng>();
+        bool IsAddedRoute = false;
         //Image defaultMarkerImage = null;
 
         private void mapView_Loaded(object sender, RoutedEventArgs e)
@@ -87,26 +88,36 @@ namespace GeoLocator
         private void OpenNewMarker(object sender, RoutedEventArgs e)
         {
             NewMarker nm = new NewMarker(LoginName);
+            string loginStatus = bll.GetLoginStatusOfUser(LoginName);
             if (LoginName != string.Empty)
             {
-                nm.MarkerType_combo.Visibility = Visibility.Visible;
-                nm.MarkerType_combo.ItemsSource = bll.GetAllPlaceTypes();
-                nm.IsLoginUser = true;
-            }
-            bool? res = nm.ShowDialog();
-            if (res.HasValue && res.Value)
-            {
-                if (LoginName != string.Empty)
+                nm.IsAdminUser = false;
+                if (loginStatus == "admin")
                 {
-                    //Maybe new Task?
-                    AddUserPlace(nm.DataContext as MarkerContext);
+                    nm.IsAdminUser = true;
+                    nm.MarkerType_combo.Visibility = Visibility.Visible;
+                    nm.MarkerType_combo.ItemsSource = bll.GetAllPlaceTypes();
                 }
-                AddNewMarkerToMap((nm.DataContext as MarkerContext).City, (nm.DataContext as MarkerContext).Street, (nm.DataContext as MarkerContext).StreetNumber, (nm.DataContext as MarkerContext).MyImageSource, (nm.DataContext as MarkerContext).Description, (nm.DataContext as MarkerContext).Contacts.ToArray());
+                nm.ShowDialog();
             }
             else
             {
-                
+                MessageBox.Show("You have to log in.");
             }
+            //bool? res = nm.ShowDialog();
+            //if (res.HasValue && res.Value)
+            //{
+            //    if (LoginName != string.Empty)
+            //    {
+            //        //Maybe new Task?
+            //        AddUserPlace(nm.DataContext as MarkerContext);
+            //    }
+            //    AddNewMarkerToMap((nm.DataContext as MarkerContext).City, (nm.DataContext as MarkerContext).Street, (nm.DataContext as MarkerContext).StreetNumber, (nm.DataContext as MarkerContext).MyImageSource, (nm.DataContext as MarkerContext).Description, (nm.DataContext as MarkerContext).Contacts.ToArray());
+            //}
+            //else
+            //{
+                
+            //}
             //nm.ShowDialog();
             //this.IsEnabled = false;
         }
@@ -144,7 +155,15 @@ namespace GeoLocator
                 {
                     mapView.Markers.Clear();
                 }
-                List<Marker> markers = bll.GetMarkersOfType(MarkerTypes_combo.Text, "Rivne");
+                List<Marker> markers;
+                if (LoginName.Length > 0 && MarkerTypes_combo.Text == "user")
+                {
+                    markers = bll.GetMarkersOfUser(LoginName);
+                }
+                else
+                {
+                    markers = bll.GetMarkersOfType(MarkerTypes_combo.Text, "Rivne");
+                }
                 foreach (var item in markers)
                 {
                     AddNewMarkerToMap(item);
@@ -166,11 +185,12 @@ namespace GeoLocator
                     }
                     try
                     {
+                        IsAddedRoute = true;
                         ShowRoute(pointLatLng);
                     }
                     catch (Exception)
                     {
-
+                        IsAddedRoute = false;
                     }
 
                 }
@@ -182,6 +202,7 @@ namespace GeoLocator
             ToolTip toolTip = new ToolTip { Content = marker.Description };
             GMap.NET.WindowsPresentation.GMapMarker markerG = new GMap.NET.WindowsPresentation.GMapMarker(new GMap.NET.PointLatLng(marker.Lat, marker.Lng));
             Image image = new Image();
+            image.MouseLeftButtonUp += ((sender, e) => { ImageClick(sender, e, new GMap.NET.PointLatLng(marker.Lat, marker.Lng)); });
             image.MouseEnter += ((sender, e) => { Image_MouseEnter(sender, e, marker.Description, marker.Contacts); });
             image.MouseLeave += Image_MouseLeave;
             image.ToolTip = toolTip;
@@ -198,6 +219,27 @@ namespace GeoLocator
             markerG.Offset = new Point(-16, -32);
             markerG.ZIndex = int.MaxValue;
             mapView.Markers.Add(markerG);       ///////////////////////
+        }
+
+        private void ImageClick(object sender, RoutedEventArgs e, PointLatLng pointLatLng)
+        {
+            if (LoginName.Length > 0)
+            {
+                if (IsAddedRoute)
+                {
+                    mapView.Markers.RemoveAt(mapView.Markers.Count - 1);
+                }
+                try
+                {
+                    IsAddedRoute = true;
+                    ShowRoute(pointLatLng);
+                }
+                catch (Exception)
+                {
+                    IsAddedRoute = false;
+                }
+
+            }
         }
 
         private void AddNewMarkerToMap(string city, string street, string number)
@@ -391,10 +433,11 @@ namespace GeoLocator
                 try
                 {
                     ShowRoute(StreetToFind_field.Text, NumberToFind_field.Text);
+                    IsAddedRoute = true;
                 }
                 catch (Exception)
                 {
-
+                    IsAddedRoute = false;
                 }
                 
             }

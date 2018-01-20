@@ -35,7 +35,7 @@ namespace IBllForUi
         void UpdateCity(int id, string name);
         void DeleteMarkerType(int id);
         void DeleteCity(int id);
-
+        void DeleteLogin(string loginName);
 
     }
 }

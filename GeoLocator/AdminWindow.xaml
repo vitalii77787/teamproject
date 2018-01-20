@@ -132,7 +132,7 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Button Margin="10" Width="100" Grid.Column="0" Click="AddClick">Add</Button>
-            <Button Margin="10" Width="100" Grid.Column="1" Click="DeleteClick">Delete</Button>
+            <!--<Button Margin="10" Width="100" Grid.Column="1" Click="DeleteClick">Delete</Button>-->
         </Grid>
     </Grid>
 </Window>

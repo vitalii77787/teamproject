@@ -245,5 +245,10 @@ namespace IBllForUi
             }
             return loginsDatatable;
         }
+
+        public void DeleteLogin(string loginName)
+        {
+            dalUi.DeleteLogin(loginName);
+        }
     }
 }

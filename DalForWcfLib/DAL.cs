@@ -372,5 +372,16 @@ namespace DalForWcfLib
                 ctx.SaveChanges();
             }
         }
+
+        //public string GetLoginStatusOfUser(string loginName)
+        //{
+        //    Login login = ctx.Logins.Where(item => item.Name == loginName).FirstOrDefault();
+        //    string loginStatus = string.Empty;
+        //    if (login != null)
+        //    {
+        //        loginStatus = login.LoginStatus.Name;
+        //    }
+        //    return loginStatus;
+        //}
     }
 }
