@@ -277,6 +277,11 @@ namespace WcfGoogleMaps
             bll.UpdateCity(id, name);
         }
 
+        public void UpdateLogin(int id, string name)
+        {
+            bll.UpdateLogin(id, name);
+        }
+
         public void UpdateMarker(MarkerWcf newMarker)
         {
             MarkerDto markerDto = new MarkerDto()

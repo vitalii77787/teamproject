@@ -118,6 +118,21 @@ namespace DalForWcfLib
             ctx.Cities.Remove(city);
             ctx.SaveChanges();
         }
+        public void UpdateLogin(int id, string name)
+        {
+            Login login = ctx.Logins.Where(item => item.Id == id).FirstOrDefault();
+            login.Name = name;
+            ctx.SaveChanges();
+        }
+        public void DeleteLogin(int id)
+        {
+            Login login = ctx.Logins.Where(item => item.Id == id).FirstOrDefault();
+            if (login != null)
+            {
+                ctx.Logins.Remove(login);
+                ctx.SaveChanges();
+            }
+        }
         public Address AddNewAddress(City city, string street, string number)
         {
             Address address = new Address() { City = city, Street = street, Number = number };

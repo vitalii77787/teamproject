@@ -67,7 +67,7 @@ namespace GeoLocator
         {
             var Id = (int)e.Row["Id"];
             var Name = (string)e.Row["Name"];
-            //bll.UpdateLogin(int id, string name);
+            bll.UpdateLogin(Id,Name);
         }
         private void CitiesRow_Deleted(object sender, DataRowChangeEventArgs e)
         {

@@ -24,7 +24,10 @@ namespace WcfGoogleMaps
         void DeleteMarkerType(int id);
         [OperationContract]
         void DeleteCity(int id);
-
+        [OperationContract]
+        void DeleteLogin(int id);
+        [OperationContract]
+        void UpdateLogin(int id, string name);
         [OperationContract]
         bool IsSuchAddress(string city, string street, string number);
 

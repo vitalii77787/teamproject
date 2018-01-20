@@ -159,8 +159,15 @@ namespace GeoLocator
                     Street = markercontext.Street,
                     UserName = loginName
                 };
-                bll.AddNewPlace(marker);
-                MessageBox.Show("New marker was added!");
+                if (loginName != String.Empty)
+                {
+                    bll.AddNewPlace(marker);
+                    MessageBox.Show("New marker was added!");
+                }
+                else
+                {
+                    MessageBox.Show("New marker was created!");
+                }
                 Close();
             }
             else
