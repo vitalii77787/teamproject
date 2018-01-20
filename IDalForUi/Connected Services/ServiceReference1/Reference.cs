@@ -505,12 +505,6 @@ namespace IDalForUi.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteCity", ReplyAction="http://tempuri.org/IService1/DeleteCityResponse")]
         System.Threading.Tasks.Task DeleteCityAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteLogin", ReplyAction="http://tempuri.org/IService1/DeleteLoginResponse")]
-        void DeleteLogin(int id);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteLogin", ReplyAction="http://tempuri.org/IService1/DeleteLoginResponse")]
-        System.Threading.Tasks.Task DeleteLoginAsync(int id);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateLogin", ReplyAction="http://tempuri.org/IService1/UpdateLoginResponse")]
         void UpdateLogin(int id, string name);
         
@@ -705,14 +699,6 @@ namespace IDalForUi.ServiceReference1 {
         
         public System.Threading.Tasks.Task DeleteCityAsync(int id) {
             return base.Channel.DeleteCityAsync(id);
-        }
-        
-        public void DeleteLogin(int id) {
-            base.Channel.DeleteLogin(id);
-        }
-        
-        public System.Threading.Tasks.Task DeleteLoginAsync(int id) {
-            return base.Channel.DeleteLoginAsync(id);
         }
         
         public void UpdateLogin(int id, string name) {

@@ -505,6 +505,12 @@ namespace GeoLocator.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteCity", ReplyAction="http://tempuri.org/IService1/DeleteCityResponse")]
         System.Threading.Tasks.Task DeleteCityAsync(int id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateLogin", ReplyAction="http://tempuri.org/IService1/UpdateLoginResponse")]
+        void UpdateLogin(int id, string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/UpdateLogin", ReplyAction="http://tempuri.org/IService1/UpdateLoginResponse")]
+        System.Threading.Tasks.Task UpdateLoginAsync(int id, string name);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/IsSuchAddress", ReplyAction="http://tempuri.org/IService1/IsSuchAddressResponse")]
         bool IsSuchAddress(string city, string street, string number);
         
@@ -693,6 +699,14 @@ namespace GeoLocator.ServiceReference1 {
         
         public System.Threading.Tasks.Task DeleteCityAsync(int id) {
             return base.Channel.DeleteCityAsync(id);
+        }
+        
+        public void UpdateLogin(int id, string name) {
+            base.Channel.UpdateLogin(id, name);
+        }
+        
+        public System.Threading.Tasks.Task UpdateLoginAsync(int id, string name) {
+            return base.Channel.UpdateLoginAsync(id, name);
         }
         
         public bool IsSuchAddress(string city, string street, string number) {

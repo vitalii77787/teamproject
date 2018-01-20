@@ -47,10 +47,10 @@ namespace IBllForUi
         {
             dalUi.UpdateLogin(id, name);
         }
-        public void DeleteLogin(int id)
-        {
-            dalUi.DeleteLogin(id);
-        }
+        //public void DeleteLogin(int id)
+        //{
+        //    dalUi.DeleteLogin(id);
+        //}
         public void DeleteMarkerType(int id)
         {
             dalUi.DeleteMarkerType(id);

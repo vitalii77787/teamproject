@@ -180,10 +180,10 @@ namespace IDalForUi
         {
             client.DeleteMarkerType(id);
         }
-        public void DeleteLogin(int id)
-        {
-            client.DeleteLogin(id);
-        }
+        //public void DeleteLogin(int id)
+        //{
+        //    client.DeleteLogin(id);
+        //}
         public bool IsPasswordsEquals(string userName, byte[] password)
         {
             return client.IsPasswordsEquals(userName, password);
