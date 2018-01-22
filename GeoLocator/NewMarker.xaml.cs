@@ -140,6 +140,11 @@ namespace GeoLocator
                 DialogResult = true;
                 byte[] picture = File.ReadAllBytes(markercontext.MyImageSource);
                 PointLatLng pointLatLng = GetCoordinates(markercontext.City, markercontext.Street, markercontext.StreetNumber);
+                if(pointLatLng.IsEmpty|| pointLatLng.Lat==0 || pointLatLng.Lng==0)
+                {
+                    MessageBox.Show("Incorect Address!");
+                    return;
+                }
                 string markerType = "user";
                 if (loginName == "admin")
                 {
